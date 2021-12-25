@@ -57,6 +57,8 @@ function BasicPlane() {
     plane.uniforms.time.value++;
   };
 
+  if (typeof window === "undefined") return <></>
+
   return (
     <Plane
       className="BasicPlane"
