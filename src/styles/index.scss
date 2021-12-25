@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+.BasicPlane {
+  width: 80%;
+  height: 80vh;
+  margin: 10vh auto;
+}
+
+.BasicPlane img {
+  display: none;
+}
+
+.curtains-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
