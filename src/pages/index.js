@@ -1,14 +1,18 @@
 import React from "react";
 
-import BasicPlane from "../components/BasicPlane";
+import BackgroundMarquee from "../components/BackgroundMarquee";
+import BackgroundGrid from "../components/BackgroundGrid";
 import "../styles/index.scss";
-
-// https://codesandbox.io/s/react-curtains-multiple-planes-post-processed-1g5zj?file=/package.json
+import "../styles/global.css";
 
 const IndexPage = () => {
   return (
     <main>
-      <BasicPlane />
+      <BackgroundGrid />
+      <div className="hero">
+        <BackgroundMarquee />
+        <h1 className="hero__title">Ari Birnbaum</h1>
+      </div>
     </main>
   );
 };

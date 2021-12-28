@@ -2,11 +2,12 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "ari.gg",
+    siteUrl: "https://ari.gg",
+    title: "Ari Birnbaum",
   },
   plugins: [
     {
+      // https://fonts.adobe.com/my_fonts
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         typekit: {
@@ -15,6 +16,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-netlify-cms",
+    "gatsby-plugin-postcss",
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
