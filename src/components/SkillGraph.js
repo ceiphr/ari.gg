@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { ForceGraph2D } from "react-force-graph";
 
 const SkillGraph = () => {
