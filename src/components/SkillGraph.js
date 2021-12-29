@@ -17,11 +17,11 @@ const SkillGraph = () => {
   };
 
   if (typeof window === "undefined") return <></>
-
   return (
     <ForceGraph3D
       graphData={gData}
       backgroundColor="white"
+      showNavInfo={false}
       nodeThreeObject={({ img }) => {
         const imgTexture = new THREE.TextureLoader().load(`/${img}`);
         const material = new THREE.SpriteMaterial({ map: imgTexture });
