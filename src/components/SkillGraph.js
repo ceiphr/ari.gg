@@ -16,6 +16,8 @@ const SkillGraph = () => {
       })),
   };
 
+  if (typeof window === "undefined") return <></>
+
   return (
     <ForceGraph3D
       graphData={gData}
