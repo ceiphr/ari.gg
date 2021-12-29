@@ -3,6 +3,9 @@ import { ForceGraph2D } from "react-force-graph";
 
 const SkillGraph = () => {
   const fgRef = useRef();
+
+  if (typeof window === "undefined") return <></>;
+
   const imgs = [
     { path: "/icons/ae.png", name: "After Effects" },
     { path: "/icons/ai.png", name: "Adobe Illustrator" },
@@ -115,8 +118,6 @@ const SkillGraph = () => {
       },
     ],
   };
-
-  if (typeof window === "undefined") return <></>;
 
   return (
     <ForceGraph2D
