@@ -7,7 +7,7 @@ function random(min, max) {
 
 const BackgroundMarquee = () => {
   let numRows = 6,
-    numCols = 6,
+    numCols = 8,
     rows = [];
 
   for (let i = 0; i < numRows; i++) {
@@ -35,18 +35,20 @@ const BackgroundMarquee = () => {
       }
 
       cols.push(
-        <p aria-hidden className={`select-none ${fontweight}`}>
+        <p key={`col-${j}`} aria-hidden className={`select-none ${fontweight}`}>
           Ari
         </p>
       );
     }
-    let direction = random(0, 1) === 0 ? "left" : "right";
+    let direction = i % 2 === 0 ? "left" : "right";
     rows.push(
       <Marquee
+        key={`row-${i}`}
         className="marquee__row"
-        speed={random(20, 60)}
+        speed={random(10, 30)}
         aria-hidden
         direction={direction}
+        gradient={false}
       >
         {cols}
       </Marquee>

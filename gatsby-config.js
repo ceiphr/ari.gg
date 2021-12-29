@@ -7,6 +7,14 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /static/,
+        },
+      },
+    },
+    {
       // https://fonts.adobe.com/my_fonts
       resolve: "gatsby-plugin-web-font-loader",
       options: {
