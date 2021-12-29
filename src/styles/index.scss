@@ -16,6 +16,10 @@ main {
 }
 
 .item {
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+
   height: 100vh;
   scroll-snap-align: center;
   overflow: hidden;
@@ -29,10 +33,12 @@ main {
   }
 
   &__title {
-    font-family: cinder, sans-serif;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 700;
+    font-style: normal;
     font-size: clamp(1rem, 15vw, 8rem);
+    text-transform: uppercase;
     line-height: clamp(1rem, 15vw, 6rem);
-    margin-left: -6px;
   }
 
   &__body {

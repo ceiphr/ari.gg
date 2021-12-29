@@ -6,7 +6,7 @@ function random(min, max) {
 }
 
 const BackgroundMarquee = () => {
-  let numRows = 6,
+  let numRows = 7,
     numCols = 8,
     rows = [];
 
