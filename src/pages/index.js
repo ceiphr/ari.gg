@@ -2,6 +2,7 @@ import React from "react";
 
 import BackgroundMarquee from "../components/BackgroundMarquee";
 import BackgroundGrid from "../components/BackgroundGrid";
+import SkillGraph from "../components/SkillGraph";
 import Chevron from "../../static/chevron.svg";
 import "../styles/index.scss";
 import "../styles/global.css";
@@ -28,7 +29,9 @@ const IndexPage = () => {
             </div>
           </div>
         </div>
-        <div className="item"></div>
+        <div className="item">
+          <SkillGraph />
+        </div>
       </div>
     </main>
   );
