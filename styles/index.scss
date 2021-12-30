@@ -1,0 +1,38 @@
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.title {
+  font-size: clamp(1rem, 15vw, 8rem);
+}
+
+.h-2x-screen {
+  height: 200vh;
+}
+
+.w-2x-screen {
+  width: 200vw;
+}
+
+@media (min-width: 768px) {
+  .h-2x-screen {
+    height: 100vh;
+  }
+
+  .w-2x-screen {
+    width: 100vw;
+  }
+}
+
+.text-10xl {
+  font-size: 12rem;
+  line-height: 10rem;
+}
+
+.grid-lines {
+  &__stroke + &__stroke {
+    border-left: 1px solid black;
+  }
+}
