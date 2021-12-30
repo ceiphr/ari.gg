@@ -5,53 +5,51 @@ import random from "../utils/random";
 
 const SkillGraph = () => {
   const fgRef = useRef();
-
   const [data, setData] = useState({ nodes: [], links: [] });
 
   useEffect(() => {
-    const fg = fgRef.current;
-    const N = 20;
-    fg.d3Force("box", () => {
-      const SQUARE_HALF_SIDE = N * 2;
+    let init = 5,
+      i = 0;
 
-      data.nodes.forEach((node) => {
-        const x = node.x || 0,
-          y = node.y || 0;
-
-        // bounce on box walls
-        if (Math.abs(x) > SQUARE_HALF_SIDE) {
-          node.vx *= -1;
-        }
-        if (Math.abs(y) > SQUARE_HALF_SIDE) {
-          node.vy *= -1;
-        }
-      });
-    });
-
-    const interval = () => {
+    function addNode() {
       if (graphData.nodes.length === 0) return;
-
-      // Add a new connected node every second
       setData(({ nodes, links }) => {
-        nodes.push(graphData.nodes.pop());
+        const newNode = graphData.nodes.pop();
+        const newNodeList = [...nodes, newNode];
         const newLinks = graphData.links.filter(
           (link) =>
-            nodes.map((node) => node.id).includes(link.source) &&
-            nodes.map((node) => node.id).includes(link.target)
+            newNodeList.map((node) => node.id).includes(link.source) &&
+            newNodeList.map((node) => node.id).includes(link.target)
         );
         const updatedLinks = links.concat(
           newLinks.filter((node) => links.indexOf(node) < 0)
         );
 
         return {
-          nodes: [...nodes],
+          nodes: [...nodes, newNode],
           links: [...updatedLinks],
         };
       });
+      if (i < init) {
+        i++;
+        setTimeout(addNode, 0);
+      }
+      setTimeout(addNode, random(1, 5) * 1000);
+    }
+    addNode();
+  }, []);
 
-      if (graphData.nodes.length !== 0) setTimeout(interval, random(10, 1000));
-    };
-    interval();
+  useEffect(() => {
+    fgRef.current.d3Force("box", () => {
+      data.nodes.forEach((node) => {
+        const x = node.x || 0,
+          y = node.y || 0;
+
+        // slow on box walls
+        if (Math.abs(x) > 100) node.vx /= 6;
+        if (Math.abs(y) > 50) node.vy /= 6;
+      });
+    });
   }, [data.nodes]);
 
   return (
@@ -68,7 +66,8 @@ const SkillGraph = () => {
       }}
       cooldownTicks={100}
       onEngineTick={() => {
-        fgRef.current.centerAt(-100, 0, 0);
+        fgRef.current.zoomToFit(0, 64);
+        // fgRef.current.centerAt(-100, 0, 0);
       }}
       nodePointerAreaPaint={(node: any, color: any, ctx: any) => {
         const size = 12;
@@ -78,7 +77,7 @@ const SkillGraph = () => {
           (node.y || 0) - size / 2,
           size,
           size
-        ); // draw square as pointer trap
+        );
       }}
     />
   );
