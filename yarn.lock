@@ -1750,7 +1750,7 @@ flatten-vertex-data@^1.0.0:
   dependencies:
     dtype "^2.0.0"
 
-force-graph@^1.42:
+force-graph@^1.42, force-graph@^1.42.4:
   version "1.42.4"
   resolved "https://registry.yarnpkg.com/force-graph/-/force-graph-1.42.4.tgz#4be856f043922d455c1c1e04ffec20837b982a60"
   integrity sha512-IIfgOjrK83BTb77vGmYf0xF/Pr6Bp5Xdtra6Ggk3uvhlTXVWcC+Gj2nR0dMj8N06lXmH/I53bMN1Vp5WQ8iv3A==

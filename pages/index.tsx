@@ -3,7 +3,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 
 const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
-  ssr: false
+  ssr: false,
 });
 
 import {
@@ -11,6 +11,7 @@ import {
   BackgroundMarquee,
   Hero,
   Navigation,
+  SkillPrompt,
 } from "../components";
 
 const Home: NextPage = () => {
@@ -32,6 +33,7 @@ const Home: NextPage = () => {
         </div>
         <div className="snap-start h-screen">
           <SkillGraph />
+          <SkillPrompt />
         </div>
       </main>
     </>

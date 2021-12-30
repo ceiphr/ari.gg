@@ -8,6 +8,10 @@ body {
   font-size: clamp(1rem, 15vw, 8rem);
 }
 
+.backdrop--contrast {
+  background: radial-gradient(#fff 0%, rgba(255, 255, 255, 0) 60%);
+}
+
 .h-2x-screen {
   height: 200vh;
 }

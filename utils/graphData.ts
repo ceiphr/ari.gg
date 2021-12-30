@@ -1,40 +1,34 @@
 const imgs = [
-  { path: "/icons/ae.png", name: "After Effects" },
-  { path: "/icons/ai.png", name: "Adobe Illustrator" },
-  { path: "/icons/aws.png", name: "AWS" },
-  { path: "/icons/css3.png", name: "CSS" },
+  { path: "/icons/virtualbox.png", name: "VirtualBox" },
   { path: "/icons/c++.png", name: "C++" },
   { path: "/icons/cloudflare.png", name: "Cloudflare" },
   { path: "/icons/console.png", name: "BASH" },
   { path: "/icons/django.png", name: "Django" },
   { path: "/icons/docker.png", name: "Docker" },
-  { path: "/icons/fedora.png", name: "Fedora" },
   { path: "/icons/flask.png", name: "Flask" },
   { path: "/icons/gatsby.png", name: "Gatsby.js" },
   { path: "/icons/gcp.png", name: "GCP" },
-  { path: "/icons/git.png", name: "Git" },
-  { path: "/icons/github.png", name: "GitHub" },
   { path: "/icons/html5.png", name: "HTML" },
   { path: "/icons/intellij-idea.png", name: "Intellij IDEA" },
   { path: "/icons/java.png", name: "Java" },
-  { path: "/icons/javascript.png", name: "JavaScript" },
   { path: "/icons/markdown.png", name: "Markdown" },
   { path: "/icons/netlify.png", name: "Netlify" },
   { path: "/icons/next.png", name: "Next.js" },
   { path: "/icons/open-source.png", name: "Open Source" },
-  { path: "/icons/photoshop.png", name: "Photoshop" },
   { path: "/icons/postgresql.png", name: "PostgreSQL" },
-  { path: "/icons/premiere.png", name: "Premiere Pro" },
   { path: "/icons/python.png", name: "Python" },
   { path: "/icons/react.png", name: "React.js" },
   { path: "/icons/sass.png", name: "Sass" },
   { path: "/icons/shopify.png", name: "Shopify" },
-  { path: "/icons/stripe.png", name: "Stripe" },
-  { path: "/icons/tailwindcss.png", name: "TailwindCSS" },
   { path: "/icons/typescript.png", name: "TypeScript" },
   { path: "/icons/ubuntu.png", name: "Ubuntu" },
   { path: "/icons/vercel.png", name: "Vercel" },
-  { path: "/icons/virtualbox.png", name: "VirtualBox" },
+  { path: "/icons/github.png", name: "GitHub" },
+  { path: "/icons/css3.png", name: "CSS" },
+  { path: "/icons/javascript.png", name: "JavaScript" },
+  { path: "/icons/git.png", name: "Git" },
+  { path: "/icons/aws.png", name: "AWS" },
+  { path: "/icons/c.png", name: "C" },
 ].map((src) => {
   const img = new Image();
   img.src = `./${src.path}`;
@@ -68,15 +62,31 @@ const graphData = {
     },
     {
       source: "Ubuntu",
-      target: "Git",
+      target: "C",
     },
     {
-      source: "Fedora",
+      source: "Git",
+      target: "GitHub",
+    },
+    {
+      source: "Ubuntu",
       target: "Git",
     },
     {
       source: "JavaScript",
       target: "TypeScript",
+    },
+    {
+      source: "Netlify",
+      target: "Gatsby.js",
+    },
+    {
+      source: "Vercel",
+      target: "Next.js",
+    },
+    {
+      source: "Next.js",
+      target: "Shopify",
     },
     {
       source: "JavaScript",
@@ -99,6 +109,18 @@ const graphData = {
       target: "Flask",
     },
     {
+      source: "GitHub",
+      target: "Markdown",
+    },
+    {
+      source: "GitHub",
+      target: "Open Source",
+    },
+    {
+      source: "Cloudflare",
+      target: "AWS",
+    },
+    {
       source: "Docker",
       target: "AWS",
     },
@@ -120,31 +142,19 @@ const graphData = {
     },
     {
       source: "JavaScript",
-      target: "React",
+      target: "React.js",
     },
     {
       source: "TypeScript",
-      target: "React",
+      target: "React.js",
     },
     {
-      source: "Adobe Illustrator",
-      target: "After Effects",
+      source: "Gatsby.js",
+      target: "React.js",
     },
     {
-      source: "Premiere Pro",
-      target: "After Effects",
-    },
-    {
-      source: "Premiere Pro",
-      target: "Photoshop",
-    },
-    {
-      source: "Photoshop",
-      target: "Adobe Illustrator",
-    },
-    {
-      source: "Premiere Pro",
-      target: "Adobe Illustrator",
+      source: "Next.js",
+      target: "React.js",
     },
     {
       source: "Intellij IDEA",
@@ -153,10 +163,6 @@ const graphData = {
     {
       source: "BASH",
       target: "Ubuntu",
-    },
-    {
-      source: "BASH",
-      target: "Fedora",
     },
     {
       source: "VirtualBox",
