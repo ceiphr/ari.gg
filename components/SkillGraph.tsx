@@ -1,112 +1,62 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 // @ts-ignore
-import { ForceGraph2D, GraphData, GraphNode } from "react-force-graph";
+import { ForceGraph3D, GraphNode, ForceGraphInstance } from "react-force-graph";
+import * as THREE from "three";
+
 import graphData from "../utils/graphData";
-import random from "../utils/random";
 
 const SkillGraph = () => {
-  const fgRef = useRef();
-  const [data, setData] = useState<GraphData>({ nodes: [], links: [] });
+  const fgRef = useRef<ForceGraphInstance>(),
+    distance = 400,
+    N = 40;
 
   useEffect(() => {
-    let init = 5,
-      i = 0,
-      nodesInCommon: (string | undefined)[] = [];
+    fgRef.current.cameraPosition({ z: distance });
 
-    function addNode() {
-      if (graphData.nodes.length === 0) return;
+    // Prevent nodes from flying away
+    fgRef.current.d3Force("box", () => {
+      const SQUARE_HALF_SIDE = N * 2;
 
-      // @ts-ignore
-      setData(({ nodes, links }) => {
-        let newNode;
-        if (nodesInCommon.length > 0) {
-          const nodeName = nodesInCommon.pop();
-          newNode = graphData.nodes.filter((node) => node.id === nodeName)[0];
-          graphData.nodes = graphData.nodes.filter(
-            (node) => node.id !== nodeName
-          );
-        } else newNode = graphData.nodes.pop();
-
-        const newNodeList = [...nodes, newNode];
-        const newNodeNames = newNodeList.map((node) => node?.id);
-        const newLinks = graphData.links.filter(
-          (link) =>
-            newNodeNames.includes(link.source) &&
-            newNodeNames.includes(link.target)
-        );
-        const updatedLinks = links.concat(
-          newLinks.filter((node) => links.indexOf(node) < 0)
-        );
-
-        nodesInCommon = graphData.links.map((link) => {
-          if (
-            newNodeNames.includes(link.source) &&
-            !newNodeNames.includes(link.target)
-          )
-            return link.target;
-          if (
-            newNodeNames.includes(link.target) &&
-            !newNodeNames.includes(link.source)
-          )
-            return link.source;
-        });
-        nodesInCommon = nodesInCommon.filter((node) => node !== undefined);
-
-        console.log(nodesInCommon);
-
-        return {
-          nodes: [...newNodeList],
-          links: [...updatedLinks],
-        };
-      });
-
-      if (i < init) setTimeout(addNode, 0);
-      i++;
-      setTimeout(addNode, random(1, 5) * 1000);
-    }
-    addNode();
-  }, []);
-
-  useEffect(() => {
-    // @ts-ignore
-    fgRef?.current?.d3Force("box", () => {
-      data.nodes.forEach((node: GraphNode) => {
+      graphData.nodes.forEach((node: GraphNode) => {
         const x = node.x || 0,
-          y = node.y || 0;
-        if (Math.abs(x) > 100) node.vx /= 6;
-        if (Math.abs(y) > 50) node.vy /= 6;
+          y = node.y || 0,
+          z = node.z || 0;
+
+        // increase resistance on box walls
+        if (Math.abs(x) > SQUARE_HALF_SIDE) node.vx /= 3;
+        if (Math.abs(y) > SQUARE_HALF_SIDE) node.vy /= 3;
+        if (Math.abs(z) > SQUARE_HALF_SIDE) node.vz /= 3;
       });
     });
-  }, [data.nodes]);
+
+    // camera orbit
+    let angle = 0;
+    setInterval(() => {
+      fgRef.current.cameraPosition({
+        x: distance * Math.sin(angle),
+        z: distance * Math.cos(angle),
+      });
+      angle += Math.PI / 900;
+    }, 10);
+  }, []);
 
   return (
-    <ForceGraph2D
+    <ForceGraph3D
       ref={fgRef}
-      graphData={data}
-      nodeLabel="id"
+      graphData={graphData}
+      backgroundColor={"#fff"}
       linkColor={() => "rgba(0,0,0,0.6)"}
       linkWidth={0.5}
-      enableZoomInteraction={false}
-      nodeCanvasObject={({ img, x = 0, y = 0 }: any, ctx) => {
-        const size = 12;
-        ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
-      }}
-      onEngineTick={() => {
-        // @ts-ignore
-        fgRef?.current?.zoomToFit(0, 64);
-        // fgRef.current.centerAt(-100, 0, 0);
-      }}
-      // d3VelocityDecay={0.1}
-      // d3AlphaDecay={0}
-      nodePointerAreaPaint={(node: GraphNode, color: any, ctx: any) => {
-        const size = 12;
-        ctx.fillStyle = color;
-        ctx.fillRect(
-          (node.x || 0) - size / 2,
-          (node.y || 0) - size / 2,
-          size,
-          size
-        );
+      enableNodeDrag={false}
+      enableNavigationControls={false}
+      showNavInfo={false}
+      nodeThreeObject={({ img }: GraphNode) => {
+        const imgTexture = new THREE.TextureLoader().load(`${img}`);
+        const material = new THREE.SpriteMaterial({ map: imgTexture });
+        const sprite = new THREE.Sprite(material);
+
+        sprite.scale.set(12, 12, 1);
+        return sprite;
       }}
     />
   );

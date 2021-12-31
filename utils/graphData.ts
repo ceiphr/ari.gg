@@ -29,16 +29,11 @@ const imgs = [
   { path: "/icons/git.png", name: "Git" },
   { path: "/icons/aws.png", name: "AWS" },
   { path: "/icons/c.png", name: "C" },
-].map((src) => {
-  const img = new Image();
-  img.src = `./${src.path}`;
-  img.alt = src.name;
-  return img;
-});
+];
 
 // Random connected graph
 const graphData = {
-  nodes: imgs.map((img) => ({ id: img.alt, img })),
+  nodes: imgs.map((img) => ({ id: img.name, img: img.path })),
   links: [
     {
       source: "JavaScript",
