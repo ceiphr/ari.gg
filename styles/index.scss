@@ -5,7 +5,21 @@ body {
 }
 
 .snap-track {
-  height: 300vh;
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 5px;
+    border: 5px solid rgba(0, 0, 0, 0);
+    -webkit-border-radius: 9999px;
+    background-color: rgba(139, 139, 139, 0.5);
+    background-clip: padding-box;
+  }
+
+  &::-webkit-scrollbar {
+    height: 15px;
+  }
 }
 
 .text-clamp {
@@ -25,6 +39,12 @@ body {
   }
 }
 
+.grid-lines {
+  &__stroke + &__stroke {
+    border-left: 1px solid black;
+  }
+}
+
 .navigation-backdrop--contrast {
   background: linear-gradient(
     to bottom,
@@ -38,6 +58,26 @@ body {
     rgba(255, 255, 255, 0.9) 0%,
     rgba(255, 255, 255, 0) 70%
   );
+}
+
+@media (prefers-color-scheme: dark) {
+  .grid-lines {
+    &__stroke + &__stroke {
+      border-left: 1px solid white;
+    }
+  }
+
+  .navigation-backdrop--contrast {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8) 20%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .backdrop--contrast {
+    background: radial-gradient(rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
+  }
 }
 
 .h-2x-screen {
@@ -61,10 +101,4 @@ body {
 .text-10xl {
   font-size: 12rem;
   line-height: 10rem;
-}
-
-.grid-lines {
-  &__stroke + &__stroke {
-    border-left: 1px solid black;
-  }
 }

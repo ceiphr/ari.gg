@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 
       <main
         ref={mainRef}
-        className="snap-y snap-mandatory overflow-y-auto overflow-x-hidden w-screen h-screen"
+        className="snap-track snap-y snap-mandatory overflow-y-auto overflow-x-hidden w-screen h-screen dark:bg-black dark:text-white"
       >
         <BackgroundGrid />
         <Navigation />

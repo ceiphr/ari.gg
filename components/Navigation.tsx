@@ -12,7 +12,7 @@ const Navigation = () => {
           <a
             key={title}
             href={url}
-            className="rounded-lg px-3 py-2 text-black font-medium hover:bg-black hover:text-white"
+            className="rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
           >
             {title}
           </a>

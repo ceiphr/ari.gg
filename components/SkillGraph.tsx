@@ -27,7 +27,7 @@ const SkillGraph = ({ data }: GraphData) => {
   }, []);
 
   return (
-    <div className="pointer-events-none">
+    <div className="pointer-events-none dark:invert">
       <ForceGraph3D
         ref={fgRef}
         graphData={data}

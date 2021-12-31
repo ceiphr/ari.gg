@@ -14,7 +14,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
         targets: ".skill-text",
         translateY: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(3000, { start: 2000 }),
+        delay: anime.stagger(2000, { start: 2000 }),
         duration: 1000,
         easing: "easeOutQuart",
       });
