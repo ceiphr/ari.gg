@@ -1,11 +1,6 @@
 import React, { useEffect, useRef } from "react";
 // @ts-ignore
-import {
-  ForceGraph3D,
-  GraphNode,
-  GraphData,
-  ForceGraphInstance,
-} from "react-force-graph";
+import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
 
 const SkillGraph = ({ data }: GraphData) => {
