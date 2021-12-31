@@ -2,17 +2,17 @@ import React from "react";
 
 const Navigation = () => {
   return (
-    <div className="fixed w-full p-4 z-10">
+    <div className="fixed w-full p-4 z-20">
       <nav className="flex sm:justify-center space-x-4">
         {[
           ["Projects", "/dashboard"],
           ["Work", "/team"],
-          ["Skills", "/projects"],
+          ["Resume", "/projects"],
         ].map(([title, url]) => (
           <a
             key={title}
             href={url}
-            className="rounded-lg px-3 py-2 text-gray-700 font-medium hover:bg-gray-100 hover:text-gray-900"
+            className="rounded-lg px-3 py-2 text-black font-medium hover:bg-black hover:text-white"
           >
             {title}
           </a>

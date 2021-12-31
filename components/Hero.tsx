@@ -11,7 +11,7 @@ const Hero = () => {
           experiences.
         </p>
         <a
-          className="rounded-full bg-black text-white py-4 px-8"
+          className="rounded-2xl bg-black text-white py-4 px-8"
           href="https://google.com"
         >
           About Me

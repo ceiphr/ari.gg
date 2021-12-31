@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+// @ts-ignore
+import { GraphData } from "react-force-graph";
 
 import {
   BackgroundGrid,
@@ -19,18 +21,23 @@ const Home: NextPage = () => {
   // TODO: Fix ref type
   const mainRef = useRef<any>(),
     skillRef = useRef<any>(),
-    [skillReveal, setSkillReveal] = useState<boolean>(false);
+    [skillReveal, setSkillReveal] = useState<GraphData>({
+      nodes: [],
+      links: [],
+    }),
+    [skillText, setSkillText] = useState<boolean>(false);
 
   useEffect(() => {
     const main = mainRef.current;
     const handleScroll = () => {
       if (main.scrollTop + window.innerHeight > skillRef.current.offsetTop)
         setTimeout(() => {
-          setSkillReveal(true);
+          setSkillReveal(graphData);
+          setSkillText(true);
         }, 1000);
     };
-    main!.addEventListener("scroll", handleScroll, { passive: true });
-    return () => main!.removeEventListener("scroll", handleScroll);
+    main.addEventListener("scroll", handleScroll, { passive: true });
+    return () => main.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -53,10 +60,8 @@ const Home: NextPage = () => {
           <Hero />
         </div>
         <div className="snap-start h-screen overflow-hidden" ref={skillRef}>
-          <SkillGraph
-            data={skillReveal ? graphData : { nodes: [], links: [] }}
-          />
-          <SkillPrompt />
+          <SkillGraph data={skillReveal} />
+          <SkillPrompt trigger={skillText} />
         </div>
         <div className="snap-start h-screen overflow-hidden">
           <BackgroundMarquee />
