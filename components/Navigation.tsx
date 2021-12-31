@@ -2,7 +2,7 @@ import React from "react";
 
 const Navigation = () => {
   return (
-    <div className="fixed w-full p-4">
+    <div className="fixed w-full p-4 z-10">
       <nav className="flex sm:justify-center space-x-4">
         {[
           ["Projects", "/dashboard"],

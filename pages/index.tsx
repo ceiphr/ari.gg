@@ -1,10 +1,7 @@
+import React, { useRef, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-
-const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
-  ssr: false,
-});
 
 import {
   BackgroundGrid,
@@ -13,8 +10,29 @@ import {
   Navigation,
   SkillPrompt,
 } from "../components";
+import graphData from "../utils/graphData";
+const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
+  ssr: false,
+});
 
 const Home: NextPage = () => {
+  // TODO: Fix ref type
+  const mainRef = useRef<any>(),
+    skillRef = useRef<any>(),
+    [skillReveal, setSkillReveal] = useState<boolean>(false);
+
+  useEffect(() => {
+    const main = mainRef.current;
+    const handleScroll = () => {
+      if (main.scrollTop + window.innerHeight > skillRef.current.offsetTop)
+        setTimeout(() => {
+          setSkillReveal(true);
+        }, 1000);
+    };
+    main!.addEventListener("scroll", handleScroll, { passive: true });
+    return () => main!.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <Head>
@@ -24,16 +42,25 @@ const Home: NextPage = () => {
         <link rel="stylesheet" href="https://use.typekit.net/ihw7ajs.css" />
       </Head>
 
-      <main className="snap-y snap-mandatory overflow-y-scroll overflow-x-hidden w-screen h-screen">
+      <main
+        ref={mainRef}
+        className="snap-y snap-mandatory overflow-y-auto overflow-x-hidden w-screen h-screen"
+      >
         <BackgroundGrid />
         <Navigation />
-        <div className="snap-start h-screen">
+        <div className="snap-start h-screen overflow-hidden">
           <BackgroundMarquee />
           <Hero />
         </div>
-        <div className="snap-start h-screen">
-          <SkillGraph />
+        <div className="snap-start h-screen overflow-hidden" ref={skillRef}>
+          <SkillGraph
+            data={skillReveal ? graphData : { nodes: [], links: [] }}
+          />
           <SkillPrompt />
+        </div>
+        <div className="snap-start h-screen overflow-hidden">
+          <BackgroundMarquee />
+          <Hero />
         </div>
       </main>
     </>

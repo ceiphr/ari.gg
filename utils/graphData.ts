@@ -1,4 +1,11 @@
+// @ts-ignore
+import { GraphData } from "react-force-graph";
+
 const imgs = [
+  { path: "/icons/ae.png", name: "After Effects" },
+  { path: "/icons/ai.png", name: "Adobe Illustrator" },
+  { path: "/icons/photoshop.png", name: "Photoshop" },
+  { path: "/icons/premiere.png", name: "Premiere Pro" },
   { path: "/icons/virtualbox.png", name: "VirtualBox" },
   { path: "/icons/c++.png", name: "C++" },
   { path: "/icons/cloudflare.png", name: "Cloudflare" },
@@ -32,9 +39,29 @@ const imgs = [
 ];
 
 // Random connected graph
-const graphData = {
+const graphData: GraphData = {
   nodes: imgs.map((img) => ({ id: img.name, img: img.path })),
   links: [
+    {
+      source: "Photoshop",
+      target: "Adobe Illustrator",
+    },
+    {
+      source: "After Effects",
+      target: "Adobe Illustrator",
+    },
+    {
+      source: "Premiere Pro",
+      target: "After Effects",
+    },
+    {
+      source: "Premiere Pro",
+      target: "Adobe Illustrator",
+    },
+    {
+      source: "JavaScript",
+      target: "CSS",
+    },
     {
       source: "JavaScript",
       target: "CSS",

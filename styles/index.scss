@@ -4,6 +4,10 @@ body {
   overflow: hidden;
 }
 
+.snap-track {
+  height: 300vh;
+}
+
 .title {
   font-size: clamp(1rem, 15vw, 8rem);
 }
