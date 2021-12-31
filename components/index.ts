@@ -1,3 +1,4 @@
+export { default as AboutMe } from "./AboutMe";
 export { default as BackgroundGrid } from "./BackgroundGrid";
 export { default as BackgroundMarquee } from "./BackgroundMarquee";
 export { default as Hero } from "./Hero";

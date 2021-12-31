@@ -30,12 +30,30 @@ body {
 
   &-6xl {
     font-size: clamp(0.8rem, 10vw, 4rem);
-    line-height: clamp(0.6rem, 9vw, 3rem);
+    line-height: clamp(0.6rem, 10vw, 3.5rem);
   }
 
   &-4xl {
     font-size: clamp(0.6rem, 6vw, 1.5rem);
     // line-height: clamp(0.4rem, 8vw, 2rem);
+  }
+}
+
+.button {
+  &-w-icon {
+    transition-duration: 200ms;
+
+    svg {
+      transition-duration: 200ms;
+      opacity: 0;
+      margin-right: -24px;
+    }
+    &:hover {
+      svg {
+        opacity: 1;
+        margin-right: 0px;
+      }
+    }
   }
 }
 

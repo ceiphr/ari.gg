@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { GraphData } from "react-force-graph";
 
 import {
+  AboutMe,
   BackgroundGrid,
   BackgroundMarquee,
   Hero,
@@ -58,6 +59,10 @@ const Home: NextPage = () => {
         <div className="snap-start h-screen overflow-hidden">
           <BackgroundMarquee />
           <Hero />
+        </div>
+        <div id="about" className="snap-start h-screen overflow-hidden">
+          <BackgroundMarquee />
+          <AboutMe />
         </div>
         <div className="snap-start h-screen overflow-hidden" ref={skillRef}>
           <SkillGraph data={skillReveal} />
