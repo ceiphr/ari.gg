@@ -4,7 +4,7 @@ import ExternalLink from "../public/external-link.svg";
 
 const Navigation = () => {
   return (
-    <div className="fixed w-full p-4 z-20 navigation-backdrop--contrast">
+    <div className="fixed w-full p-4 z-30 navigation-backdrop--contrast">
       <nav className="flex sm:justify-center space-x-4">
         {[
           ["Projects", "/dashboard"],

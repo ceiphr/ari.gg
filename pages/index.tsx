@@ -52,26 +52,22 @@ const Home: NextPage = () => {
 
       <main
         ref={mainRef}
-        className="snap-track snap-y snap-mandatory overflow-y-auto overflow-x-hidden w-screen h-screen dark:bg-black dark:text-white"
+        className="snap-track snap-y snap-mandatory overflow-y-auto overflow-x-hidden w-screen h-screen bg-transparent dark:text-white"
       >
         <BackgroundGrid />
         <Navigation />
-        <div className="snap-start h-screen overflow-hidden">
+        <section className="snap-start h-screen overflow-hidden z-10">
           <BackgroundMarquee />
           <Hero />
-        </div>
-        <div id="about" className="snap-start h-screen overflow-hidden">
+        </section>
+        <section className="snap-start h-screen overflow-hidden z-10">
           <BackgroundMarquee />
           <AboutMe />
-        </div>
-        <div className="snap-start h-screen overflow-hidden" ref={skillRef}>
+        </section>
+        <section className="snap-start h-screen overflow-hidden" ref={skillRef}>
           <SkillGraph data={skillReveal} />
           <SkillPrompt trigger={skillText} />
-        </div>
-        <div className="snap-start h-screen overflow-hidden">
-          <BackgroundMarquee />
-          <Hero />
-        </div>
+        </section>
       </main>
     </>
   );

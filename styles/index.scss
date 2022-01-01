@@ -1,3 +1,7 @@
+html {
+  background-color: white;
+}
+
 html,
 body {
   height: 100vh;
@@ -20,6 +24,10 @@ body {
   &::-webkit-scrollbar {
     height: 15px;
   }
+}
+
+.w-50px {
+  width: 50px;
 }
 
 .text-clamp {
@@ -57,6 +65,12 @@ body {
   }
 }
 
+.fill-theme {
+  svg * {
+    fill: black;
+  }
+}
+
 .grid-lines {
   &__stroke + &__stroke {
     border-left: 1px solid black;
@@ -79,6 +93,16 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+  html {
+    background-color: black;
+  }
+
+  .fill-theme {
+    svg * {
+      fill: white;
+    }
+  }
+
   .grid-lines {
     &__stroke + &__stroke {
       border-left: 1px solid white;

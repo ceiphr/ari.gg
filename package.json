@@ -17,6 +17,7 @@
     "react-dom": "17.0.2",
     "react-fast-marquee": "^1.2.1",
     "react-force-graph": "^1.41.7",
+    "react-lottie-player": "^1.4.1",
     "sass": "^1.45.1",
     "three": "^0.136.0"
   },
