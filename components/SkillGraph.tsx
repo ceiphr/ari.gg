@@ -1,21 +1,23 @@
 import React, { useEffect, useRef } from "react";
-// @ts-ignore
 import {
   ForceGraph3D,
+  // @ts-ignore
   GraphNode,
+  // @ts-ignore
   GraphData,
+  // @ts-ignore
   ForceGraphInstance,
 } from "react-force-graph";
 import * as THREE from "three";
 
 const SkillGraph = ({ data }: GraphData) => {
   const fgRef = useRef<ForceGraphInstance>(),
-    populated =
-      JSON.stringify(data) !==
-      JSON.stringify({
-        nodes: [],
-        links: [],
-      }),
+    // populated =
+    //   JSON.stringify(data) !==
+    //   JSON.stringify({
+    //     nodes: [],
+    //     links: [],
+    //   }),
     distance = 400;
 
   useEffect(() => {
@@ -37,9 +39,8 @@ const SkillGraph = ({ data }: GraphData) => {
     }, 10);
   }, []);
 
-  // ${populated && "fixed top-0 -z-10"}
   return (
-    <div className={`pointer-events-none dark:invert`}>
+    <div className="fixed top-0 -z-10 pointer-events-none dark:invert">
       <ForceGraph3D
         ref={fgRef}
         graphData={data}

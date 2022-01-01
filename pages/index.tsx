@@ -12,6 +12,7 @@ import {
   Hero,
   Navigation,
   SkillPrompt,
+  ProjectList,
 } from "../components";
 import graphData from "../utils/graphData";
 const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
@@ -21,24 +22,36 @@ const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
 const Home: NextPage = () => {
   // TODO: Fix ref type
   const mainRef = useRef<any>(),
-    skillRef = useRef<any>(),
-    [skillReveal, setSkillReveal] = useState<GraphData>({
+    skillPromptRef = useRef<any>(),
+    projectListRef = useRef<any>(),
+    [skillNodeReveal, setskillNodeReveal] = useState<GraphData>({
       nodes: [],
       links: [],
     }),
-    [skillText, setSkillText] = useState<boolean>(false);
+    [skillTextReveal, setskillTextReveal] = useState<boolean>(false),
+    [projectsReveal, setProjectsReveal] = useState<boolean>(false);
 
   useEffect(() => {
-    const main = mainRef.current;
     const handleScroll = () => {
-      if (main.scrollTop + window.innerHeight > skillRef.current.offsetTop)
+      if (
+        window.pageYOffset + window.innerHeight >
+        skillPromptRef.current.offsetTop
+      )
         setTimeout(() => {
-          setSkillReveal(graphData);
-          setSkillText(true);
+          setskillNodeReveal(graphData);
+          setskillTextReveal(true);
+        }, 1000);
+
+      if (
+        window.pageYOffset + window.innerHeight >
+        projectListRef.current.offsetTop
+      )
+        setTimeout(() => {
+          setProjectsReveal(true);
         }, 1000);
     };
-    main.addEventListener("scroll", handleScroll, { passive: true });
-    return () => main.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -50,23 +63,23 @@ const Home: NextPage = () => {
         <link rel="stylesheet" href="https://use.typekit.net/ihw7ajs.css" />
       </Head>
 
-      <main
-        ref={mainRef}
-        className="snap-track snap-y snap-mandatory overflow-y-auto overflow-x-hidden w-screen h-screen bg-transparent dark:text-white"
-      >
+      <main ref={mainRef} className="dark:text-white">
         <BackgroundGrid />
         <Navigation />
-        <section className="snap-start h-screen overflow-hidden z-10">
+        <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <Hero />
         </section>
-        <section className="snap-start h-screen overflow-hidden z-10">
+        <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <AboutMe />
         </section>
-        <section className="snap-start h-screen overflow-hidden" ref={skillRef}>
-          <SkillGraph data={skillReveal} />
-          <SkillPrompt trigger={skillText} />
+        <section className="h-screen overflow-hidden" ref={skillPromptRef}>
+          <SkillGraph data={skillNodeReveal} />
+          <SkillPrompt trigger={skillTextReveal} />
+        </section>
+        <section className="overflow-hidden" ref={projectListRef}>
+          <ProjectList trigger={projectsReveal} />
         </section>
       </main>
     </>

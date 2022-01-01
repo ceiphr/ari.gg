@@ -20,7 +20,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
         targets: ".skill-fade",
         translateY: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(2000, { start: 2000 }),
+        delay: anime.stagger(1400, { start: 2000 }),
         duration: 1000,
         easing: "easeOutQuart",
       });
@@ -31,7 +31,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
     <div
       className={`${
         !reveal && "opacity-0"
-      } relative -top-1/2 -translate-y-1/2 w-screen pointer-events-none backdrop--contrast`}
+      } relative top-1/2 -translate-y-1/2 w-screen pointer-events-none backdrop--contrast`}
     >
       <div className="grid md:grid-cols-6">
         <div className="col-start-2 col-span-4 p-6 md:p-0 text-center pointer-events-auto my-8">

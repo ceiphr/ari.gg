@@ -2,13 +2,7 @@ html {
   background-color: white;
 }
 
-html,
 body {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.snap-track {
   &::-webkit-scrollbar-track {
     background: transparent;
   }
@@ -26,8 +20,16 @@ body {
   }
 }
 
+.w-inherit {
+  width: inherit;
+}
+
 .w-50px {
   width: 50px;
+}
+
+.h-screen-2 {
+  height: 50vh;
 }
 
 .text-clamp {
