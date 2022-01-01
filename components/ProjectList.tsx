@@ -28,7 +28,7 @@ const ProjectList = ({ trigger }: { trigger: boolean }) => {
         !reveal && "opacity-0"
       } grid md:grid-cols-6`}
     >
-      <div className="col-start-2 col-span-2 z-30">
+      <div className="md:col-start-2 md:col-span-2 p-4 md:p-0 mb-20 z-30">
         <Project className="project-fade" />
         <Project className="project-fade" />
         <Project className="project-fade" />

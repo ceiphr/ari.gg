@@ -75,7 +75,7 @@ const Home: NextPage = () => {
           <AboutMe />
         </section>
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
-          <SkillGraph data={skillNodeReveal} />
+          <SkillGraph data={skillNodeReveal} slideTrigger={projectsReveal} />
           <SkillPrompt trigger={skillTextReveal} />
         </section>
         <section className="overflow-hidden" ref={projectListRef}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   ForceGraph3D,
   // @ts-ignore
@@ -10,34 +10,52 @@ import {
 } from "react-force-graph";
 import * as THREE from "three";
 
-const SkillGraph = ({ data }: GraphData) => {
+const SkillGraph = ({
+  data,
+  slideTrigger,
+}: {
+  data: GraphData;
+  slideTrigger: boolean;
+}) => {
   const fgRef = useRef<ForceGraphInstance>(),
-    // populated =
-    //   JSON.stringify(data) !==
-    //   JSON.stringify({
-    //     nodes: [],
-    //     links: [],
-    //   }),
+    [offset, setOffset] = useState<number>(0),
     distance = 400;
 
   useEffect(() => {
-    fgRef.current.cameraPosition({ z: distance });
+    if (slideTrigger) setOffset(1000);
+
+    fgRef.current.cameraPosition({ z: distance }, { x: 150, z: 150 });
+    // fgRef.current.cameraPosition({ z: distance }, { x: 50, y: 500, z: 500 }, 200);
 
     // camera orbit
-    let angle = 0;
+    let angle = 0,
+      cameraAngle = -Math.PI / 1.3;
     const rotate = setInterval(() => {
       if (!fgRef.current) {
         clearInterval(rotate);
         return;
       }
 
-      fgRef.current.cameraPosition({
-        x: distance * Math.sin(angle),
-        z: distance * Math.cos(angle),
-      });
-      angle += Math.PI / 900;
+      fgRef.current.cameraPosition(
+        {
+          x: distance * Math.sin(angle),
+          z: distance * Math.cos(angle),
+        },
+        {
+          x: distance * Math.sin(cameraAngle),
+          z: distance * Math.cos(cameraAngle),
+        }
+      );
+      angle += Math.PI / 1200;
+      cameraAngle += Math.PI / 1200;
     }, 10);
-  }, []);
+
+    // if (slideTrigger) {
+    //   console.log("HELLO")
+    //   clearInterval(rotate);
+    //   return;
+    // }
+  }, [slideTrigger, offset]);
 
   return (
     <div className="fixed top-0 -z-10 pointer-events-none dark:invert">

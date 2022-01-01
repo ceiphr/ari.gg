@@ -20,6 +20,10 @@ body {
   }
 }
 
+.project {
+  width: calc(100% + 0.5px);
+}
+
 .w-inherit {
   width: inherit;
 }
