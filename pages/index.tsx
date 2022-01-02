@@ -13,6 +13,7 @@ import {
   Navigation,
   SkillPrompt,
   ProjectList,
+  WorkList,
 } from "../components";
 import graphData from "../utils/graphData";
 const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
@@ -34,11 +35,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (
-        window.pageYOffset + window.innerHeight >
+        window.pageYOffset + window.innerHeight - 400 >
         skillPromptRef.current.offsetTop
       )
         setTimeout(() => {
-          setskillNodeReveal(graphData);
+          if (!skillTextReveal) setskillNodeReveal(graphData);
           setskillTextReveal(true);
         }, 1000);
 
@@ -70,16 +71,19 @@ const Home: NextPage = () => {
           <BackgroundMarquee />
           <Hero />
         </section>
-        <section className="h-screen overflow-hidden bg-white dark:bg-black">
+        {/* <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <AboutMe />
-        </section>
+        </section> */}
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
-          <SkillGraph data={skillNodeReveal} slideTrigger={projectsReveal} />
+          <SkillGraph data={skillNodeReveal} />
           <SkillPrompt trigger={skillTextReveal} />
         </section>
         <section className="overflow-hidden" ref={projectListRef}>
           <ProjectList trigger={projectsReveal} />
+        </section>
+        <section className="overflow-hidden">
+          <WorkList trigger={projectsReveal} />
         </section>
       </main>
     </>

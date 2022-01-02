@@ -22,6 +22,32 @@ body {
 
 .project {
   width: calc(100% + 0.5px);
+  color: rgb(255 255 255 / 0.6);
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+
+  &:hover {
+    color: white;
+
+    .project__img {
+      padding: 0;
+    }
+
+    img {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+  }
+
+  &__img {
+    transition-duration: 400ms;
+    padding: 1rem 1rem 0 1rem;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  img {
+    border-radius: 0.5rem;
+    transition-duration: 400ms;
+  }
 }
 
 .w-inherit {
@@ -49,7 +75,6 @@ body {
 
   &-4xl {
     font-size: clamp(0.6rem, 6vw, 1.5rem);
-    // line-height: clamp(0.4rem, 8vw, 2rem);
   }
 }
 
@@ -80,6 +105,10 @@ body {
 .grid-lines {
   &__stroke + &__stroke {
     border-left: 1px solid black;
+  }
+
+  &__stroke--light + &__stroke--light {
+    border-left: 1px solid rgb(0 0 0 / 0.2);
   }
 }
 
@@ -112,6 +141,10 @@ body {
   .grid-lines {
     &__stroke + &__stroke {
       border-left: 1px solid white;
+    }
+
+    &__stroke--light + &__stroke--light {
+      border-left: 1px solid rgb(255 255 255 / 0.2);
     }
   }
 
