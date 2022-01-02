@@ -9,7 +9,7 @@ import Speed from "../public/speed.svg";
 const Project = ({ className = "" }: { className?: string }) => {
   return (
     <div
-      className={`project w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`project overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="project__img">
         <Image
@@ -55,7 +55,7 @@ const Project = ({ className = "" }: { className?: string }) => {
             href="/ari-birnbaum-resume.pdf"
             rel="noreferrer"
             target="_blank"
-            className="button-w-icon overflow-hidden rounded-lg px-3 py-2 font-medium bg-black text-white dark:bg-white dark:text-black"
+            className="button-w-icon button--project overflow-hidden rounded-lg px-3 py-2 font-medium"
           >
             View Project
             <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />

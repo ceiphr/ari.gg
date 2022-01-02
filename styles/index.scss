@@ -22,19 +22,30 @@ body {
 
 .project {
   width: calc(100% + 0.5px);
-  color: rgb(255 255 255 / 0.6);
-  transition-duration: 200ms;
+  color: rgb(0 0 0 / 0.6);
+  transition-duration: 400ms;
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 
-  &:hover {
+  .button--project {
+    transition-duration: 400ms;
     color: white;
+    background-color: rgb(0 0 0 / 0.6);
+  }
+
+  &:hover {
+    color: black;
+
+    .button--project {
+      transition-duration: 400ms;
+      background-color: black;
+    }
 
     .project__img {
       padding: 0;
     }
 
     img {
-      border-radius: 0.5rem 0.5rem 0 0;
+      border-radius: 0.75rem 0.75rem 0 0;
     }
   }
 
@@ -45,7 +56,7 @@ body {
   }
 
   img {
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     transition-duration: 400ms;
   }
 }
@@ -130,6 +141,23 @@ body {
 @media (prefers-color-scheme: dark) {
   html {
     background-color: black;
+  }
+
+  .project {
+    color: rgb(255 255 255 / 0.6);
+
+    .button--project {
+      color: black;
+      background-color: rgb(255 255 255 / 0.6);
+    }
+
+    &:hover {
+      color: white;
+
+      .button--project {
+        background-color: white;
+      }
+    }
   }
 
   .fill-theme {
