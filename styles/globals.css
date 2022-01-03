@@ -2,23 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 5px;
+  border: 5px solid rgba(0, 0, 0, 0);
+  -webkit-border-radius: 9999px;
+  background-color: rgba(139, 139, 139, 0.5);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar {
+  height: 15px;
+}
+
 html {
-  scroll-behavior: smooth;
+  @apply bg-white scroll-smooth;
 }
 
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply p-0 m-0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  @apply text-inherit;
+  text-decoration: none;
 }
 
 * {
-    box-sizing: border-box;
+  @apply box-border;
+}
+
+.fill-theme svg * {
+  @apply fill-black;
+}
+
+.text-clamp {
+  &-8xl {
+    font-size: clamp(1rem, 15vw, 8rem);
+    line-height: clamp(0.8rem, 14vw, 7rem);
+  }
+
+  &-6xl {
+    font-size: clamp(0.8rem, 10vw, 4rem);
+    line-height: clamp(0.6rem, 10vw, 3.5rem);
+  }
+
+  &-4xl {
+    font-size: clamp(0.6rem, 6vw, 1.5rem);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    @apply bg-black;
+  }
+
+  .fill-theme svg * {
+    @apply fill-white;
+  }
 }

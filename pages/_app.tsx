@@ -1,5 +1,5 @@
-import "../styles/globals.css";
-import "../styles/index.scss";
+import "@styles/globals.css";
+import "@styles/index.css";
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {

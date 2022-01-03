@@ -1,0 +1,59 @@
+.project {
+  width: calc(100% + 0.5px);
+  color: rgb(0 0 0 / 0.6);
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+
+  .button--project {
+    transition-duration: 400ms;
+    color: white;
+    background-color: rgb(0 0 0 / 0.6);
+  }
+
+  &:hover {
+    color: black;
+
+    .button--project {
+      transition-duration: 400ms;
+      background-color: black;
+    }
+
+    .project__img {
+      padding: 0;
+    }
+
+    img {
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+  }
+
+  &__img {
+    transition-duration: 400ms;
+    padding: 1rem 1rem 0 1rem;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  img {
+    border-radius: 0.75rem;
+    transition-duration: 400ms;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .project {
+    color: rgb(255 255 255 / 0.6);
+
+    .button--project {
+      color: black;
+      background-color: rgb(255 255 255 / 0.6);
+    }
+
+    &:hover {
+      color: white;
+
+      .button--project {
+        background-color: white;
+      }
+    }
+  }
+}

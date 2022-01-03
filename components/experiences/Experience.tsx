@@ -30,7 +30,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
           />
         </div>
         <h2 className="text-xl">Technical Writer and Web Developer Intern</h2>
-        <p className="mt-2">
+        <div className="mt-2">
           <div className="grid grid-cols-2 italic">
             <p>Tulsa, Oklahoma</p>
             <p className="text-right">June 2021 - Oct. 2021</p>
@@ -46,7 +46,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
               the company’s flagship iTracker product.
             </li>
           </ul>
-        </p>
+        </div>
       </div>
     </div>
   );

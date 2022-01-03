@@ -21,7 +21,7 @@ const Navigation = () => {
           href="/ari-birnbaum-resume.pdf"
           rel="noreferrer"
           target="_blank"
-          className="button-w-icon overflow-hidden rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
+          className="icon-button overflow-hidden rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
         >
           Resume
           <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />

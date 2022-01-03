@@ -28,6 +28,9 @@
       ],
       "@assets/*": [
         "assets/*"
+      ],
+      "@styles/*": [
+        "styles/*"
       ]
     }
   },

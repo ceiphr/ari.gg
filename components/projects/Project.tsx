@@ -55,7 +55,7 @@ const Project = ({ className = "" }: { className?: string }) => {
             href="/ari-birnbaum-resume.pdf"
             rel="noreferrer"
             target="_blank"
-            className="button-w-icon button--project overflow-hidden rounded-lg px-3 py-2 font-medium"
+            className="icon-button button--project overflow-hidden rounded-lg px-3 py-2 font-medium"
           >
             View Project
             <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
@@ -64,7 +64,7 @@ const Project = ({ className = "" }: { className?: string }) => {
             href="/ari-birnbaum-resume.pdf"
             rel="noreferrer"
             target="_blank"
-            className="button-w-icon overflow-hidden rounded-lg px-3 py-2 font-medium border border-black/20 dark:border-white/20 hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
+            className="icon-button overflow-hidden rounded-lg px-3 py-2 font-medium border border-black/20 dark:border-white/20 hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
           >
             GitHub
             <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
