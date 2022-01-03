@@ -23,6 +23,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
       <div className="m-4">
         <div className="mr-8 pb-4 pt-2">
           <Image
+            className="experience__img"
             src={`/images/experience/eastech/${mQuery}`}
             height={77}
             width={875}

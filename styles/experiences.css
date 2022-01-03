@@ -1,3 +1,17 @@
 .experience {
+  @apply text-black/60 dark:text-white/60 duration-400;
   width: calc(100% + 0.5px);
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+
+  &__img {
+    @apply duration-400 opacity-60 px-4 pt-4;
+  }
+
+  &:hover {
+    @apply text-black dark:text-white;
+
+    .experience__img {
+      @apply opacity-100;
+    }
+  }
 }
