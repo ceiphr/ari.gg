@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import type { GraphData } from "react-force-graph";
 
 import {
-  // AboutMe,
+  AboutMe,
   BackgroundGrid,
   BackgroundMarquee,
   Hero,
@@ -71,10 +71,10 @@ const Home: NextPage = () => {
           <BackgroundMarquee />
           <Hero />
         </section>
-        {/* <section className="h-screen overflow-hidden bg-white dark:bg-black">
+        <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <AboutMe />
-        </section> */}
+        </section>
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
           <SkillGraph data={skillNodeReveal} />
           <SkillPrompt trigger={skillTextReveal} />

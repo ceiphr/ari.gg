@@ -16,7 +16,7 @@
 }
 
 html {
-  @apply bg-white scroll-smooth;
+  @apply bg-white dark:bg-black scroll-smooth;
 }
 
 html,
@@ -35,7 +35,7 @@ a {
 }
 
 .fill-theme svg * {
-  @apply fill-black;
+  @apply fill-black dark:fill-white;
 }
 
 .text-clamp {
@@ -51,15 +51,5 @@ a {
 
   &-4xl {
     font-size: clamp(0.6rem, 6vw, 1.5rem);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    @apply bg-black;
-  }
-
-  .fill-theme svg * {
-    @apply fill-white;
   }
 }

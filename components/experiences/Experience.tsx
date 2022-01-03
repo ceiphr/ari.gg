@@ -43,7 +43,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
             </li>
             <li>
               iTracker Documentation: Wrote internal technical documentation for
-              the company’s flagship iTracker product.
+              the company&rsquo;s flagship iTracker product.
             </li>
           </ul>
         </div>
