@@ -19,6 +19,7 @@ module.exports = {
       borderWidth: {
         5: "5px",
       },
+      transitionDuration: { 400: "400ms" },
     },
   },
   plugins: [],

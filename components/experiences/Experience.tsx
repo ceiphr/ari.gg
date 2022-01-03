@@ -18,7 +18,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
 
   return (
     <div
-      className={`work overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`experience overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="m-4">
         <div className="mr-8 pb-4 pt-2">

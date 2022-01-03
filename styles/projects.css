@@ -4,6 +4,10 @@
   transition-duration: 400ms;
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 
+  .project__img {
+    @apply duration-400 opacity-75;
+  }
+
   .button--project {
     transition-duration: 400ms;
     color: white;
@@ -19,6 +23,7 @@
     }
 
     .project__img {
+      @apply opacity-100;
       padding: 0;
     }
 
