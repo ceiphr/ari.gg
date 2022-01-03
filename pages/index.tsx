@@ -3,20 +3,20 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 // @ts-ignore
-import { GraphData } from "react-force-graph";
+import type { GraphData } from "react-force-graph";
 
 import {
-  AboutMe,
+  // AboutMe,
   BackgroundGrid,
   BackgroundMarquee,
   Hero,
   Navigation,
   SkillPrompt,
   ProjectList,
-  WorkList,
-} from "../components";
-import graphData from "../utils/graphData";
-const SkillGraph = dynamic(() => import("../components/SkillGraph"), {
+  ExperienceList,
+} from "@components/index";
+import graphData from "@utils/graphData";
+const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
   ssr: false,
 });
 
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [skillTextReveal, skillNodeReveal, projectsReveal]);
 
   return (
     <>
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
           <ProjectList trigger={projectsReveal} />
         </section>
         <section className="overflow-hidden">
-          <WorkList trigger={projectsReveal} />
+          <ExperienceList trigger={projectsReveal} />
         </section>
       </main>
     </>

@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-import ExternalLink from "../public/external-link.svg";
-import Person from "../public/person.svg";
-import ShowChart from "../public/show-chart.svg";
-import Speed from "../public/speed.svg";
+import ExternalLink from "@assets/external-link.svg";
+import Person from "@assets/person.svg";
+import ShowChart from "@assets/show-chart.svg";
+import Speed from "@assets/speed.svg";
 
 const Project = ({ className = "" }: { className?: string }) => {
   return (

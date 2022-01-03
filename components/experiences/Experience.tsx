@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-const Work = ({ className = "" }: { className?: string }) => {
+const Experience = ({ className = "" }: { className?: string }) => {
   const [mQuery, setMQuery] = useState<string>("logo.png");
 
   useEffect(() => {
@@ -52,4 +52,4 @@ const Work = ({ className = "" }: { className?: string }) => {
   );
 };
 
-export default Work;
+export default Experience;

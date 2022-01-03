@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import ExternalLink from "../public/external-link.svg";
+
+import ExternalLink from "@assets/external-link.svg";
 
 const Navigation = () => {
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import random from "../utils/random";
+
+import random from "@utils/random";
 
 const BackgroundMarquee = () => {
   let numRows = 7,
