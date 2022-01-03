@@ -5,8 +5,8 @@ import Email from "@assets/email.svg";
 
 const Navigation = () => {
   return (
-    <div className="fixed w-full p-4 z-50 navigation-backdrop--contrast">
-      <nav className="flex sm:justify-center space-x-4">
+    <div className="fixed w-full pt-4 pb-10 z-50 pointer-events-none navigation-backdrop--contrast">
+      <nav className="flex sm:justify-center pointer-events-auto space-x-4">
         <a
           href="https://ceiphr.com"
           rel="noreferrer"

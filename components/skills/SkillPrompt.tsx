@@ -31,7 +31,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
     <div
       className={`${
         !reveal && "opacity-0"
-      } relative top-1/2 -translate-y-1/2 w-screen pointer-events-none backdrop--contrast`}
+      } relative top-1/2 -translate-y-1/2 pointer-events-none backdrop--contrast`}
     >
       <div className="grid md:grid-cols-6">
         <div className="col-start-2 col-span-4 p-6 md:p-0 text-center pointer-events-auto my-8">
