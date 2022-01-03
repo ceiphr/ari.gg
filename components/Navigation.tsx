@@ -1,22 +1,30 @@
 import React from "react";
-import Link from "next/link";
 
 import ExternalLink from "@assets/external-link.svg";
+import Email from "@assets/email.svg";
 
 const Navigation = () => {
   return (
     <div className="fixed w-full p-4 z-50 navigation-backdrop--contrast">
       <nav className="flex sm:justify-center space-x-4">
-        {[
-          ["Projects", "/dashboard"],
-          ["Work", "/team"],
-        ].map(([title, url]) => (
-          <Link key={title} href={url} passHref>
-            <div className="cursor-pointer rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white">
-              {title}
-            </div>
-          </Link>
-        ))}
+        <a
+          href="https://github.com/ceiphr"
+          rel="noreferrer"
+          target="_blank"
+          className="icon-button overflow-hidden rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
+        >
+          GitHub
+          <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ari/"
+          rel="noreferrer"
+          target="_blank"
+          className="icon-button overflow-hidden rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
+        >
+          LinkedIn
+          <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
+        </a>
         <a
           href="/ari-birnbaum-resume.pdf"
           rel="noreferrer"
@@ -25,6 +33,15 @@ const Navigation = () => {
         >
           Resume
           <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
+        </a>
+        <a
+          href="mailto:a@ari.gg"
+          rel="noreferrer"
+          target="_blank"
+          className="icon-button overflow-hidden rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
+        >
+          Contact
+          <Email className="inline-block -translate-y-px scale-75 ml-1 fill-current" />
         </a>
       </nav>
     </div>

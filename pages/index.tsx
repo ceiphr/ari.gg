@@ -67,6 +67,7 @@ const Home: NextPage = () => {
       <main ref={mainRef} className="dark:text-white">
         <BackgroundGrid />
         <Navigation />
+        <SkillGraph data={skillNodeReveal} />
         <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <Hero />
@@ -76,7 +77,6 @@ const Home: NextPage = () => {
           <AboutMe />
         </section>
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
-          <SkillGraph data={skillNodeReveal} />
           <SkillPrompt trigger={skillTextReveal} />
         </section>
         <section className="overflow-hidden" ref={projectListRef}>
