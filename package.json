@@ -1,6 +1,9 @@
 {
   "name": "ari.gg",
   "private": true,
+  "description": "ari.gg, powered by Next.js and Three.js.",
+  "version": "0.1.0",
+  "author": "Ari Birnbaum <ari@ceiphr.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
