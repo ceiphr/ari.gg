@@ -3,19 +3,16 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  @apply bg-transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  height: 5px;
-  border: 5px solid rgba(0, 0, 0, 0);
+  @apply h-5px border-5 border-solid border-black bg-gray-500/50 bg-clip-padding;
   -webkit-border-radius: 9999px;
-  background-color: rgba(139, 139, 139, 0.5);
-  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar {
-  height: 15px;
+  @apply h-15px;
 }
 
 html {
@@ -30,8 +27,7 @@ body {
 }
 
 a {
-  @apply text-inherit;
-  text-decoration: none;
+  @apply text-inherit no-underline;
 }
 
 * {

@@ -1,28 +1,25 @@
 @import "projects.css";
+@import "experiences.css";
 
 .icon-button {
-  transition-duration: 200ms;
+  @apply duration-200;
 
   svg {
-    transition-duration: 200ms;
-    opacity: 0;
-    margin-right: -24px;
+    @apply -mr-24px opacity-0 duration-200;
   }
-  &:hover {
-    svg {
-      opacity: 1;
-      margin-right: 0px;
-    }
+
+  &:hover svg {
+    @apply opacity-100 mr-0;
   }
 }
 
 .grid-lines {
   &__stroke + &__stroke {
-    border-left: 1px solid black;
+    @apply border-0 md:border-l border-solid border-black dark:border-white;
   }
 
   &__stroke--light + &__stroke--light {
-    border-left: 1px solid rgb(0 0 0 / 0.2);
+    @apply border-l border-solid border-black/20 dark:border-white/20;
   }
 }
 
@@ -49,26 +46,9 @@
   .w-marquee {
     width: 100vw;
   }
-
-  .grid-lines {
-    &__stroke + &__stroke,
-    &__stroke--light + &__stroke--light {
-      border-left-width: 0px;
-    }
-  }
 }
 
 @media (prefers-color-scheme: dark) {
-  .grid-lines {
-    &__stroke + &__stroke {
-      border-left: 1px solid white;
-    }
-
-    &__stroke--light + &__stroke--light {
-      border-left: 1px solid rgb(255 255 255 / 0.2);
-    }
-  }
-
   .navigation-backdrop--contrast {
     background: linear-gradient(
       to bottom,
