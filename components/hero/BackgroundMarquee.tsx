@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import Marquee from "react-fast-marquee";
 
 import random from "@utils/random";
 
-const BackgroundMarquee = () => {
+const BackgroundMarquee = memo(function BackgroundMarquee() {
   let numRows = 7,
     numCols = 8,
     rows = [];
@@ -33,7 +33,11 @@ const BackgroundMarquee = () => {
       }
 
       cols.push(
-        <p key={`col-${j}`} aria-hidden className={`select-none mx-4 ${fontweight}`}>
+        <p
+          key={`col-${j}`}
+          aria-hidden
+          className={`select-none mx-4 ${fontweight}`}
+        >
           Ari
         </p>
       );
@@ -55,9 +59,11 @@ const BackgroundMarquee = () => {
 
   return (
     <div className="opacity-5 h-screen w-screen overflow-hidden pointer-events-none">
-      <div className="origin-center rotate-45 scale-175 transform-gpu w-marquee">{rows}</div>
+      <div className="origin-center rotate-45 scale-175 transform-gpu w-marquee">
+        {rows}
+      </div>
     </div>
   );
-};
+});
 
 export default BackgroundMarquee;

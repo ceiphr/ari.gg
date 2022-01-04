@@ -7,7 +7,7 @@ const Hero = () => {
         <h1 className="tk-neue-haas-grotesk-display text-clamp-6xl md:-mr-px uppercase">
           A twenty-something studying CS.
         </h1>
-        <p className="max-w-lg text-lg mt-6 float-right">
+        <p className="max-w-lg text-lg mt-6 text-stone-600 dark:text-stone-400 float-right">
           My name is Ari. I&rsquo;m a computer science student with a strong
           background in systems, algorithms, and web development.
           <br />

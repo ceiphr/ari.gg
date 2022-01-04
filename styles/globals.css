@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply h-5px border-5 border-solid border-black bg-gray-500/50 bg-clip-padding;
-  -webkit-border-radius: 9999px;
-}
-
-::-webkit-scrollbar {
-  @apply h-15px;
-}
-
 html {
   @apply bg-white dark:bg-black scroll-smooth;
 }

@@ -1,5 +1,5 @@
 .project {
-  @apply text-black/80 dark:text-white/80 duration-400;
+  @apply text-stone-600 dark:text-stone-400 duration-400;
   width: calc(100% + 0.5px);
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 

@@ -7,7 +7,7 @@ const Hero = () => {
         <h1 className="tk-neue-haas-grotesk-display text-clamp-8xl uppercase">
           Ari Birnbaum
         </h1>
-        <p className="max-w-lg text-lg my-4">
+        <p className="max-w-lg text-lg text-stone-600 dark:text-stone-400 my-4">
           I&rsquo;m a computer science student at Stevens Institute of
           Technology. I write technical articles and make polished online
           experiences.
@@ -17,7 +17,7 @@ const Hero = () => {
             <span className="animated-status inline-block align-middle m-3 -translate-y-px h-2 w-2 bg-amber-600 dark:bg-amber-400 rounded-full" />
             Status
           </div>
-          <p className="inline -translate-y-px whitespace-nowrap pl-3 pr-4">
+          <p className="inline -translate-y-px whitespace-nowrap text-stone-700 dark:text-stone-300 pl-3 pr-4">
             Looking for a Summer 2022 Internship.
           </p>
         </div>

@@ -30,7 +30,7 @@ const ExperienceList = ({ trigger }: { trigger: boolean }) => {
           <h1 className="experience-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase md:-ml-3px mb-2">
             Experience
           </h1>
-          <p className="experience-fade text-lg">
+          <p className="experience-fade hidden md:inline text-stone-600 dark:text-stone-400 text-xl">
             Hover over an experience to view related skills.
           </p>
         </div>
