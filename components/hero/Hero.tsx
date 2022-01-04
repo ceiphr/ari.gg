@@ -13,8 +13,8 @@ const Hero = () => {
           experiences.
         </p>
         <div className="my-2 max-w-xs md:max-w-none rounded-full inline-block overflow-x-auto whitespace-nowrap bg-white dark:bg-black border border-black/20 dark:border-white/20">
-          <div className="py-2 pl-1 pr-3 inline-block font-medium -translate-x-px text-amber-400 border-r border-black/20 dark:border-white/20">
-            <span className="animated-status inline-block align-middle m-3 -translate-y-px h-2 w-2 bg-amber-400 rounded-full" />
+          <div className="py-2 pl-1 pr-3 inline-block font-medium -translate-x-px text-amber-600 dark:text-amber-400 border-r border-black/20 dark:border-white/20">
+            <span className="animated-status inline-block align-middle m-3 -translate-y-px h-2 w-2 bg-amber-600 dark:bg-amber-400 rounded-full" />
             Status
           </div>
           <p className="inline -translate-x-px whitespace-nowrap pl-3 pr-4">

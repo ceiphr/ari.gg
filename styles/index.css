@@ -40,7 +40,7 @@
 
 .animated-status:after {
   @apply absolute left-0 top-0 h-2 w-2 rounded-full;
-  box-shadow: 0 0 0 2px rgb(251 191 36 / 0.5);
+  box-shadow: 0 0 0 2px;
   transition: opacity 250ms;
   content: "";
   animation: pulsate 3s ease infinite;
