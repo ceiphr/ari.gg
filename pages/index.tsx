@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
@@ -25,40 +25,49 @@ const Home: NextPage = () => {
   const mainRef = useRef<any>(),
     skillPromptRef = useRef<any>(),
     projectListRef = useRef<any>(),
+    experienceListRef = useRef<any>(),
     [skillNodeReveal, setskillNodeReveal] = useState<GraphData>({
       nodes: [],
       links: [],
     }),
     [skillTextReveal, setskillTextReveal] = useState<boolean>(false),
-    [projectsReveal, setProjectsReveal] = useState<boolean>(false);
-
-  const handleScroll = useCallback(() => {
-    // The graph has been scrolled into view. Time to reveal it.
-    if (
-      window.pageYOffset + window.innerHeight - 400 >
-        skillPromptRef.current.offsetTop &&
-      !skillTextReveal
-    )
-      setTimeout(() => {
-        setskillNodeReveal(graphData);
-        setskillTextReveal(true);
-      }, 1000);
-
-    // The projects have been scrolled into view. Time to reveal them.
-    if (
-      window.pageYOffset + window.innerHeight >
-        projectListRef.current.offsetTop &&
-      !projectsReveal
-    )
-      setTimeout(() => {
-        setProjectsReveal(true);
-      }, 1000);
-  }, [skillTextReveal, projectsReveal]);
+    [projectsReveal, setProjectsReveal] = useState<boolean>(false),
+    [experienceReveal, setExperienceReveal] = useState<boolean>(false);
 
   useEffect(() => {
+    const handleScroll = () => {
+      // The graph has been scrolled into view. Time to reveal it.
+      if (
+        !skillTextReveal &&
+        window.pageYOffset + window.innerHeight - 400 >
+          skillPromptRef.current.offsetTop
+      ) {
+        setTimeout(() => {
+          setskillNodeReveal(graphData);
+          setskillTextReveal(true);
+        }, 1000);
+      }
+
+      // The projects have been scrolled into view. Time to reveal them.
+      if (
+        window.pageYOffset + window.innerHeight - 200 >
+          projectListRef.current.offsetTop &&
+        !projectsReveal
+      )
+        setProjectsReveal(true);
+
+      // The experiences have been scrolled into view. Time to reveal them.
+      if (
+        window.pageYOffset + window.innerHeight - 200 >
+          experienceListRef.current.offsetTop &&
+        !experienceReveal
+      )
+        setExperienceReveal(true);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+  }, [skillTextReveal, projectsReveal, experienceReveal]);
 
   return (
     <>
@@ -88,8 +97,8 @@ const Home: NextPage = () => {
           <section className="overflow-hidden" ref={projectListRef}>
             <ProjectList trigger={projectsReveal} />
           </section>
-          <section className="overflow-hidden">
-            <ExperienceList trigger={projectsReveal} />
+          <section className="overflow-hidden" ref={experienceListRef}>
+            <ExperienceList trigger={experienceReveal} />
           </section>
         </div>
       </main>

@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
 import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
 import { useMediaQuery } from "react-responsive";
 
-const SkillGraph = ({ data }: { data: GraphData }) => {
+const SkillGraph = memo(function SkillGraph({ data }: { data: GraphData }) {
   const fgRef = useRef<ForceGraphInstance>(),
     angle = useRef<number>(0),
     isTabletOrMobile = useMediaQuery({ maxWidth: 1224 }),
@@ -63,6 +63,6 @@ const SkillGraph = ({ data }: { data: GraphData }) => {
       />
     </div>
   );
-};
+});
 
 export default SkillGraph;
