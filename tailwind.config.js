@@ -21,6 +21,9 @@ module.exports = {
       },
       transitionDuration: { 400: "400ms" },
       width: { "0.5px": "0.5px" },
+      backgroundImage: {
+        "hero-pattern": "url('/images/tmp.png')",
+      },
     },
   },
   plugins: [],

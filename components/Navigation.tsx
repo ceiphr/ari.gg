@@ -22,7 +22,7 @@ const Navigation = () => {
           target="_blank"
           className="icon-button overflow-hidden whitespace-nowrap rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
         >
-          Resume
+          Résumé
           <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
         </a>
         <a

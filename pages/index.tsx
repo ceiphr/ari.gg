@@ -86,14 +86,15 @@ const Home: NextPage = () => {
           <BackgroundMarquee />
           <Hero />
         </section>
-        <section className="h-screen overflow-hidden bg-white dark:bg-black">
-          <BackgroundMarquee />
-          <AboutMe />
+        <section className="bg-white dark:bg-black border-y border-black/20 dark:border-white/20">
+          <div className="relative h-screen overflow-hidden">
+            <AboutMe />
+          </div>
         </section>
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
           <SkillPrompt trigger={skillTextReveal} />
         </section>
-        <div className="border-t md:border-0 pt-10 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
+        <div className="border-t md:border-0 pt-14 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
           <section className="overflow-hidden" ref={projectListRef}>
             <ProjectList trigger={projectsReveal} />
           </section>
