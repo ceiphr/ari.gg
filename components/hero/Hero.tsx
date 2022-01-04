@@ -7,11 +7,18 @@ const Hero = () => {
         <h1 className="tk-neue-haas-grotesk-display text-clamp-8xl uppercase">
           Ari Birnbaum
         </h1>
-        <p className="max-w-lg text-lg mb-8 mt-2">
+        <p className="max-w-lg text-lg my-4">
           I&rsquo;m a computer science student at Stevens Institute of
           Technology. I write technical articles and make polished online
           experiences.
         </p>
+        <div className="my-2 pr-4 rounded-full overflow-hidden absolute z-30 bg-white dark:bg-black border border-black/20 dark:border-white/20">
+          <div className="py-2 pl-1 pr-3 inline-block font-medium -translate-x-px text-amber-400 border-r border-black/20 dark:border-white/20">
+            <span className="animated-status inline-block align-middle m-3  -translate-y-px h-2 w-2 bg-amber-400 rounded-full" />
+            Status
+          </div>
+          <p className="inline -translate-x-px pl-3">Looking for Summer 2022 Internship.</p>
+        </div>
       </div>
     </div>
   );

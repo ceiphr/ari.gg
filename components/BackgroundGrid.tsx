@@ -7,7 +7,7 @@ const BackgroundGrid = () => {
     rows.push(<div key={i} className="grid-lines__stroke" />);
 
   return (
-    <div className="grid-lines grid md:grid-cols-6 pointer-events-none fixed z-20 top-0 left-0 opacity-20 w-full h-full">
+    <div className="grid-lines grid md:grid-cols-6 pointer-events-none fixed top-0 left-0 opacity-20 w-full h-full">
       {rows}
     </div>
   );

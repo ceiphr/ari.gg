@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import anime from "animejs";
+import { useMediaQuery } from "react-responsive";
 
 import Experience from "@components/experiences/Experience";
 
 const ExperienceList = ({ trigger }: { trigger: boolean }) => {
-  const [reveal, setReveal] = useState<boolean>(false);
+  const [reveal, setReveal] = useState<boolean>(false),
+    isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
 
   useEffect(() => {
     if (trigger) {
@@ -26,7 +28,13 @@ const ExperienceList = ({ trigger }: { trigger: boolean }) => {
   return (
     <div className={`${!reveal && "opacity-0"} grid md:grid-cols-6`}>
       <div className="md:col-start-2 md:col-span-2 p-4 md:p-0 mb-20 z-30">
-        <h1 className="project-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase -ml-3px mb-8">Experience</h1>
+        <h1 className="project-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase -ml-3px mb-2">
+          Experience
+        </h1>
+        <p className="mb-8">
+          {isTabletOrMobile ? `Tap on` : `Hover over`} an experience to view related
+          skills.
+        </p>
         <Experience className="project-fade" />
         <Experience className="project-fade" />
         <Experience className="project-fade" />
