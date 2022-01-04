@@ -4,7 +4,8 @@
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 
   &__img {
-    @apply duration-400 opacity-60 px-4 pt-4;
+    @apply duration-400 opacity-60;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
   }
 
   &:hover {

@@ -1,24 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import {
-  ForceGraph3D,
-  // @ts-ignore
-  GraphNode,
-  // @ts-ignore
-  GraphData,
-  // @ts-ignore
-  ForceGraphInstance,
-} from "react-force-graph";
+// @ts-ignore Types are not exported from react-force-graph
+// prettier-ignore
+import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
+import { useMediaQuery } from "react-responsive";
 
 const SkillGraph = ({ data }: { data: GraphData }) => {
   const fgRef = useRef<ForceGraphInstance>(),
+    angle = useRef<number>(0),
+    isTabletOrMobile = useMediaQuery({ maxWidth: 1224 }),
+    cameraAngle = useRef<number>(-Math.PI / (isTabletOrMobile ? 1 : 1.3)),
     distance = 400;
 
   useEffect(() => {
     // camera orbit
-    let angle = 0,
-      cameraAngle = -Math.PI / 1.3;
-
     const rotate = setInterval(() => {
       if (!fgRef.current) {
         clearInterval(rotate);
@@ -27,17 +22,22 @@ const SkillGraph = ({ data }: { data: GraphData }) => {
 
       fgRef.current.cameraPosition(
         {
-          x: distance * Math.sin(angle),
-          z: distance * Math.cos(angle),
+          x: distance * Math.sin(angle.current),
+          z: distance * Math.cos(angle.current),
         },
         {
-          x: distance * Math.sin(cameraAngle),
-          z: distance * Math.cos(cameraAngle),
+          x: distance * Math.sin(cameraAngle.current),
+          z: distance * Math.cos(cameraAngle.current),
         }
       );
-      angle += Math.PI / 1200;
-      cameraAngle += Math.PI / 1200;
+
+      angle.current += Math.PI / 1200;
+      cameraAngle.current += Math.PI / 1200;
     }, 10);
+
+    return () => {
+      clearInterval(rotate);
+    };
   }, []);
 
   return (

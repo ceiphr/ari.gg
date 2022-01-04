@@ -17,7 +17,7 @@
   }
 
   &:hover {
-    @apply text-black dark:text-white;
+    @apply text-black dark:text-white mb-96 md:mb-8;
 
     .project__btn {
       @apply duration-400 bg-black dark:bg-white;

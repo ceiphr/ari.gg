@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useCallback, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
@@ -32,28 +32,35 @@ const Home: NextPage = () => {
     [skillTextReveal, setskillTextReveal] = useState<boolean>(false),
     [projectsReveal, setProjectsReveal] = useState<boolean>(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.pageYOffset + window.innerHeight - 400 >
-        skillPromptRef.current.offsetTop
-      )
+  const handleScroll = useCallback(() => {
+    // The graph has been scrolled into view. Time to reveal it.
+    if (
+      window.pageYOffset + window.innerHeight - 400 >
+      skillPromptRef.current.offsetTop
+    ) {
+      if (!skillTextReveal)
         setTimeout(() => {
-          if (!skillTextReveal) setskillNodeReveal(graphData);
+          setskillNodeReveal(graphData);
           setskillTextReveal(true);
         }, 1000);
+    }
 
-      if (
-        window.pageYOffset + window.innerHeight >
-        projectListRef.current.offsetTop
-      )
+    // The projects have been scrolled into view. Time to reveal them.
+    if (
+      window.pageYOffset + window.innerHeight >
+      projectListRef.current.offsetTop
+    ) {
+      if (!projectsReveal)
         setTimeout(() => {
           setProjectsReveal(true);
         }, 1000);
-    };
+    }
+  }, [skillTextReveal, projectsReveal]);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [skillTextReveal, skillNodeReveal, projectsReveal]);
+  }, [handleScroll]);
 
   return (
     <>

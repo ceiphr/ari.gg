@@ -21,12 +21,13 @@ const Experience = ({ className = "" }: { className?: string }) => {
       className={`experience overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="m-4">
-        <div className="mr-8 pb-4 pt-2">
+        <div className="mr-8 pb-4 pt-2 w-1/2">
           <Image
             className="experience__img"
             src={`/images/experience/eastech/${mQuery}`}
             height={77}
             width={875}
+            layout="intrinsic"
             alt="Eastech"
           />
         </div>
