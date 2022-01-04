@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import anime from "animejs";
-// import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "react-responsive";
 
 import Project from "@components/projects/Project";
 
 const ProjectList = ({ trigger }: { trigger: boolean }) => {
-  const [reveal, setReveal] = useState<boolean>(false);
-  // isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
+  const [reveal, setReveal] = useState<boolean>(false),
+    isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
 
   useEffect(() => {
     if (trigger) {
@@ -27,14 +27,22 @@ const ProjectList = ({ trigger }: { trigger: boolean }) => {
 
   return (
     <div className={`${!reveal && "opacity-0"} grid md:grid-cols-6`}>
-      <div className="md:col-start-2 md:col-span-2 p-4 md:p-0 mb-20 z-30">
-        <h1 className="project-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase -ml-3px mb-2">
-          Projects
-        </h1>
-        {/* <p className="mb-8">{isTabletOrMobile ? `Tap on` : `Hover over`} a project to view related skills.</p> */}
-        <Project className="project-fade" />
-        <Project className="project-fade" />
-        <Project className="project-fade" />
+      <div className="md:col-start-2 md:col-span-2 p-4 md:p-0 mb-10 z-30">
+        <div className="backdrop--contrast mb-8">
+          <h1 className="project-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase md:-ml-3px mb-2">
+            Projects
+          </h1>
+          {!isTabletOrMobile && (
+            <p className="project-fade text-lg">
+              Hover over a project to view related skills.
+            </p>
+          )}
+        </div>
+        <div className="project-fade">
+          <Project />
+          <Project />
+          <Project />
+        </div>
       </div>
     </div>
   );

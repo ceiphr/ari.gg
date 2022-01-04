@@ -36,25 +36,23 @@ const Home: NextPage = () => {
     // The graph has been scrolled into view. Time to reveal it.
     if (
       window.pageYOffset + window.innerHeight - 400 >
-      skillPromptRef.current.offsetTop
-    ) {
-      if (!skillTextReveal)
-        setTimeout(() => {
-          setskillNodeReveal(graphData);
-          setskillTextReveal(true);
-        }, 1000);
-    }
+        skillPromptRef.current.offsetTop &&
+      !skillTextReveal
+    )
+      setTimeout(() => {
+        setskillNodeReveal(graphData);
+        setskillTextReveal(true);
+      }, 1000);
 
     // The projects have been scrolled into view. Time to reveal them.
     if (
       window.pageYOffset + window.innerHeight >
-      projectListRef.current.offsetTop
-    ) {
-      if (!projectsReveal)
-        setTimeout(() => {
-          setProjectsReveal(true);
-        }, 1000);
-    }
+        projectListRef.current.offsetTop &&
+      !projectsReveal
+    )
+      setTimeout(() => {
+        setProjectsReveal(true);
+      }, 1000);
   }, [skillTextReveal, projectsReveal]);
 
   useEffect(() => {
@@ -86,12 +84,14 @@ const Home: NextPage = () => {
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
           <SkillPrompt trigger={skillTextReveal} />
         </section>
-        <section className="overflow-hidden" ref={projectListRef}>
-          <ProjectList trigger={projectsReveal} />
-        </section>
-        <section className="overflow-hidden">
-          <ExperienceList trigger={projectsReveal} />
-        </section>
+        <div className="border-t md:border-0 pt-10 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
+          <section className="overflow-hidden" ref={projectListRef}>
+            <ProjectList trigger={projectsReveal} />
+          </section>
+          <section className="overflow-hidden">
+            <ExperienceList trigger={projectsReveal} />
+          </section>
+        </div>
       </main>
     </>
   );

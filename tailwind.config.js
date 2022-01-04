@@ -20,6 +20,7 @@ module.exports = {
         5: "5px",
       },
       transitionDuration: { 400: "400ms" },
+      width: { "0.5px": "0.5px" },
     },
   },
   plugins: [],

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+import ExternalLink from "@assets/external-link.svg";
+import Person from "@assets/person.svg";
+
 const Experience = ({ className = "" }: { className?: string }) => {
   const [mQuery, setMQuery] = useState<string>("logo.png");
 
@@ -20,10 +23,9 @@ const Experience = ({ className = "" }: { className?: string }) => {
     <div
       className={`experience overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
-      <div className="m-4">
-        <div className="mr-8 pb-4 pt-2 w-1/2">
+      <div className="mt-4 mx-4">
+        <div className="experience__img mr-24 py-4">
           <Image
-            className="experience__img"
             src={`/images/experience/eastech/${mQuery}`}
             height={77}
             width={875}
@@ -37,17 +39,29 @@ const Experience = ({ className = "" }: { className?: string }) => {
             <p>Tulsa, Oklahoma</p>
             <p className="text-right">June 2021 - Oct. 2021</p>
           </div>
-          <ul className="list-disc ml-4 my-2">
-            <li>
-              Next.js Commerce: Developed a Next.js e-commerce website for
-              direct sales and customer service using TypeScript, Tailwind CSS
-              and a Shopify backend.
-            </li>
-            <li>
-              iTracker Documentation: Wrote internal technical documentation for
-              the company&rsquo;s flagship iTracker product.
-            </li>
-          </ul>
+          <div className="timeline">
+            <div className="ml-14">
+              <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
+                <ExternalLink />
+              </div>
+              <h3 className="text-xl mb-2 pt-2">Next.js Commerce</h3>
+              <p>
+                Developed a Next.js e-commerce website for direct sales and
+                customer service using TypeScript, Tailwind CSS and a Shopify
+                backend.
+              </p>
+            </div>
+            <div className="ml-14 mt-6">
+              <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
+                <Person />
+              </div>
+              <h3 className="text-xl mb-2 pt-2">iTracker Documentation</h3>
+              <p>
+                Wrote internal technical documentation for the company&rsquo;s
+                flagship iTracker product.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
