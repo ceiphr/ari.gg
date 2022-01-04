@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import anime from "animejs";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 
 import Project from "@components/projects/Project";
 
 const ProjectList = ({ trigger }: { trigger: boolean }) => {
-  const [reveal, setReveal] = useState<boolean>(false),
-  isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
+  const [reveal, setReveal] = useState<boolean>(false);
+  // isTabletOrMobile = useMediaQuery({ maxWidth: 1224 });
 
   useEffect(() => {
     if (trigger) {
@@ -31,7 +31,7 @@ const ProjectList = ({ trigger }: { trigger: boolean }) => {
         <h1 className="project-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase -ml-3px mb-2">
           Projects
         </h1>
-        <p className="mb-8">{isTabletOrMobile ? `Tap on` : `Hover over`} a project to view related skills.</p>
+        {/* <p className="mb-8">{isTabletOrMobile ? `Tap on` : `Hover over`} a project to view related skills.</p> */}
         <Project className="project-fade" />
         <Project className="project-fade" />
         <Project className="project-fade" />
