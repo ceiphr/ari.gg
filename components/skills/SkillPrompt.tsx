@@ -7,7 +7,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
   const [animationData, setAnimationData] = useState<Object>();
 
   useEffect(() => {
-    import("@utils/scroll.json").then(setAnimationData);
+    import("@assets/scroll.json").then(setAnimationData);
   }, []);
 
   useEffect(() => {

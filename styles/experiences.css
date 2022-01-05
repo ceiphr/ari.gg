@@ -4,7 +4,7 @@
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 
   &__img {
-    @apply duration-400 opacity-80 align-middle;
+    @apply duration-400 opacity-60 align-middle;
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
   }
 

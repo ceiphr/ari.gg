@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
 html {
   @apply bg-white dark:bg-black scroll-smooth;
 }
@@ -19,6 +25,16 @@ a {
 
 * {
   @apply box-border;
+}
+
+/* curtains canvas container */
+
+.curtains-canvas {
+  @apply fixed top-0 left-0 w-screen h-screen pointer-events-none;
+}
+
+.fill-current-important svg * {
+  @apply fill-current stroke-current !important;
 }
 
 .fill-theme svg * {

@@ -8,6 +8,7 @@ export { default as Hero } from "./hero/Hero";
 
 // About Me
 export { default as AboutMe } from "./aboutme/AboutMe";
+export { default as GOL } from "./aboutme/GOL";
 
 // Projects
 export { default as Project } from "./projects/Project";

@@ -7,6 +7,7 @@ import type { GraphData } from "react-force-graph";
 
 import {
   AboutMe,
+  GOL,
   BackgroundGrid,
   BackgroundMarquee,
   Hero,
@@ -89,6 +90,7 @@ const Home: NextPage = () => {
         <section className="bg-white dark:bg-black border-y border-black/20 dark:border-white/20">
           <div className="relative h-screen overflow-hidden">
             <AboutMe />
+            <GOL />
           </div>
         </section>
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>

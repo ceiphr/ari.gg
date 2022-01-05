@@ -42,7 +42,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
           <div className="timeline">
             <div className="ml-14">
               <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                <ExternalLink />
+                <ExternalLink className="opacity-50" />
               </div>
               <h3 className="text-xl mb-2 pt-2">Next.js Commerce</h3>
               <p>
@@ -53,7 +53,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
             </div>
             <div className="ml-14 mt-6">
               <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                <Person />
+                <Person className="opacity-50" />
               </div>
               <h3 className="text-xl mb-2 pt-2">iTracker Documentation</h3>
               <p>
