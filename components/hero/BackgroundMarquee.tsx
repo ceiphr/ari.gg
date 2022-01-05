@@ -1,9 +1,10 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 import random from "@utils/random";
 
 const BackgroundMarquee = memo(function BackgroundMarquee() {
+  const [reveal, setReveal] = useState<boolean>(false);
   let numRows = 7,
     numCols = 8,
     rows = [];
@@ -57,8 +58,18 @@ const BackgroundMarquee = memo(function BackgroundMarquee() {
     );
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setReveal(true);
+    }, 3000);
+  }, []);
+
   return (
-    <div className="opacity-5 dark:opacity-10 h-screen w-screen overflow-hidden pointer-events-none">
+    <div
+      className={`${
+        !reveal ? "opacity-0" : "opacity-5 dark:opacity-10"
+      } duration-400 h-screen w-screen overflow-hidden pointer-events-none`}
+    >
       <div className="origin-center rotate-45 scale-175 transform-gpu w-marquee">
         {rows}
       </div>

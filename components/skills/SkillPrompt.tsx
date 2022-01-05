@@ -15,13 +15,13 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
       // Must hide elements before animating them
       setTimeout(() => {
         setReveal(true);
-      }, 2000);
+      }, 1500);
       anime({
         targets: ".skill-fade",
         translateY: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(1000, { start: 2000 }),
-        duration: 1000,
+        delay: anime.stagger(1000, { start: 1500, easing: "easeOutQuad" }),
+        duration: 800,
         easing: "easeOutQuart",
       });
     }
