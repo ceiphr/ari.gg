@@ -29,16 +29,6 @@ const makeEmptyBoard = (rows: number, cols: number): boolean[][] => {
   return board;
 };
 
-const getElementOffset = (boardRef: HTMLDivElement) => {
-  const rect = boardRef.getBoundingClientRect();
-  const doc = document.documentElement;
-
-  return {
-    x: rect.left + window.pageXOffset - doc.clientLeft,
-    y: rect.top + window.pageYOffset - doc.clientTop,
-  };
-};
-
 const GOL = () => {
   const boardRef = useRef<HTMLDivElement>(null),
     [cells, setCells] = useState<{ x: number; y: number }[]>([]),

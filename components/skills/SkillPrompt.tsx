@@ -20,7 +20,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
         targets: ".skill-fade",
         translateY: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(1400, { start: 2000 }),
+        delay: anime.stagger(1000, { start: 2000 }),
         duration: 1000,
         easing: "easeOutQuart",
       });
