@@ -7,13 +7,13 @@ const Hero = () => {
   useEffect(() => {
     setTimeout(() => {
       setReveal(true);
-    }, 600);
+    }, 1000);
     anime({
       targets: ".hero-fade",
       translateY: [-20, 0],
       opacity: [0, 1],
-      delay: anime.stagger(200, { start: 600 }),
-      duration: 500,
+      delay: anime.stagger(200, { start: 1000 }),
+      duration: 800,
       easing: "easeOutQuart",
     });
   }, []);

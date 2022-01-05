@@ -5,6 +5,11 @@ const CELL_SIZE = 20;
 const WIDTH = 800;
 const HEIGHT = 600;
 
+/**
+ * Create a cell at the given x, y position.
+ * @param {int} x
+ * @param {int} y
+ */
 const Cell = ({ x, y }: { x: number; y: number }) => {
   return (
     <div
@@ -19,6 +24,11 @@ const Cell = ({ x, y }: { x: number; y: number }) => {
   );
 };
 
+/**
+ * Create the initial board.
+ * @param {int} rows
+ * @param {int} cols
+ */
 const makeEmptyBoard = (rows: number, cols: number): boolean[][] => {
   let board: boolean[][] = [];
   for (let y = 0; y < rows; y++) {
@@ -111,7 +121,6 @@ const GOL = () => {
 
     setTimeout(() => {
       runIteration();
-      console.log("running");
     }, 1000);
   }, [board, rows, cols, calculateNeighbors, makeCells]);
 

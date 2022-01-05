@@ -10,13 +10,13 @@ const Navigation = () => {
   useEffect(() => {
     setTimeout(() => {
       setReveal(true);
-    }, 200);
+    }, 400);
     anime({
       targets: ".nav-fade",
       translateY: [-20, 0],
       opacity: [0, 1],
-      delay: anime.stagger(200),
-      duration: 500,
+      delay: anime.stagger(200, { start: 400 }),
+      duration: 800,
       easing: "easeOutQuart",
     });
   }, []);

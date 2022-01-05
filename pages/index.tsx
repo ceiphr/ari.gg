@@ -23,17 +23,13 @@ const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
 
 const Home: NextPage = () => {
   // TODO: Fix ref type
-  const mainRef = useRef<any>(),
-    skillPromptRef = useRef<any>(),
-    projectListRef = useRef<any>(),
-    experienceListRef = useRef<any>(),
+  const mainRef = useRef<HTMLDivElement>(null),
+    skillPromptRef = useRef<HTMLDivElement>(null),
     [skillNodeReveal, setskillNodeReveal] = useState<GraphData>({
       nodes: [],
       links: [],
     }),
-    [skillTextReveal, setskillTextReveal] = useState<boolean>(false),
-    [projectsReveal, setProjectsReveal] = useState<boolean>(false),
-    [experienceReveal, setExperienceReveal] = useState<boolean>(false);
+    [skillTextReveal, setskillTextReveal] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,34 +37,18 @@ const Home: NextPage = () => {
       if (
         !skillTextReveal &&
         window.pageYOffset + window.innerHeight - 400 >
-          skillPromptRef.current.offsetTop
+          skillPromptRef!.current!.offsetTop
       ) {
         setTimeout(() => {
           setskillNodeReveal(graphData);
           setskillTextReveal(true);
         }, 1000);
       }
-
-      // The projects have been scrolled into view. Time to reveal them.
-      if (
-        window.pageYOffset + window.innerHeight - 200 >
-          projectListRef.current.offsetTop &&
-        !projectsReveal
-      )
-        setProjectsReveal(true);
-
-      // The experiences have been scrolled into view. Time to reveal them.
-      if (
-        window.pageYOffset + window.innerHeight - 200 >
-          experienceListRef.current.offsetTop &&
-        !experienceReveal
-      )
-        setExperienceReveal(true);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [skillTextReveal, projectsReveal, experienceReveal]);
+  }, [skillTextReveal]);
 
   return (
     <>
@@ -97,11 +77,11 @@ const Home: NextPage = () => {
           <SkillPrompt trigger={skillTextReveal} />
         </section>
         <div className="border-t md:border-0 pt-14 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
-          <section className="overflow-hidden" ref={projectListRef}>
-            <ProjectList trigger={projectsReveal} />
+          <section className="overflow-hidden">
+            <ProjectList />
           </section>
-          <section className="overflow-hidden" ref={experienceListRef}>
-            <ExperienceList trigger={experienceReveal} />
+          <section className="overflow-hidden">
+            <ExperienceList />
           </section>
         </div>
       </main>
