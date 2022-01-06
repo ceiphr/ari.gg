@@ -68,7 +68,7 @@ const BackgroundMarquee = memo(function BackgroundMarquee() {
     <div
       className={`${
         !reveal ? "opacity-0" : "opacity-5 dark:opacity-10"
-      } duration-800 h-screen w-screen overflow-hidden pointer-events-none`}
+      } duration-700 h-screen w-screen overflow-hidden pointer-events-none`}
     >
       <div className="origin-center rotate-45 scale-175 transform-gpu w-marquee">
         {rows}
