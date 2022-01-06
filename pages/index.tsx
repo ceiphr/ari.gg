@@ -25,6 +25,7 @@ const Home: NextPage = () => {
   // TODO: Fix ref type
   const mainRef = useRef<HTMLDivElement>(null),
     skillPromptRef = useRef<HTMLDivElement>(null),
+    [focusedNodes, setFocusedNodes] = useState<string[]>([]),
     [skillNodeReveal, setskillNodeReveal] = useState<GraphData>({
       nodes: [],
       links: [],
@@ -62,7 +63,7 @@ const Home: NextPage = () => {
       <main ref={mainRef} className="dark:text-white">
         <BackgroundGrid />
         <Navigation />
-        <SkillGraph data={skillNodeReveal} />
+        <SkillGraph data={skillNodeReveal} focusedNodes={focusedNodes} />
         <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <Hero />
@@ -78,7 +79,7 @@ const Home: NextPage = () => {
         </section>
         <div className="border-t md:border-0 pt-14 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
           <section className="overflow-hidden">
-            <ProjectList />
+            <ProjectList setFocusedNodes={setFocusedNodes} />
           </section>
           <section className="overflow-hidden">
             <ExperienceList />

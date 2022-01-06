@@ -1,11 +1,17 @@
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef, useMemo } from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
 import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
 import { useMediaQuery } from "react-responsive";
 
-const SkillGraph = memo(function SkillGraph({ data }: { data: GraphData }) {
+const SkillGraph = memo(function SkillGraph({
+  data,
+  focusedNodes,
+}: {
+  data: GraphData;
+  focusedNodes: string[];
+}) {
   const fgRef = useRef<ForceGraphInstance>(),
     angle = useRef<number>(0),
     isTabletOrMobile = useMediaQuery({ maxWidth: 1224 }),
@@ -46,15 +52,22 @@ const SkillGraph = memo(function SkillGraph({ data }: { data: GraphData }) {
         ref={fgRef}
         graphData={data}
         backgroundColor={"#fff"}
-        linkColor={() => "rgba(0,0,0,0.6)"}
         linkWidth={0.5}
         d3AlphaDecay={0.06}
         enableNodeDrag={false}
         enableNavigationControls={false}
         showNavInfo={false}
-        nodeThreeObject={({ img }: GraphNode) => {
-          const imgTexture = new THREE.TextureLoader().load(`${img}`);
-          const material = new THREE.SpriteMaterial({ map: imgTexture });
+        linkColor={(d: GraphNode) =>
+          focusedNodes.includes(d.source) && focusedNodes.includes(d.target)
+            ? "rgba(255,0,0,1)"
+            : "rgba(0,0,0,0.6)"
+        }
+        s={(d: GraphNode) => {
+          const imgTexture = new THREE.TextureLoader().load(`${d.img}`);
+          const material = new THREE.SpriteMaterial({
+            map: imgTexture,
+            color: focusedNodes.includes(d.id) ? 0xff0000 : 0x000000,
+          });
           const sprite = new THREE.Sprite(material);
 
           sprite.scale.set(12, 12, 1);

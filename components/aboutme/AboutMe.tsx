@@ -6,8 +6,8 @@ const Hero = () => {
   return (
     <>
       <div className="hidden md:grid md:grid-cols-6 absolute top-1/2 -translate-y-1/2 w-screen h-screen">
-        <Fade left distance={"50px"}>
-          <div className="relative col-start-2 col-span-2">
+        <Fade left distance="50px">
+          <div className="will-change-transform relative col-start-2 col-span-2">
             <div className="absolute bottom-0 translate-y-2 w-full pointer-events-none select-none">
               <Image
                 className="grayscale opacity-25 md:opacity-50 -scale-x-100"
@@ -22,8 +22,8 @@ const Hero = () => {
         </Fade>
       </div>
       <div className="grid md:grid-cols-6 w-full absolute top-1/2 -translate-y-1/2 z-10">
-        <Fade right distance={"50px"}>
-          <div className="col-start-3 col-span-3 p-6 md:p-0 md:-mr-px text-right">
+        <Fade right distance="50px">
+          <div className="will-change-transform col-start-3 col-span-3 p-6 md:p-0 md:-mr-px text-right">
             <h1 className="tk-neue-haas-grotesk-display text-clamp-6xl md:-mr-px uppercase">
               A twenty-something studying CS.
             </h1>

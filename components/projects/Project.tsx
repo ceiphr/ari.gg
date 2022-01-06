@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import useHover from "@utils/useHover";
 
 import ExternalLink from "@assets/external-link.svg";
 import Person from "@assets/person.svg";
 import ShowChart from "@assets/show-chart.svg";
 import Speed from "@assets/speed.svg";
 
-const Project = ({ className = "" }: { className?: string }) => {
+const Project = ({
+  className = "",
+  setFocusedNodes,
+}: {
+  className?: string;
+  setFocusedNodes: (value: string[]) => void;
+}) => {
+  const [hoverRef, isHovered] = useHover();
+
+  useEffect(() => {
+    if (isHovered)
+      setFocusedNodes(["C++", "JavaScript", "Python", "Java", "C", "Django"]);
+    else setFocusedNodes([]);
+  }, [setFocusedNodes, isHovered]);
+
   return (
     <div
+      // @ts-ignore Weird type issue. TODO: Fix.
+      ref={hoverRef}
       className={`project overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="project__img">

@@ -35,10 +35,10 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
     >
       <div className="grid md:grid-cols-6">
         <div className="col-start-2 col-span-4 p-6 md:p-0 text-center pointer-events-auto my-8">
-          <h1 className="skill-fade tk-neue-haas-grotesk-display text-clamp-6xl uppercase">
+          <h1 className="skill-fade will-change-transform tk-neue-haas-grotesk-display text-clamp-6xl uppercase">
             The skills to pay the bills.
           </h1>
-          <p className="skill-fade max-w-lg mx-auto mt-2 text-clamp-4xl">
+          <p className="skill-fade will-change-transform max-w-lg mx-auto mt-2 text-clamp-4xl">
             With projects to match.
           </p>
         </div>
@@ -46,7 +46,7 @@ const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
       <div className="relative left-1/2 -translate-x-1/2 w-50px">
         {animationData && (
           <Lottie
-            className="skill-fade fill-theme"
+            className="skill-fade will-change-transform fill-theme"
             loop
             animationData={animationData}
             play
