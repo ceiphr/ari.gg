@@ -62,7 +62,7 @@ const SkillGraph = memo(function SkillGraph({
             ? "rgba(255,0,0,1)"
             : "rgba(0,0,0,0.6)"
         }
-        s={(d: GraphNode) => {
+        nodeThreeObject={(d: GraphNode) => {
           const imgTexture = new THREE.TextureLoader().load(`${d.img}`);
           const material = new THREE.SpriteMaterial({
             map: imgTexture,
