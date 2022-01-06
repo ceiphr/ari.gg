@@ -44,7 +44,7 @@ const Experience = ({ className = "" }: { className?: string }) => {
               <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
                 <ExternalLink className="opacity-50" />
               </div>
-              <h3 className="text-xl mb-2 pt-2">Next.js Commerce</h3>
+              <h3 className="text-xl mb-2 pt-1">Next.js Commerce</h3>
               <p>
                 Developed a Next.js e-commerce website for direct sales and
                 customer service using TypeScript, Tailwind CSS and a Shopify

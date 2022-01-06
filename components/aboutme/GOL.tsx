@@ -14,7 +14,7 @@ const HEIGHT = 600;
 const Cell = ({ x, y }: { x: number; y: number }) => {
   return (
     <div
-      className="absolute bg-black/10 dark:bg-white/10"
+      className="absolute bg-black dark:bg-white opacity-5 dark:opacity-10"
       style={{
         left: `${CELL_SIZE * x}px`,
         top: `${CELL_SIZE * y}px`,
