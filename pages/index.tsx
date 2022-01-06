@@ -36,7 +36,7 @@ const Home: NextPage = () => {
       // The graph has been scrolled into view. Time to reveal it.
       if (
         !skillTextReveal &&
-        window.pageYOffset + window.innerHeight - 400 >
+        window.pageYOffset + window.innerHeight - 300 >
           skillPromptRef!.current!.offsetTop
       ) {
         setTimeout(() => {

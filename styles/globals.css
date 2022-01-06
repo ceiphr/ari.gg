@@ -48,8 +48,13 @@ a {
   }
 
   &-6xl {
-    font-size: clamp(0.8rem, 10vw, 4rem);
+    font-size: clamp(0.8rem, 10vw, 3.5rem);
     line-height: clamp(0.6rem, 10vw, 3.5rem);
+  }
+
+  &-5xl {
+    font-size: clamp(0.8rem, 10vw, 2.8rem);
+    line-height: clamp(0.6rem, 10vw, 2.5rem);
   }
 
   &-4xl {

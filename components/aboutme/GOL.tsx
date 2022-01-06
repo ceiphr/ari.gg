@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
+import Fade from "react-reveal/Fade";
 
 // https://github.com/charlee/react-gameoflife
 const CELL_SIZE = 20;
@@ -15,10 +16,10 @@ const Cell = ({ x, y }: { x: number; y: number }) => {
     <div
       className="absolute bg-black/10 dark:bg-white/10"
       style={{
-        left: `${CELL_SIZE * x + 1}px`,
-        top: `${CELL_SIZE * y + 1}px`,
-        width: `${CELL_SIZE - 1}px`,
-        height: `${CELL_SIZE - 1}px`,
+        left: `${CELL_SIZE * x}px`,
+        top: `${CELL_SIZE * y}px`,
+        width: `${CELL_SIZE}px`,
+        height: `${CELL_SIZE}px`,
       }}
     />
   );
@@ -130,11 +131,16 @@ const GOL = () => {
   }, [handleRandom, runIteration]);
 
   return (
-    <div className="relative bg-white dark:bg-black md:left-1/2" ref={boardRef}>
-      {cells.map((cell) => (
-        <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} />
-      ))}
-    </div>
+    <Fade>
+      <div
+        className="relative bg-white dark:bg-black md:ml-px md:left-1/2"
+        ref={boardRef}
+      >
+        {cells.map((cell) => (
+          <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} />
+        ))}
+      </div>
+    </Fade>
   );
 };
 
