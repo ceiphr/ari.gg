@@ -11,13 +11,13 @@ const client = createClient({
 export async function getProjects() {
   const query = {
     limit: 10,
-    order: ["fields.orderNumber"],
     content_type: "project",
   };
 
   const { items } = await client.getEntries(query),
     projects = items.map((item: any) => {
       const title = item.fields.title,
+        orderNumber = item.fields.orderNumber,
         img = {
           src: item.fields.img.fields.file.url,
           width: item.fields.img.fields.file.details.image.width,
@@ -40,16 +40,19 @@ export async function getProjects() {
           return { title, value, icon };
         });
 
-      return { title, body, img, links, skills, stats };
+      return { orderNumber, title, body, img, links, skills, stats };
     });
 
-  return projects || null;
+  const sortedProjects = projects.sort((a: any, b: any) =>
+    a.orderNumber > b.orderNumber ? 1 : -1
+  );
+
+  return sortedProjects || null;
 }
 
 export async function getExperiences() {
   const query = {
     limit: 10,
-    order: ["fields.orderNumber"],
     content_type: "experience",
   };
 
@@ -57,6 +60,7 @@ export async function getExperiences() {
   const { items }: { items: any } = await client.getEntries(query),
     experiences = items.map((item: any) => {
       const company = item.fields.company,
+        orderNumber = item.fields.orderNumber,
         rawLogo = item.fields.logo?.fields.logo.fields,
         rawLogoDark = item.fields.logo?.fields.logoDark.fields,
         logo = {
@@ -83,10 +87,14 @@ export async function getExperiences() {
           return item.fields.id;
         });
 
-      return { company, logo, dates, location, position, items, skills };
+      return { orderNumber, company, logo, dates, location, position, items, skills };
     });
 
-  return experiences.reverse() || null;
+  const sortedExperiences = experiences.sort((a: any, b: any) =>
+    a.orderNumber > b.orderNumber ? 1 : -1
+  );
+
+  return sortedExperiences || null;
 }
 
 export async function getGraph() {

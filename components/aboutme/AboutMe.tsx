@@ -8,14 +8,14 @@ const Hero = () => {
       <div className="hidden md:grid md:grid-cols-6 absolute top-1/2 -translate-y-1/2 w-screen h-screen">
         <Fade left distance="50px">
           <div className="will-change-transform relative col-start-2 col-span-2">
-            <div className="absolute bottom-0 translate-y-2 w-full pointer-events-none select-none">
+            <div className="absolute bottom-0 max-h-screen w-full pointer-events-none select-none">
               <Image
-                className="grayscale opacity-25 md:opacity-50 -scale-x-100"
+                className="grayscale opacity-60"
                 src="/me.png"
                 alt="Ari Birnbaum"
                 layout="responsive"
-                width={281}
-                height={402}
+                width={1689}
+                height={3151}
               />
             </div>
           </div>
@@ -33,7 +33,7 @@ const Hero = () => {
               algorithms, and web development.
               <br />
               <br />I write technical articles for DigitalOcean and Koyeb, a
-              French start-up. Currently, I am a course assistant for two
+              French start-up. Currently, I am a teaching assistant for two
               courses, graduate level Web Programming II and Systems
               Programming.
             </p>

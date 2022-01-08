@@ -71,8 +71,9 @@ const Experience = ({
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
-          <div className="experience__img relative h-16 md:w-2/3 my-4">
+          <div className="experience__img relative h-20 md:w-2/3 my-4 mr-24 md:mr-0">
             <Image
+              className="object-left"
               src={mQuery}
               layout="fill"
               objectFit="contain"
@@ -80,47 +81,43 @@ const Experience = ({
             />
           </div>
         ) : (
-          <h1 className="text-3xl mb-6 mt-9 tk-neue-haas-grotesk-display">{experience.company}</h1>
+          <h1 className="text-3xl mb-6 mt-9 tk-neue-haas-grotesk-display">
+            {experience.company}
+          </h1>
         )}
         <h2 className="text-xl">{experience.position}</h2>
-        <div className="mt-2">
-          <div className="grid grid-cols-2 italic">
-            <p>{experience.location}</p>
-            <p className="text-right">
-              {`${
-                monthNames[startDate.getMonth()]
-              } ${startDate.getFullYear()} - ${
-                experience.dates.active
-                  ? "Present"
-                  : monthNames[endDate.getMonth()] + " " + endDate.getFullYear()
-              }`}
-            </p>
-          </div>
-          <div className="timeline">
-            {experience.items.map((item: any, index: number) => (
-              <div key={item.title} className={`ml-14 ${index > 0 && "mt-6"}`}>
-                <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                  <svg
+        <div className="grid grid-cols-2 italic">
+          <p>{experience.location}</p>
+          <p className="text-right">
+            {`${
+              monthNames[startDate.getMonth()]
+            } ${startDate.getFullYear()} - ${
+              experience.dates.active
+                ? "Present"
+                : monthNames[endDate.getMonth()] + " " + endDate.getFullYear()
+            }`}
+          </p>
+        </div>
+        <div className="timeline">
+          {experience.items.map((item: any, index: number) => (
+            <div key={item.title} className={`ml-14 ${index > 0 && "mt-6"}`}>
+              <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
+                <svg width="24" height="24" className="opacity-30 dark:invert">
+                  <image
+                    xlinkHref={`https:${item.icon}`}
                     width="24"
                     height="24"
-                    className="opacity-30 dark:invert"
-                  >
-                    <image
-                      xlinkHref={`https:${item.icon}`}
-                      width="24"
-                      height="24"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl mb-2 pt-1">{item.title}</h3>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: documentToHtmlString(item.body),
-                  }}
-                />
+                  />
+                </svg>
               </div>
-            ))}
-          </div>
+              <h3 className="text-xl mb-2 pt-1">{item.title}</h3>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: documentToHtmlString(item.body),
+                }}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
