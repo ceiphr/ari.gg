@@ -8,12 +8,12 @@
   }
 
   &__img {
-    @apply duration-400 opacity-75 px-4 pt-4;
+    @apply flex justify-center items-center rounded-t-xl overflow-hidden duration-400 opacity-75;
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
   }
 
-  img {
-    @apply rounded-xl duration-400;
+  .stat-icon {
+    @apply duration-400;
   }
 
   &:hover {
@@ -23,12 +23,12 @@
       @apply duration-400 bg-black dark:bg-white;
     }
 
-    .project__img {
-      @apply opacity-100 p-0;
+    .stat-icon {
+      @apply opacity-50;
     }
 
-    img {
-      @apply rounded-t-xl rounded-b-none;
+    .project__img {
+      @apply opacity-100;
     }
   }
 }

@@ -21,7 +21,8 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": [
-        "components/*"
+        "components/*",
+        // "components/_index.ts"
       ],
       "@utils/*": [
         "utils/*"
@@ -31,6 +32,9 @@
       ],
       "@styles/*": [
         "styles/*"
+      ],
+      "@types/*": [
+        "types/*"
       ]
     }
   },

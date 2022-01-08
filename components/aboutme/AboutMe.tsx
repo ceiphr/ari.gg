@@ -33,7 +33,7 @@ const Hero = () => {
               algorithms, and web development.
               <br />
               <br />I write technical articles for DigitalOcean and Koyeb, a
-              french start-up. Currently, I am a course assistant for two
+              French start-up. Currently, I am a course assistant for two
               courses, graduate level Web Programming II and Systems
               Programming.
             </p>

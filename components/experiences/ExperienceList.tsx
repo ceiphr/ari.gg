@@ -1,9 +1,17 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Fade from "react-reveal/Fade";
 
 import Experience from "@components/experiences/Experience";
 
-const ExperienceList = () => {
+type Props = {
+  setFocusedNodes: (value: string[]) => void;
+  experiences: any;
+};
+
+const ExperienceList: FunctionComponent<Props> = ({
+  setFocusedNodes,
+  experiences,
+}) => {
   return (
     <div className="grid md:grid-cols-6">
       <div className="md:col-start-2 md:col-span-2 p-4 md:p-0 mb-12 z-30">
@@ -17,15 +25,15 @@ const ExperienceList = () => {
             </p>
           </Fade>
         </div>
-        <Fade bottom distance="50px">
-          <Experience className="will-change-transform" />
-        </Fade>
-        <Fade bottom distance="50px">
-          <Experience className="will-change-transform" />
-        </Fade>
-        <Fade bottom distance="50px">
-          <Experience className="will-change-transform" />
-        </Fade>
+        {experiences.map((experience: any) => (
+          <Fade key={experience.company} bottom distance="50px">
+            <Experience
+              className="will-change-transform"
+              experience={experience}
+              setFocusedNodes={setFocusedNodes}
+            />
+          </Fade>
+        ))}
       </div>
     </div>
   );

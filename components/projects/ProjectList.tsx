@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Fade from "react-reveal/Fade";
 
 import Project from "@components/projects/Project";
 
+// TODO: Add type definitions
+type Project = {};
+
 const ProjectList = ({
   setFocusedNodes,
+  projects,
 }: {
   setFocusedNodes: (value: string[]) => void;
+  projects: Project[];
 }) => {
   return (
     <div className="grid md:grid-cols-6">
@@ -21,24 +26,15 @@ const ProjectList = ({
             </p>
           </Fade>
         </div>
-        <Fade bottom distance="50px">
-          <Project
-            className="will-change-transform"
-            setFocusedNodes={setFocusedNodes}
-          />
-        </Fade>
-        <Fade bottom distance="50px">
-          <Project
-            className="will-change-transform"
-            setFocusedNodes={setFocusedNodes}
-          />
-        </Fade>
-        <Fade bottom distance="50px">
-          <Project
-            className="will-change-transform"
-            setFocusedNodes={setFocusedNodes}
-          />
-        </Fade>
+        {projects.map((project: any) => (
+          <Fade key={project.title} bottom distance="50px">
+            <Project
+              className="will-change-transform"
+              setFocusedNodes={setFocusedNodes}
+              project={project}
+            />
+          </Fade>
+        ))}
       </div>
     </div>
   );

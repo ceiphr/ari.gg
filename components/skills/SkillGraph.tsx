@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useMemo } from "react";
+import React, { memo, useEffect, useRef } from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
 import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";

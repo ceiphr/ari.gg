@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-// @ts-ignore
+// @ts-ignore Type is not exported from react-force-graph
 import type { GraphData } from "react-force-graph";
 
 import {
@@ -16,13 +16,16 @@ import {
   ProjectList,
   ExperienceList,
 } from "@components/index";
-import graphData from "@utils/graphData";
+import { getExperiences, getGraph, getProjects } from "@utils/contentful";
 const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
   ssr: false,
 });
 
-const Home: NextPage = () => {
-  // TODO: Fix ref type
+const Home: NextPage<{
+  graphData: GraphData;
+  projects: any;
+  experiences: any;
+}> = ({ graphData, projects, experiences }) => {
   const mainRef = useRef<HTMLDivElement>(null),
     skillPromptRef = useRef<HTMLDivElement>(null),
     [focusedNodes, setFocusedNodes] = useState<string[]>([]),
@@ -34,7 +37,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // The graph has been scrolled into view. Time to reveal it.
+      // The graph has been scrolled into view. Time to reveal its nodes.
       if (
         !skillTextReveal &&
         window.pageYOffset + window.innerHeight - 300 >
@@ -46,10 +49,13 @@ const Home: NextPage = () => {
         }, 1000);
       }
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [skillTextReveal]);
+  }, [skillTextReveal, graphData]);
+
+  useEffect(() => {
+    console.log(experiences);
+  }, [experiences]);
 
   return (
     <>
@@ -79,10 +85,16 @@ const Home: NextPage = () => {
         </section>
         <div className="border-t md:border-0 pt-14 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
           <section className="overflow-hidden">
-            <ProjectList setFocusedNodes={setFocusedNodes} />
+            <ProjectList
+              projects={projects}
+              setFocusedNodes={setFocusedNodes}
+            />
           </section>
           <section className="overflow-hidden">
-            <ExperienceList />
+            <ExperienceList
+              experiences={experiences}
+              setFocusedNodes={setFocusedNodes}
+            />
           </section>
         </div>
       </main>
@@ -91,3 +103,18 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const graphData: GraphData = await getGraph();
+  // TODO: Add type definitions
+  const projects: any = await getProjects();
+  const experiences: any = await getExperiences();
+
+  return {
+    props: {
+      graphData,
+      projects,
+      experiences,
+    },
+  };
+}

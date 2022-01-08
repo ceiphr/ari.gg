@@ -1,66 +1,125 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
-import ExternalLink from "@assets/external-link.svg";
-import Person from "@assets/person.svg";
+import useHover from "@utils/useHover";
+import dateParse from "@utils/dateParse";
 
-const Experience = ({ className = "" }: { className?: string }) => {
-  const [mQuery, setMQuery] = useState<string>("logo.png");
+const Experience = ({
+  className = "",
+  setFocusedNodes,
+  experience,
+}: {
+  className?: string;
+  setFocusedNodes: (value: string[]) => void;
+  experience: any;
+}) => {
+  const [mQuery, setMQuery] = useState<string>(`https:${experience.logo.logo}`),
+    [hoverRef, isHovered] = useHover();
+
+  useEffect(() => {
+    if (isHovered) setFocusedNodes(experience.skills);
+    else setFocusedNodes([]);
+  }, [setFocusedNodes, isHovered, experience]);
 
   useEffect(() => {
     async function setImage() {
       let mediaQuery = await window.matchMedia("(prefers-color-scheme: dark)");
-      mediaQuery.addEventListener("change", (e) => {
-        setMQuery(e.matches ? "logo-white.png" : "logo.png");
-      });
-      setMQuery(mediaQuery.matches ? "logo-white.png" : "logo.png");
+
+      if (experience.logo.logo) {
+        mediaQuery.addEventListener("change", (e) => {
+          setMQuery(
+            e.matches
+              ? `https:${experience.logo.logoDark}`
+              : `https:${experience.logo.logo}`
+          );
+        });
+        setMQuery(
+          mediaQuery.matches
+            ? `https:${experience.logo.logoDark}`
+            : `https:${experience.logo.logo}`
+        );
+      }
     }
 
     setImage();
-  }, [mQuery]);
+  }, [mQuery, experience]);
 
+  const monthNames = [
+      "Jan.",
+      "Feb.",
+      "Mar.",
+      "Apr.",
+      "May",
+      "Jun.",
+      "Jul.",
+      "Aug.",
+      "Sep.",
+      "Oct.",
+      "Nov.",
+      "Dec.",
+    ],
+    startDate = dateParse(experience.dates.start),
+    endDate = experience.dates.end
+      ? dateParse(experience.dates.end)
+      : new Date();
   return (
     <div
+      // @ts-ignore Weird type issue with useHover. TODO: Fix.
+      ref={hoverRef}
       className={`experience overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="mt-4 mx-4">
-        <div className="experience__img mr-24 py-4">
-          <Image
-            src={`/images/experience/eastech/${mQuery}`}
-            height={77}
-            width={875}
-            layout="intrinsic"
-            alt="Eastech"
-          />
-        </div>
-        <h2 className="text-xl">Technical Writer and Web Developer Intern</h2>
+        {experience.logo.logo ? (
+          <div className="experience__img mr-24 py-4">
+            <Image
+              src={mQuery}
+              height={experience.logo.height}
+              width={experience.logo.width}
+              alt="Eastech"
+            />
+          </div>
+        ) : (
+          <h1 className="text-3xl mb-4 mt-6">{experience.company}</h1>
+        )}
+        <h2 className="text-xl">{experience.position}</h2>
         <div className="mt-2">
           <div className="grid grid-cols-2 italic">
-            <p>Tulsa, Oklahoma</p>
-            <p className="text-right">June 2021 - Oct. 2021</p>
+            <p>{experience.location}</p>
+            <p className="text-right">
+              {`${
+                monthNames[startDate.getMonth()]
+              } ${startDate.getFullYear()} - ${
+                experience.dates.active
+                  ? "Present"
+                  : monthNames[endDate.getMonth()] + " " + endDate.getFullYear()
+              }`}
+            </p>
           </div>
           <div className="timeline">
-            <div className="ml-14">
-              <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                <ExternalLink className="opacity-50" />
+            {experience.items.map((item: any, index: number) => (
+              <div key={item.title} className={`ml-14 ${index > 0 && "mt-6"}`}>
+                <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
+                  <svg
+                    width="24"
+                    height="24"
+                    className="opacity-30 dark:invert"
+                  >
+                    <image
+                      xlinkHref={`https:${item.icon}`}
+                      width="24"
+                      height="24"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl mb-2 pt-1">{item.title}</h3>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: documentToHtmlString(item.body),
+                  }}
+                />
               </div>
-              <h3 className="text-xl mb-2 pt-1">Next.js Commerce</h3>
-              <p>
-                Developed a Next.js e-commerce website for direct sales and
-                customer service using TypeScript, Tailwind CSS and a Shopify
-                backend.
-              </p>
-            </div>
-            <div className="ml-14 mt-6">
-              <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                <Person className="opacity-50" />
-              </div>
-              <h3 className="text-xl mb-2 pt-2">iTracker Documentation</h3>
-              <p>
-                Wrote internal technical documentation for the company&rsquo;s
-                flagship iTracker product.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

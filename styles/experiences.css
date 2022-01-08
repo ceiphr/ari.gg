@@ -8,8 +8,16 @@
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
   }
 
+  svg {
+    @apply duration-400;
+  }
+
   &:hover {
     @apply text-black dark:text-white;
+
+    svg {
+      @apply opacity-50;
+    }
 
     .experience__img {
       @apply opacity-100;
