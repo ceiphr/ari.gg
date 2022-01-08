@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
 import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
@@ -16,6 +16,7 @@ const SkillGraph = memo(function SkillGraph({
     angle = useRef<number>(0),
     isTabletOrMobile = useMediaQuery({ maxWidth: 1224 }),
     cameraAngle = useRef<number>(-Math.PI / (isTabletOrMobile ? 1 : 1.3)),
+    [spriteMap, setSpriteMap] = useState<Map<string, any>>(new Map()),
     distance = 400;
 
   useEffect(() => {
@@ -63,7 +64,15 @@ const SkillGraph = memo(function SkillGraph({
             : "rgba(0,0,0,0.6)"
         }
         nodeThreeObject={(d: GraphNode) => {
-          const imgTexture = new THREE.TextureLoader().load(`${d.img}`);
+          let imgTexture;
+
+          if (spriteMap.get(d.id)) {
+            imgTexture = spriteMap.get(d.id);
+          } else {
+            imgTexture = new THREE.TextureLoader().load(`${d.img}`);
+            setSpriteMap(spriteMap.set(d.id, imgTexture));
+          }
+
           const material = new THREE.SpriteMaterial({
             map: imgTexture,
             color: focusedNodes.includes(d.id) ? 0xff0000 : 0x000000,
