@@ -71,16 +71,16 @@ const Experience = ({
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
-          <div className="experience__img mr-24 py-4">
+          <div className="experience__img relative h-16 md:w-2/3 my-4">
             <Image
               src={mQuery}
-              height={experience.logo.height}
-              width={experience.logo.width}
-              alt="Eastech"
+              layout="fill"
+              objectFit="contain"
+              alt={experience.company}
             />
           </div>
         ) : (
-          <h1 className="text-3xl mb-4 mt-6">{experience.company}</h1>
+          <h1 className="text-3xl mb-6 mt-9 tk-neue-haas-grotesk-display">{experience.company}</h1>
         )}
         <h2 className="text-xl">{experience.position}</h2>
         <div className="mt-2">

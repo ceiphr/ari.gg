@@ -11,6 +11,7 @@ const client = createClient({
 export async function getProjects() {
   const query = {
     limit: 10,
+    order: ["fields.orderNumber"],
     content_type: "project",
   };
 
@@ -48,11 +49,12 @@ export async function getProjects() {
 export async function getExperiences() {
   const query = {
     limit: 10,
-    order: ["-fields.dateStarted"],
+    order: ["fields.orderNumber"],
     content_type: "experience",
   };
 
-  const { items } = await client.getEntries(query),
+  // Creating experiences array from Contentful data
+  const { items }: { items: any } = await client.getEntries(query),
     experiences = items.map((item: any) => {
       const company = item.fields.company,
         rawLogo = item.fields.logo?.fields.logo.fields,
@@ -84,7 +86,7 @@ export async function getExperiences() {
       return { company, logo, dates, location, position, items, skills };
     });
 
-  return experiences || null;
+  return experiences.reverse() || null;
 }
 
 export async function getGraph() {

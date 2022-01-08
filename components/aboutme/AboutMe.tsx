@@ -11,7 +11,7 @@ const Hero = () => {
             <div className="absolute bottom-0 translate-y-2 w-full pointer-events-none select-none">
               <Image
                 className="grayscale opacity-25 md:opacity-50 -scale-x-100"
-                src="/images/me.png"
+                src="/me.png"
                 alt="Ari Birnbaum"
                 layout="responsive"
                 width={281}
