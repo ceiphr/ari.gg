@@ -1,17 +1,19 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Fade from "react-reveal/Fade";
 
 import Project from "@components/projects/Project";
 
 // TODO: Add type definitions
-type Project = {};
-
-const ProjectList = ({
-  setFocusedNodes,
-  projects,
-}: {
+type Props = {
   setFocusedNodes: (value: string[]) => void;
   projects: Project[];
+};
+
+type Project = {};
+
+const ProjectList: FunctionComponent<Props> = ({
+  setFocusedNodes,
+  projects,
 }) => {
   return (
     <div className="grid md:grid-cols-6">

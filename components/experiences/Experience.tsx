@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import Image from "next/image";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 import useHover from "@utils/useHover";
 import dateParse from "@utils/dateParse";
 
-const Experience = ({
-  className = "",
-  setFocusedNodes,
-  experience,
-}: {
+type Props = {
   className?: string;
   setFocusedNodes: (value: string[]) => void;
   experience: any;
+};
+
+const Experience: FunctionComponent<Props> = ({
+  className = "",
+  setFocusedNodes,
+  experience,
 }) => {
   const [mQuery, setMQuery] = useState<string>(`https:${experience.logo.logo}`),
     [hoverRef, isHovered] = useHover();

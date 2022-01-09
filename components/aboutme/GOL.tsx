@@ -1,5 +1,16 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  FunctionComponent,
+} from "react";
 import Fade from "react-reveal/Fade";
+
+type Cell = {
+  x: number;
+  y: number;
+};
 
 // https://github.com/charlee/react-gameoflife
 const CELL_SIZE = 20;
@@ -11,7 +22,7 @@ const HEIGHT = 600;
  * @param {int} x
  * @param {int} y
  */
-const Cell = ({ x, y }: { x: number; y: number }) => {
+const Cell: FunctionComponent<Cell> = ({ x, y }) => {
   return (
     <div
       className="absolute bg-black dark:bg-white opacity-5 dark:opacity-10"
@@ -30,7 +41,7 @@ const Cell = ({ x, y }: { x: number; y: number }) => {
  * @param {int} rows
  * @param {int} cols
  */
-const makeEmptyBoard = (rows: number, cols: number): boolean[][] => {
+const makeEmptyBoard: Function = (rows: number, cols: number): boolean[][] => {
   let board: boolean[][] = [];
   for (let y = 0; y < rows; y++) {
     board[y] = [];
@@ -40,14 +51,14 @@ const makeEmptyBoard = (rows: number, cols: number): boolean[][] => {
   return board;
 };
 
-const GOL = () => {
+const GOL: FunctionComponent = () => {
   const boardRef = useRef<HTMLDivElement>(null),
     [cells, setCells] = useState<{ x: number; y: number }[]>([]),
     rows: number = HEIGHT / CELL_SIZE,
-    cols: number = WIDTH / CELL_SIZE;
-  const board = useRef<boolean[][]>(makeEmptyBoard(rows, cols));
+    cols: number = WIDTH / CELL_SIZE,
+    board = useRef<boolean[][]>(makeEmptyBoard(rows, cols));
 
-  const makeCells = useCallback(() => {
+  const makeCells: Function = useCallback((): Cell[] => {
     let cells = [];
     for (let y = 0; y < rows; y++)
       for (let x = 0; x < cols; x++)
@@ -58,12 +69,11 @@ const GOL = () => {
 
   /**
    * Calculate the number of neighbors at point (x, y)
-   * @param {Array} board
    * @param {int} x
    * @param {int} y
    */
-  const calculateNeighbors = useCallback(
-    (x: number, y: number) => {
+  const calculateNeighbors: Function = useCallback(
+    (x: number, y: number): number => {
       let neighbors = 0;
       const dirs = [
         [-1, -1],
@@ -96,14 +106,14 @@ const GOL = () => {
     [rows, cols]
   );
 
-  const handleRandom = useCallback(() => {
+  const handleRandom: Function = useCallback((): void => {
     for (let y = 0; y < rows; y++)
       for (let x = 0; x < cols; x++) board.current[y][x] = Math.random() >= 0.8;
 
     setCells(makeCells());
   }, [board, rows, cols, makeCells]);
 
-  const runIteration = useCallback(() => {
+  const runIteration: Function = useCallback((): void => {
     let newBoard = makeEmptyBoard(rows, cols);
 
     for (let y = 0; y < rows; y++)

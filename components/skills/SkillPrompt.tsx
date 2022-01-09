@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FunctionComponent } from "react";
 import anime from "animejs";
 import Lottie from "react-lottie-player";
 
-const SkillPrompt = ({ trigger }: { trigger: boolean }) => {
+type Props = {
+  trigger: boolean;
+};
+
+const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
   const [reveal, setReveal] = useState<boolean>(false);
   const [animationData, setAnimationData] = useState<Object>();
 

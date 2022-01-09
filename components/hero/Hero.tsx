@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FunctionComponent } from "react";
 import anime from "animejs";
 
-const Hero = () => {
+const Hero: FunctionComponent = () => {
   const [reveal, setReveal] = useState<boolean>(false);
 
   useEffect(() => {

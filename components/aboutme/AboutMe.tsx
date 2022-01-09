@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
 
-const Hero = () => {
+const Hero: FunctionComponent = () => {
   return (
     <>
       <div className="hidden md:grid md:grid-cols-6 absolute top-1/2 -translate-y-1/2 w-screen h-screen">
@@ -23,7 +23,7 @@ const Hero = () => {
       </div>
       <div className="grid md:grid-cols-6 w-full absolute top-1/2 -translate-y-1/2 z-10">
         <Fade right distance="50px">
-          <div className="will-change-transform col-start-3 col-span-3 p-6 md:p-0 md:-mr-px text-right">
+          <div className="will-change-transform md:col-start-3 md:col-span-3 2xl:col-start-4 2xl:col-span-2 p-6 md:p-0 md:-mr-px text-right">
             <h1 className="tk-neue-haas-grotesk-display text-clamp-6xl md:-mr-px uppercase">
               A twenty-something studying CS.
             </h1>

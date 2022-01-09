@@ -1,6 +1,6 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 
-const BackgroundGrid = () => {
+const BackgroundGrid: FunctionComponent = () => {
   let numRows = 6,
     rows = [];
   for (let i = 0; i < numRows; i++)

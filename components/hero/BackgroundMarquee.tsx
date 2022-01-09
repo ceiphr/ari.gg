@@ -1,9 +1,9 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useState, FunctionComponent } from "react";
 import Marquee from "react-fast-marquee";
 
 import random from "@utils/random";
 
-const BackgroundMarquee = memo(function BackgroundMarquee() {
+const BackgroundMarquee: FunctionComponent = memo(function BackgroundMarquee() {
   const [reveal, setReveal] = useState<boolean>(false);
   let numRows = 7,
     numCols = 8,

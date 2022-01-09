@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, FunctionComponent } from "react";
 import Image from "next/image";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 import useHover from "@utils/useHover";
 import ExternalLink from "@assets/external-link.svg";
 
-const Project = ({
-  className = "",
-  setFocusedNodes,
-  project,
-}: {
+type Props = {
   className?: string;
   setFocusedNodes: (value: string[]) => void;
   project: any;
+};
+
+const Project: FunctionComponent<Props> = ({
+  className = "",
+  setFocusedNodes,
+  project,
 }) => {
   const [hoverRef, isHovered] = useHover();
 

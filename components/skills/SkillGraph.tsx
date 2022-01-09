@@ -1,16 +1,24 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, {
+  memo,
+  useEffect,
+  useRef,
+  useState,
+  FunctionComponent,
+} from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
 import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
 import { useMediaQuery } from "react-responsive";
 
-const SkillGraph = memo(function SkillGraph({
-  data,
-  focusedNodes,
-}: {
+type Props = {
   data: GraphData;
   focusedNodes: string[];
+};
+
+const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
+  data,
+  focusedNodes,
 }) {
   const fgRef = useRef<ForceGraphInstance>(),
     angle = useRef<number>(0),
@@ -58,11 +66,7 @@ const SkillGraph = memo(function SkillGraph({
         enableNodeDrag={false}
         enableNavigationControls={false}
         showNavInfo={false}
-        linkColor={(d: GraphNode) =>
-          focusedNodes.includes(d.source) && focusedNodes.includes(d.target)
-            ? "rgba(255,0,0,1)"
-            : "rgba(0,0,0,0.6)"
-        }
+        linkColor={() => "rgba(0,0,0,0.6)"}
         nodeThreeObject={(d: GraphNode) => {
           let imgTexture;
 

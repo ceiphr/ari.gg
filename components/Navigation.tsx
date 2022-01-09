@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FunctionComponent } from "react";
 import anime from "animejs";
 
 import ExternalLink from "@assets/external-link.svg";
 import Email from "@assets/email.svg";
 
-const Navigation = () => {
+const Navigation: FunctionComponent = () => {
   const [reveal, setReveal] = useState<boolean>(false);
 
   useEffect(() => {
