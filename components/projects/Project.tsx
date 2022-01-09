@@ -38,7 +38,7 @@ const Project = ({
       <div className="mx-4 mt-4">
         <h2 className="text-2xl">{project.title}</h2>
         <div
-          className="mt-2"
+          className="mt-2 has-links"
           dangerouslySetInnerHTML={{
             __html: documentToHtmlString(project.body),
           }}

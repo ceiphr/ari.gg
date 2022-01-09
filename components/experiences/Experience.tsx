@@ -112,6 +112,7 @@ const Experience = ({
               </div>
               <h3 className="text-xl mb-2 pt-1">{item.title}</h3>
               <div
+                className="has-links"
                 dangerouslySetInnerHTML={{
                   __html: documentToHtmlString(item.body),
                 }}

@@ -8,12 +8,24 @@
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
   }
 
+  .has-links a {
+    @apply duration-400 text-blue-700/70 dark:text-blue-300/70 !important;
+
+    &:hover {
+      @apply underline;
+    } 
+  }
+
   svg {
     @apply duration-400;
   }
 
   &:hover {
     @apply text-black dark:text-white;
+
+    .has-links a {
+      @apply text-blue-700 dark:text-blue-300 !important;
+    }
 
     svg {
       @apply opacity-50;
