@@ -83,6 +83,8 @@ const Home: NextPage<{
         />
         <meta property="og:url" content="https://ari.gg" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="htt[s://ari.gg/aribirnbaum.jpg" />
+        <meta name="theme-color" content="var(--theme)" />
         <link rel="stylesheet" href="https://use.typekit.net/ihw7ajs.css" />
       </Head>
 
