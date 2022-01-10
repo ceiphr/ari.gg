@@ -1,3 +1,9 @@
+declare interface ExperienceItem {
+  title: string;
+  body: any;
+  icon: string;
+}
+
 declare interface Experience {
   company: string;
   orderNumber: number;
@@ -14,12 +20,19 @@ declare interface Experience {
   };
   location: string;
   position: string;
-  items: {
-    title: string;
-    body: Object;
-    icon: string;
-  }[];
+  items: ExperienceItem[];
   skills: string[];
+}
+
+declare interface Stat {
+  title: string;
+  value: string;
+  icon: string;
+}
+
+declare interface Link {
+  title: string;
+  link: string;
 }
 
 declare interface Project {
@@ -31,16 +44,9 @@ declare interface Project {
     height: number;
   };
   body: any;
-  links: {
-    title: string;
-    link: string;
-  }[2];
+  links: Link[2];
   skills: string[];
-  stats: {
-    title: string;
-    value: string;
-    icon: string;
-  }[3];
+  stats: Stat[3];
 }
 
 declare interface Graph {

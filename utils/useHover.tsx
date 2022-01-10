@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 
 // Hook
-function useHover() {
+function useHover(): [(node: HTMLDivElement) => void, boolean] {
   const [value, setValue] = useState<boolean>(false);
 
   // Wrap in useCallback so we can use in dependencies below
@@ -12,7 +12,7 @@ function useHover() {
 
   // Keep track of the last node passed to callbackRef
   // so we can remove its event listeners.
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   // Use a callback ref instead of useEffect so that event listeners
   // get changed in the case that the returned ref gets added to

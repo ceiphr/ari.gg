@@ -67,9 +67,8 @@ const Experience: FunctionComponent<Props> = ({
       : new Date();
   return (
     <div
-      // @ts-ignore Weird type issue with useHover. TODO: Fix.
       ref={hoverRef}
-      className={`experience overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`experience link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
@@ -101,7 +100,7 @@ const Experience: FunctionComponent<Props> = ({
           </p>
         </div>
         <div className="timeline">
-          {experience.items.map((item: any, index: number) => (
+          {experience.items.map((item: ExperienceItem, index: number) => (
             <div key={item.title} className={`ml-14 ${index > 0 && "mt-6"}`}>
               <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
                 <svg width="24" height="24" className="opacity-30 dark:invert">

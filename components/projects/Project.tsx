@@ -25,11 +25,10 @@ const Project: FunctionComponent<Props> = ({
 
   return (
     <div
-      // @ts-ignore Weird type issue with useHover. TODO: Fix.
       ref={hoverRef}
-      className={`project overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`project link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
-      <div className="project__img">
+      <div className="project__img border-b border-black/20 dark:border-white/20">
         <Image
           src={`https:${project.img.src}`}
           height={project.img.height}
@@ -46,7 +45,7 @@ const Project: FunctionComponent<Props> = ({
           }}
         />
         <div className="grid grid-cols-3 py-6 text-center grid-lines">
-          {project.stats.map((stat: any) => (
+          {project.stats.map((stat: Stat) => (
             <div key={stat.title} className="grid-lines__stroke--light px-2">
               <h3>{stat.title}</h3>
               <p>
@@ -54,7 +53,7 @@ const Project: FunctionComponent<Props> = ({
                 <svg
                   width="24"
                   height="24"
-                  className="stat-icon inline-block ml-1 -translate-y-px opacity-30 scale-90 dark:invert"
+                  className="project__icon inline-block ml-1 -translate-y-px opacity-30 scale-90 dark:invert"
                 >
                   <image
                     xlinkHref={`https:${stat.icon}`}
@@ -67,7 +66,7 @@ const Project: FunctionComponent<Props> = ({
           ))}
         </div>
         <div className="grid grid-cols-2 gap-4 pb-4 text-center">
-          {project.links.map((link: any, index: number) => (
+          {project.links.map((link: Link, index: number) => (
             <a
               key={link.title}
               href={link.link}

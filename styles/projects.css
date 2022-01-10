@@ -12,7 +12,7 @@
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
   }
 
-  .stat-icon {
+  &__icon {
     @apply duration-400;
   }
 
@@ -23,7 +23,7 @@
       @apply duration-400 bg-black dark:bg-white;
     }
 
-    .stat-icon {
+    .project__icon {
       @apply opacity-50;
     }
 
