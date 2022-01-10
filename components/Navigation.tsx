@@ -8,9 +8,11 @@ const Navigation: FunctionComponent = () => {
   const [reveal, setReveal] = useState<boolean>(false);
 
   useEffect(() => {
+    // Delay animation reveal by 0.4 seconds.
     setTimeout(() => {
       setReveal(true);
     }, 400);
+    // Run staggered fade-in animation when component mounts.
     anime({
       targets: ".nav-fade",
       translateY: [-20, 0],

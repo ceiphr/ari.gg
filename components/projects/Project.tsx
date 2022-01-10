@@ -16,9 +16,12 @@ const Project: FunctionComponent<Props> = ({
   setFocusedNodes,
   project,
 }) => {
+  // When a project card is hovered, it triggers a state update, sending a list
+  // of nodes to color to @components/skills/SkillGraph.tsx.
   const [hoverRef, isHovered] = useHover();
 
   useEffect(() => {
+    // The list of nodes to color is a Set for efficient lookup when re-rendering.
     if (isHovered) setFocusedNodes(new Set(project.skills));
     else setFocusedNodes(new Set());
   }, [setFocusedNodes, isHovered, project]);
@@ -26,9 +29,9 @@ const Project: FunctionComponent<Props> = ({
   return (
     <div
       ref={hoverRef}
-      className={`project link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`project card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
-      <div className="project__img border-b border-black/20 dark:border-white/20">
+      <div className="card__img project__img border-b border-black/20 dark:border-white/20">
         <Image
           src={`https:${project.img.src}`}
           height={project.img.height}
@@ -53,7 +56,7 @@ const Project: FunctionComponent<Props> = ({
                 <svg
                   width="24"
                   height="24"
-                  className="project__icon inline-block ml-1 -translate-y-px opacity-30 scale-90 dark:invert"
+                  className="card__icon inline-block ml-1 -translate-y-px opacity-30 scale-90 dark:invert"
                 >
                   <image
                     xlinkHref={`https:${stat.icon}`}
@@ -75,7 +78,7 @@ const Project: FunctionComponent<Props> = ({
               className={
                 index
                   ? "icon-button overflow-hidden rounded-lg px-3 py-2 font-medium border border-black/20 dark:border-white/20 hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
-                  : "icon-button project__btn overflow-hidden rounded-lg px-3 py-2 font-medium"
+                  : "icon-button card__btn overflow-hidden rounded-lg px-3 py-2 font-medium"
               }
             >
               {link.title}

@@ -32,20 +32,6 @@ a {
   @apply box-border;
 }
 
-.link-card {
-  &:hover .has-links a {
-    @apply text-blue-700 dark:text-blue-300 !important;
-  }
-
-  .has-links a {
-    @apply duration-400 text-blue-700/70 dark:text-blue-300/70 !important;
-
-    &:hover {
-      @apply underline;
-    }
-  }
-}
-
 .fill-theme svg * {
   @apply fill-black dark:fill-white;
 }

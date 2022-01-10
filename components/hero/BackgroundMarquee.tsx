@@ -9,6 +9,7 @@ const BackgroundMarquee: FunctionComponent = memo(function BackgroundMarquee() {
     numCols: number = 8,
     rows: JSX.Element[] = [];
 
+  // Generate a matrix of "Ari"s with different font weights.
   for (let i = 0; i < numRows; i++) {
     let cols: JSX.Element[] = [];
     for (let j = 0; j < numCols; j++) {
@@ -45,6 +46,7 @@ const BackgroundMarquee: FunctionComponent = memo(function BackgroundMarquee() {
         </p>
       );
     }
+    // Alternate the marquee direction.
     let direction: "left" | "right" = i % 2 === 0 ? "left" : "right";
     rows.push(
       <Marquee
@@ -60,6 +62,8 @@ const BackgroundMarquee: FunctionComponent = memo(function BackgroundMarquee() {
     );
   }
 
+  // Reveal the background three seconds after the component mounts.
+  // The delay is because the marquee is the last thing revealed in the Hero component.
   useEffect(() => {
     setTimeout(() => {
       setReveal(true);

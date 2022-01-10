@@ -5,9 +5,12 @@ const Hero: FunctionComponent = () => {
   const [reveal, setReveal] = useState<boolean>(false);
 
   useEffect(() => {
+    // Hide the Hero contents for 1.2 seconds. This gives the naviagtion bar
+    // time to fade in before the Hero's staggered animation starts.
     setTimeout(() => {
       setReveal(true);
     }, 1200);
+    // Run staggered fade-in animation.
     anime({
       targets: ".hero-fade",
       translateY: [-20, 0],
@@ -35,7 +38,7 @@ const Hero: FunctionComponent = () => {
         </p>
         <div className="hero-fade will-change-transform my-2 max-w-xs md:max-w-none rounded-full inline-block overflow-x-auto overflow-y-hidden whitespace-nowrap bg-white dark:bg-black border border-black/20 dark:border-white/20">
           <div className="py-2 pl-1 pr-3 inline-block translate-y-px font-medium text-amber-600 dark:text-amber-400 border-r border-black/20 dark:border-white/20">
-            <span className="animated-status inline-block align-middle m-3 -translate-y-px h-2 w-2 bg-amber-600 dark:bg-amber-400 rounded-full" />
+            <span className="warning-status inline-block align-middle m-3 -translate-y-px h-2 w-2 bg-amber-600 dark:bg-amber-400 rounded-full" />
             Status
           </div>
           <p className="inline translate-y-px whitespace-nowrap text-stone-700 dark:text-stone-300 pl-3 pr-4">

@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
+import { getExperiences, getGraph, getProjects } from "@utils/contentful";
 import {
   AboutMe,
   GOL,
@@ -15,7 +16,6 @@ import {
   ExperienceList,
   Footer,
 } from "@components/index";
-import { getExperiences, getGraph, getProjects } from "@utils/contentful";
 const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
   ssr: false,
 });
@@ -27,34 +27,35 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ graphData, projects, experiences }) => {
-  const mainRef = useRef<HTMLDivElement>(null),
-    skillPromptRef = useRef<HTMLDivElement>(null),
+  const skillPromptRef = useRef<HTMLDivElement>(null),
+    [skillPromptReveal, setSkillPromptReveal] = useState<boolean>(false),
     [favicon, setFavicon] = useState<string>("/favicon.ico"),
     [focusedNodes, setFocusedNodes] = useState<Set<string>>(new Set()),
-    [skillNodeReveal, setskillNodeReveal] = useState<Graph>({
+    [graph, setGraph] = useState<Graph>({
       nodes: [],
       links: [],
-    }),
-    [skillTextReveal, setskillTextReveal] = useState<boolean>(false);
+    });
 
   useEffect(() => {
     const handleScroll = () => {
-      // The graph has been scrolled into view. Time to reveal its nodes.
+      // The graph has been scrolled into view.
+      // Time to reveal it and the skill prompt.
       if (
-        !skillTextReveal &&
+        !skillPromptReveal &&
         window.pageYOffset + window.innerHeight - 300 >
           skillPromptRef!.current!.offsetTop
       ) {
         setTimeout(() => {
-          setskillNodeReveal(graphData);
-          setskillTextReveal(true);
+          setGraph(graphData);
+          setSkillPromptReveal(true);
         }, 1000);
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [skillTextReveal, graphData]);
+  }, [skillPromptReveal, graphData]);
 
+  // Change the favicon based on the prefers-color-scheme media query.
   useEffect(() => {
     async function setImage() {
       let mediaQuery = await window.matchMedia("(prefers-color-scheme: dark)");
@@ -90,10 +91,10 @@ const Home: NextPage<Props> = ({ graphData, projects, experiences }) => {
         <link rel="stylesheet" href="https://use.typekit.net/ihw7ajs.css" />
       </Head>
 
-      <main ref={mainRef} className="dark:text-white">
+      <main className="dark:text-white">
         <BackgroundGrid />
         <Navigation />
-        <SkillGraph data={skillNodeReveal} focusedNodes={focusedNodes} />
+        <SkillGraph data={graph} focusedNodes={focusedNodes} />
         <section className="h-screen overflow-hidden bg-white dark:bg-black">
           <BackgroundMarquee />
           <Hero />
@@ -105,7 +106,7 @@ const Home: NextPage<Props> = ({ graphData, projects, experiences }) => {
           </div>
         </section>
         <section className="h-screen overflow-hidden" ref={skillPromptRef}>
-          <SkillPrompt trigger={skillTextReveal} />
+          <SkillPrompt trigger={skillPromptReveal} />
         </section>
         <div className="border-t md:border-0 pt-14 border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg md:backdrop-blur-none md:bg-transparent">
           <section className="overflow-hidden">

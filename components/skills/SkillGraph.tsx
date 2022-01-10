@@ -7,14 +7,34 @@ import React, {
 } from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
-import { ForceGraph3D, GraphNode, GraphData, ForceGraphInstance } from "react-force-graph";
+import { ForceGraph3D, GraphNode, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
 import { useMediaQuery } from "react-responsive";
 
 type Props = {
-  data: GraphData;
+  data: Graph;
   focusedNodes: Set<string>;
 };
+
+type Theme = {
+  backgroundColor: string;
+  nodeColor: number;
+  nodeHighlightColor: number;
+  linkColor: string;
+};
+
+const lightTheme: Theme = {
+    backgroundColor: "#fff",
+    nodeColor: 0x000000,
+    nodeHighlightColor: 0x2563eb,
+    linkColor: "rgba(0,0,0,0.8)",
+  },
+  darkTheme: Theme = {
+    backgroundColor: "#000",
+    nodeColor: 0xffffff,
+    nodeHighlightColor: 0x60a5fa,
+    linkColor: "rgba(255,255,255,0.8)",
+  };
 
 const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
   data,
@@ -22,17 +42,22 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
 }) {
   const fgRef = useRef<ForceGraphInstance>(),
     angle = useRef<number>(0),
+    distance = 400,
     isTabletOrMobile = useMediaQuery({ maxWidth: 1224 }),
+    // Camera lookAt is offset so it's on the right side of the screen if on desktop.
     cameraAngle = useRef<number>(-Math.PI / (isTabletOrMobile ? 1 : 1.3)),
+    // Sprite textures are caches in this Map to avoid flickering on state change.
     [spriteMap, setSpriteMap] = useState<Map<string, any>>(new Map()),
-    [nodeColor, setNodeColor] = useState<number>(0x000000),
-    [nodeHighlightColor, setNodeHighlightColor] = useState<number>(0x1d4ed8),
-    [linkColor, setLinkColor] = useState<string>("rgba(0,0,0,0.8)"),
-    [bgColor, setBgColor] = useState<string>("#fff"),
-    distance = 400;
+    [theme, setTheme] = useState<Theme>({
+      backgroundColor: "#fff",
+      nodeColor: 0x000000,
+      nodeHighlightColor: 0x1d4ed8,
+      linkColor: "rgba(0,0,0,0.8)",
+    });
 
   useEffect(() => {
     // camera orbit
+    // https://github.com/vasturiano/react-force-graph/blob/master/example/camera-auto-orbit/index.html
     const rotate = setInterval(() => {
       if (!fgRef.current) {
         clearInterval(rotate);
@@ -40,16 +65,21 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
       }
 
       fgRef.current.cameraPosition(
+        // Position of the camera.
         {
           x: distance * Math.sin(angle.current),
           z: distance * Math.cos(angle.current),
         },
+        // Look at position for the camera.
         {
           x: distance * Math.sin(cameraAngle.current),
           z: distance * Math.cos(cameraAngle.current),
         }
       );
 
+      // Currently, both do the same thing.
+      // These are implemented as separate refs for possible
+      // future transition effects.
       angle.current += Math.PI / 1200;
       cameraAngle.current += Math.PI / 1200;
     }, 10);
@@ -60,47 +90,45 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
   }, []);
 
   useEffect(() => {
+    // Change the graph's theme based on the prefers-color-scheme media query.
     async function setColor() {
       let mediaQuery = await window.matchMedia("(prefers-color-scheme: dark)");
 
       mediaQuery.addEventListener("change", (e) => {
-        setNodeColor(e.matches ? 0xffffff : 0x000000);
-        setBgColor(e.matches ? "#000" : "#fff");
+        setTheme(e.matches ? darkTheme : lightTheme);
       });
-      setNodeColor(mediaQuery.matches ? 0xffffff : 0x000000);
-      setNodeHighlightColor(mediaQuery.matches ? 0x60a5fa : 0x2563eb);
-      setLinkColor(mediaQuery.matches ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)");
-      setBgColor(mediaQuery.matches ? "#000" : "#fff");
+      setTheme(mediaQuery.matches ? darkTheme : lightTheme);
     }
 
     setColor();
-  }, [nodeColor]);
+  }, [theme]);
 
   return (
     <div className="fixed top-0 -z-10 pointer-events-none">
       <ForceGraph3D
         ref={fgRef}
         graphData={data}
-        backgroundColor={bgColor}
+        backgroundColor={theme.backgroundColor}
         linkWidth={0.5}
         d3AlphaDecay={0.06}
         enableNodeDrag={false}
         enableNavigationControls={false}
         showNavInfo={false}
-        linkColor={() => linkColor}
+        linkColor={() => theme.linkColor}
         nodeThreeObject={(d: GraphNode) => {
           let imgTexture;
 
-          if (spriteMap.get(d.id)) {
-            imgTexture = spriteMap.get(d.id);
-          } else {
+          if (spriteMap.get(d.id)) imgTexture = spriteMap.get(d.id);
+          else {
             imgTexture = new THREE.TextureLoader().load(`${d.img}`);
             setSpriteMap(spriteMap.set(d.id, imgTexture));
           }
 
           const material = new THREE.SpriteMaterial({
             map: imgTexture,
-            color: focusedNodes.has(d.id) ? nodeHighlightColor : nodeColor,
+            color: focusedNodes.has(d.id)
+              ? theme.nodeHighlightColor
+              : theme.nodeColor,
           });
           const sprite = new THREE.Sprite(material);
 

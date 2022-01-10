@@ -16,10 +16,12 @@ const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
 
   useEffect(() => {
     if (trigger) {
-      // Must hide elements before animating them
+      // Hide the prompt for 1.5 seconds. The graph will be revealed
+      // in this time frame.
       setTimeout(() => {
         setReveal(true);
       }, 1500);
+      // Run staggered fade-in animation when component mounts.
       anime({
         targets: ".skill-fade",
         translateY: [50, 0],
@@ -49,6 +51,7 @@ const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
       </div>
       <div className="relative left-1/2 -translate-x-1/2 w-50px">
         {animationData && (
+          // https://lottiefiles.com/5944-scroll-down
           <Lottie
             className="skill-fade will-change-transform fill-theme"
             loop

@@ -1,39 +1,6 @@
 .project {
-  @apply text-stone-600 dark:text-stone-400 duration-400;
-  
-  width: calc(100% + 0.5px);
-  @media (min-width: 1536px) {
-    width: calc(100% + 1px);
-  }
-
-  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-
-  &__btn {
-    @apply duration-400 text-white bg-black/80 dark:text-black dark:bg-white/80;
-  }
-
   &__img {
     @apply flex justify-center items-center rounded-t-xl overflow-hidden duration-400 opacity-75;
     transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-  }
-
-  &__icon {
-    @apply duration-400;
-  }
-
-  &:hover {
-    @apply text-black dark:text-white;
-
-    .project__btn {
-      @apply duration-400 bg-black dark:bg-white;
-    }
-
-    .project__icon {
-      @apply opacity-50;
-    }
-
-    .project__img {
-      @apply opacity-100;
-    }
   }
 }

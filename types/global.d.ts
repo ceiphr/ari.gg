@@ -8,10 +8,10 @@ declare interface Experience {
   company: string;
   orderNumber: number;
   logo: {
-    logo: string;
-    logoDark: string;
-    width: number;
-    height: number;
+    logo?: string;
+    logoDark?: string;
+    width?: number;
+    height?: number;
   };
   dates: {
     start: string;

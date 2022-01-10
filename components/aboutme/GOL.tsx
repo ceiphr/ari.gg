@@ -12,7 +12,10 @@ type Cell = {
   y: number;
 };
 
+// I didn't make this. I found it here:
 // https://github.com/charlee/react-gameoflife
+// I added types, and made it a function component.
+
 const CELL_SIZE = 20;
 const WIDTH = 800;
 const HEIGHT = 600;

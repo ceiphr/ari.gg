@@ -16,27 +16,35 @@ const Experience: FunctionComponent<Props> = ({
   setFocusedNodes,
   experience,
 }) => {
-  const [mQuery, setMQuery] = useState<string>(`https:${experience.logo.logo}`),
+  const [logo, setLogo] = useState<string>(`https:${experience.logo.logo}`),
+    // When an experience card is hovered, it triggers a state update, sending a list
+    // of nodes to color to @components/skills/SkillGraph.tsx.
     [hoverRef, isHovered] = useHover();
 
   useEffect(() => {
+    // The list of nodes to color is a Set for efficient lookup when re-rendering.
     if (isHovered) setFocusedNodes(new Set(experience.skills));
     else setFocusedNodes(new Set());
   }, [setFocusedNodes, isHovered, experience]);
 
   useEffect(() => {
+    // The logo has a dark and light variant. The variant type is picked by
+    // the prefers-color-scheme media query.
     async function setImage() {
       let mediaQuery = await window.matchMedia("(prefers-color-scheme: dark)");
 
+      // Logo is an optional field.
       if (experience.logo.logo) {
+        // Listen for changes to the media query.
         mediaQuery.addEventListener("change", (e) => {
-          setMQuery(
+          setLogo(
             e.matches
               ? `https:${experience.logo.logoDark}`
               : `https:${experience.logo.logo}`
           );
         });
-        setMQuery(
+        // Set the initial logo.
+        setLogo(
           mediaQuery.matches
             ? `https:${experience.logo.logoDark}`
             : `https:${experience.logo.logo}`
@@ -45,8 +53,9 @@ const Experience: FunctionComponent<Props> = ({
     }
 
     setImage();
-  }, [mQuery, experience]);
+  }, [logo, experience]);
 
+  // Month is a number. I want it to be a string.
   const monthNames = [
       "Jan.",
       "Feb.",
@@ -61,21 +70,24 @@ const Experience: FunctionComponent<Props> = ({
       "Nov.",
       "Dec.",
     ],
+    // new Date()'s parser doesn't work correctly for Contentful dates.
+    // I'm using a custom parser.
     startDate = dateParse(experience.dates.start),
+    // End date is optional, since the experience could be active.
     endDate = experience.dates.end
       ? dateParse(experience.dates.end)
       : new Date();
   return (
     <div
       ref={hoverRef}
-      className={`experience link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`experience card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
-          <div className="experience__img relative h-24 md:w-2/3 mr-24 md:mr-0">
+          <div className="experience__img card__img relative h-24 md:w-2/3 mr-24 md:mr-0">
             <Image
               className="object-left"
-              src={mQuery}
+              src={logo}
               layout="fill"
               objectFit="contain"
               alt={experience.company}
@@ -103,7 +115,7 @@ const Experience: FunctionComponent<Props> = ({
           {experience.items.map((item: ExperienceItem, index: number) => (
             <div key={item.title} className={`ml-14 ${index > 0 && "mt-6"}`}>
               <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                <svg width="24" height="24" className="opacity-30 dark:invert">
+                <svg width="24" height="24" className="card__icon opacity-30 dark:invert">
                   <image
                     xlinkHref={`https:${item.icon}`}
                     width="24"
