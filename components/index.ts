@@ -1,6 +1,7 @@
 // General
 export { default as BackgroundGrid } from "./BackgroundGrid";
 export { default as Navigation } from "./Navigation";
+export { default as Footer } from "./Footer";
 
 // Frontpage Hero
 export { default as BackgroundMarquee } from "./hero/BackgroundMarquee";

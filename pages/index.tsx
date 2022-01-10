@@ -13,6 +13,7 @@ import {
   SkillPrompt,
   ProjectList,
   ExperienceList,
+  Footer,
 } from "@components/index";
 import { getExperiences, getGraph, getProjects } from "@utils/contentful";
 const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
@@ -116,6 +117,7 @@ const Home: NextPage<{
             />
           </section>
         </div>
+        <Footer />
       </main>
     </>
   );
