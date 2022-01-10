@@ -8,7 +8,7 @@ import ExternalLink from "@assets/external-link.svg";
 type Props = {
   className?: string;
   setFocusedNodes: (value: string[]) => void;
-  project: any;
+  project: Project;
 };
 
 const Project: FunctionComponent<Props> = ({

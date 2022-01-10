@@ -1,5 +1,10 @@
 import { createClient } from "contentful";
 
+type Query = {
+  limit: number;
+  content_type: string;
+};
+
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 
@@ -8,14 +13,14 @@ const client = createClient({
   accessToken: accessToken || "", // delivery API key for the space \
 });
 
-export async function getProjects() {
-  const query = {
+export async function getProjects(): Promise<Project[] | null> {
+  const query: Query = {
     limit: 10,
     content_type: "project",
   };
 
-  const { items } = await client.getEntries(query),
-    projects = items.map((item: any) => {
+  const { items }: { items: any[] } = await client.getEntries(query),
+    projects: Project[] = items.map((item: any) => {
       const title = item.fields.title,
         orderNumber = item.fields.orderNumber,
         img = {
@@ -43,22 +48,22 @@ export async function getProjects() {
       return { orderNumber, title, body, img, links, skills, stats };
     });
 
-  const sortedProjects = projects.sort((a: any, b: any) =>
+  const sortedProjects: Project[] = projects.sort((a: any, b: any) =>
     a.orderNumber > b.orderNumber ? 1 : -1
   );
 
   return sortedProjects || null;
 }
 
-export async function getExperiences() {
-  const query = {
+export async function getExperiences(): Promise<Experience[] | null> {
+  const query: Query = {
     limit: 10,
     content_type: "experience",
   };
 
   // Creating experiences array from Contentful data
   const { items }: { items: any } = await client.getEntries(query),
-    experiences = items.map((item: any) => {
+    experiences: Experience[] = items.map((item: any) => {
       const company = item.fields.company,
         orderNumber = item.fields.orderNumber,
         rawLogo = item.fields.logo?.fields.logo.fields,
@@ -87,22 +92,31 @@ export async function getExperiences() {
           return item.fields.id;
         });
 
-      return { orderNumber, company, logo, dates, location, position, items, skills };
+      return {
+        orderNumber,
+        company,
+        logo,
+        dates,
+        location,
+        position,
+        items,
+        skills,
+      };
     });
 
-  const sortedExperiences = experiences.sort((a: any, b: any) =>
+  const sortedExperiences: Experience[] = experiences.sort((a: any, b: any) =>
     a.orderNumber > b.orderNumber ? 1 : -1
   );
 
   return sortedExperiences || null;
 }
 
-export async function getGraph() {
-  const linkQuery = {
+export async function getGraph(): Promise<Graph | null> {
+  const linkQuery: Query = {
     limit: 100,
     content_type: "link",
   };
-  const nodeQuery = {
+  const nodeQuery: Query = {
     limit: 100,
     content_type: "node",
   };

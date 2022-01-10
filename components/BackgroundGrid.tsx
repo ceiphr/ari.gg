@@ -1,8 +1,8 @@
 import React, {FunctionComponent} from "react";
 
 const BackgroundGrid: FunctionComponent = () => {
-  let numRows = 6,
-    rows = [];
+  let numRows: number = 6,
+    rows: JSX.Element[] = [];
   for (let i = 0; i < numRows; i++)
     rows.push(<div key={i} className="grid-lines__stroke" />);
 

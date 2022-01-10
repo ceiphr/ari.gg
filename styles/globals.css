@@ -23,26 +23,22 @@ a {
   @apply text-inherit no-underline;
 }
 
-/* .has-links a {
-  @apply text-blue-700 dark:text-blue-300 no-underline !important;
-
-  &:hover {
-    @apply underline;
-  }
-} */
-
 * {
   @apply box-border;
 }
 
-/* curtains canvas container */
+.has-links {
+  &:hover a {
+    @apply text-blue-700 dark:text-blue-300 !important;
+  }
 
-.curtains-canvas {
-  @apply fixed top-0 left-0 w-screen h-screen pointer-events-none;
-}
+  a {
+    @apply duration-400 text-blue-700/70 dark:text-blue-300/70 !important;
 
-.fill-current-important svg * {
-  @apply fill-current stroke-current !important;
+    &:hover {
+      @apply underline;
+    }
+  }
 }
 
 .fill-theme svg * {
@@ -68,8 +64,4 @@ a {
   &-4xl {
     font-size: clamp(0.6rem, 6vw, 1.5rem);
   }
-}
-
-.max-h-75vh {
-  height: 75vh;
 }

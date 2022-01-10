@@ -8,7 +8,7 @@ import dateParse from "@utils/dateParse";
 type Props = {
   className?: string;
   setFocusedNodes: (value: string[]) => void;
-  experience: any;
+  experience: Experience;
 };
 
 const Experience: FunctionComponent<Props> = ({

@@ -1,6 +1,6 @@
 # Ari.gg
 
-Ari Birnbaum's website. Built with Gatsby, TypeScript and TailwindCSS. Hosted on Vercel.
+Ari Birnbaum's website. Built with Next.js, Three.js, TypeScript and Tailwind CSS. Hosted on Vercel.
 
 ## Getting Started
 

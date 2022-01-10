@@ -5,7 +5,7 @@ import Experience from "@components/experiences/Experience";
 
 type Props = {
   setFocusedNodes: (value: string[]) => void;
-  experiences: any;
+  experiences: Experience[];
 };
 
 const ExperienceList: FunctionComponent<Props> = ({

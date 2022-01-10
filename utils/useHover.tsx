@@ -1,6 +1,5 @@
 // https://usehooks.com/useHover/
 // https://gist.github.com/gragland/a32d08580b7e0604ff02cb069826ca2f
-import { NoParamCallback } from "fs";
 import { useState, useCallback, useRef } from "react";
 
 // Hook

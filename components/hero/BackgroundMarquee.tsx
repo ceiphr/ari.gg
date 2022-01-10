@@ -5,15 +5,15 @@ import random from "@utils/random";
 
 const BackgroundMarquee: FunctionComponent = memo(function BackgroundMarquee() {
   const [reveal, setReveal] = useState<boolean>(false);
-  let numRows = 7,
-    numCols = 8,
-    rows = [];
+  let numRows: number = 7,
+    numCols: number = 8,
+    rows: JSX.Element[] = [];
 
   for (let i = 0; i < numRows; i++) {
-    let cols = [];
+    let cols: JSX.Element[] = [];
     for (let j = 0; j < numCols; j++) {
-      let weight = random(1, 5),
-        fontweight;
+      let weight: number = random(1, 5),
+        fontweight: string;
 
       switch (weight) {
         case 1:
@@ -31,6 +31,8 @@ const BackgroundMarquee: FunctionComponent = memo(function BackgroundMarquee() {
         case 5:
           fontweight = "font-black";
           break;
+        default:
+          fontweight = "font-normal";
       }
 
       cols.push(

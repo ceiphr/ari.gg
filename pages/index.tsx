@@ -2,8 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-// @ts-ignore Type is not exported from react-force-graph
-import type { GraphData } from "react-force-graph";
 
 import {
   AboutMe,
@@ -22,7 +20,7 @@ const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
 });
 
 const Home: NextPage<{
-  graphData: GraphData;
+  graphData: Graph;
   projects: any;
   experiences: any;
 }> = ({ graphData, projects, experiences }) => {
@@ -30,7 +28,7 @@ const Home: NextPage<{
     skillPromptRef = useRef<HTMLDivElement>(null),
     [favicon, setFavicon] = useState<string>("/favicon.ico"),
     [focusedNodes, setFocusedNodes] = useState<string[]>([]),
-    [skillNodeReveal, setskillNodeReveal] = useState<GraphData>({
+    [skillNodeReveal, setskillNodeReveal] = useState<Graph>({
       nodes: [],
       links: [],
     }),
@@ -126,10 +124,9 @@ const Home: NextPage<{
 export default Home;
 
 export async function getStaticProps() {
-  const graphData: GraphData = await getGraph();
-  // TODO: Add type definitions
-  const projects: any = await getProjects();
-  const experiences: any = await getExperiences();
+  const graphData: Graph | null = await getGraph();
+  const projects: Project[] | null = await getProjects();
+  const experiences: Experience[] | null = await getExperiences();
 
   return {
     props: {

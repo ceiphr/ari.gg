@@ -3,13 +3,10 @@ import Fade from "react-reveal/Fade";
 
 import Project from "@components/projects/Project";
 
-// TODO: Add type definitions
 type Props = {
   setFocusedNodes: (value: string[]) => void;
   projects: Project[];
 };
-
-type Project = {};
 
 const ProjectList: FunctionComponent<Props> = ({
   setFocusedNodes,
