@@ -1,0 +1,16 @@
+{
+    "name": "Ari Birnbaum",
+    "short_name": "Ari",
+    "start_url": "/",
+    "display": "browser",
+    "background_color": "#000",
+    "theme_color": "#000",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "/ari.jpg",
+        "type": "image/png",
+        "sizes": "256x256"
+      }
+    ]
+  }
