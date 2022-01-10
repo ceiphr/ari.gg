@@ -8,8 +8,8 @@ import LinkedIn from "@assets/linkedin.svg";
 
 const Footer: FunctionComponent = () => {
   return (
-    <Fade>
-      <div className="border-t border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg">
+    <div className="border-t border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg">
+      <Fade>
         <div className="grid md:grid-cols-6 2xl:grid-cols-7 p-4 md:p-0">
           <div className="md:col-start-2 md:col-span-2 mt-4 md:mb-12">
             <Logo className="fill-current mt-8 mb-4" height="48" width="48" />I
@@ -57,8 +57,8 @@ const Footer: FunctionComponent = () => {
             </p>
           </div>
         </div>
-      </div>
-    </Fade>
+      </Fade>
+    </div>
   );
 };
 

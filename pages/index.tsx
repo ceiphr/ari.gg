@@ -120,8 +120,8 @@ const Home: NextPage<Props> = ({ graphData, projects, experiences }) => {
               setFocusedNodes={setFocusedNodes}
             />
           </section>
-          <Footer />
         </div>
+        <Footer />
       </main>
     </>
   );
