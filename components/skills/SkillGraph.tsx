@@ -25,6 +25,10 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
     isTabletOrMobile = useMediaQuery({ maxWidth: 1224 }),
     cameraAngle = useRef<number>(-Math.PI / (isTabletOrMobile ? 1 : 1.3)),
     [spriteMap, setSpriteMap] = useState<Map<string, any>>(new Map()),
+    [nodeColor, setNodeColor] = useState<number>(0x000000),
+    [nodeHighlightColor, setNodeHighlightColor] = useState<number>(0x1d4ed8),
+    [linkColor, setLinkColor] = useState<string>("rgba(0,0,0,0.8)"),
+    [bgColor, setBgColor] = useState<string>("#fff"),
     distance = 400;
 
   useEffect(() => {
@@ -55,18 +59,35 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
     };
   }, []);
 
+  useEffect(() => {
+    async function setColor() {
+      let mediaQuery = await window.matchMedia("(prefers-color-scheme: dark)");
+
+      mediaQuery.addEventListener("change", (e) => {
+        setNodeColor(e.matches ? 0xffffff : 0x000000);
+        setBgColor(e.matches ? "#000" : "#fff");
+      });
+      setNodeColor(mediaQuery.matches ? 0xffffff : 0x000000);
+      setNodeHighlightColor(mediaQuery.matches ? 0x60a5fa : 0x2563eb);
+      setLinkColor(mediaQuery.matches ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)");
+      setBgColor(mediaQuery.matches ? "#000" : "#fff");
+    }
+
+    setColor();
+  }, [nodeColor]);
+
   return (
-    <div className="fixed top-0 -z-10 pointer-events-none dark:invert">
+    <div className="fixed top-0 -z-10 pointer-events-none">
       <ForceGraph3D
         ref={fgRef}
         graphData={data}
-        backgroundColor={"#fff"}
+        backgroundColor={bgColor}
         linkWidth={0.5}
         d3AlphaDecay={0.06}
         enableNodeDrag={false}
         enableNavigationControls={false}
         showNavInfo={false}
-        linkColor={() => "rgba(0,0,0,0.6)"}
+        linkColor={() => linkColor}
         nodeThreeObject={(d: GraphNode) => {
           let imgTexture;
 
@@ -79,7 +100,7 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
 
           const material = new THREE.SpriteMaterial({
             map: imgTexture,
-            color: focusedNodes.includes(d.id) ? 0xff0000 : 0x000000,
+            color: focusedNodes.includes(d.id) ? nodeHighlightColor : nodeColor,
           });
           const sprite = new THREE.Sprite(material);
 

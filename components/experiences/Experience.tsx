@@ -72,7 +72,7 @@ const Experience: FunctionComponent<Props> = ({
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
-          <div className="experience__img relative h-20 md:w-2/3 my-4 mr-24 md:mr-0">
+          <div className="experience__img relative h-24 md:w-2/3 mr-24 md:mr-0">
             <Image
               className="object-left"
               src={mQuery}

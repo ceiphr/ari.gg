@@ -33,6 +33,7 @@ const Footer: FunctionComponent = () => {
                 rel="noreferrer"
               >
                 <GitHub className="fill-current duration-200 hover:text-black dark:hover:text-white" />
+                <span className="sr-only">GitHub</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/ari/"
@@ -40,6 +41,7 @@ const Footer: FunctionComponent = () => {
                 rel="noreferrer"
               >
                 <LinkedIn className="fill-current duration-200 hover:text-black dark:hover:text-white" />
+                <span className="sr-only">LinkedIn</span>
               </a>
               <a
                 href="https://twitter.com/ceiphr"
@@ -47,6 +49,7 @@ const Footer: FunctionComponent = () => {
                 rel="noreferrer"
               >
                 <Twitter className="fill-current duration-200 hover:text-black dark:hover:text-white" />
+                <span className="sr-only">Twitter</span>
               </a>
             </div>
             <p className="whitespace-nowrap md:float-right mt-4 md:mt-8">

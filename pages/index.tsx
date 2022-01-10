@@ -118,8 +118,8 @@ const Home: NextPage<{
               setFocusedNodes={setFocusedNodes}
             />
           </section>
+          <Footer />
         </div>
-        <Footer />
       </main>
     </>
   );
