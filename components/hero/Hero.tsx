@@ -22,7 +22,7 @@ const Hero: FunctionComponent = () => {
     <div
       className={`${
         !reveal && "opacity-0"
-      } grid md:grid-cols-6 relative -top-1/2 -translate-y-1/2`}
+      } grid md:grid-cols-6 2xl:grid-cols-7 relative -top-1/2 -translate-y-1/2`}
     >
       <div className="col-start-2 col-span-4 p-6 md:p-0">
         <h1 className="hero-fade will-change-transform tk-neue-haas-grotesk-display text-clamp-8xl uppercase">

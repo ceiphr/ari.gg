@@ -7,7 +7,7 @@ import ExternalLink from "@assets/external-link.svg";
 
 type Props = {
   className?: string;
-  setFocusedNodes: (value: string[]) => void;
+  setFocusedNodes: (value: Set<string>) => void;
   project: Project;
 };
 
@@ -19,8 +19,8 @@ const Project: FunctionComponent<Props> = ({
   const [hoverRef, isHovered] = useHover();
 
   useEffect(() => {
-    if (isHovered) setFocusedNodes(project.skills);
-    else setFocusedNodes([]);
+    if (isHovered) setFocusedNodes(new Set(project.skills));
+    else setFocusedNodes(new Set());
   }, [setFocusedNodes, isHovered, project]);
 
   return (

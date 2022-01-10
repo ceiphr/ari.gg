@@ -5,10 +5,6 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Referrer-Policy",
-          "value": "no-referrer-when-downgrade"
-        },
-        {
           "key": "Strict-Transport-Security",
           "value": "max-age=63072000; includeSubDomains; preload"
         },
@@ -27,6 +23,10 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
+        },
+        {
+          "key": "Accept-Encoding",
+          "value": "br"
         }
       ]
     }

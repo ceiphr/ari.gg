@@ -7,7 +7,7 @@ import dateParse from "@utils/dateParse";
 
 type Props = {
   className?: string;
-  setFocusedNodes: (value: string[]) => void;
+  setFocusedNodes: (value: Set<string>) => void;
   experience: Experience;
 };
 
@@ -20,8 +20,8 @@ const Experience: FunctionComponent<Props> = ({
     [hoverRef, isHovered] = useHover();
 
   useEffect(() => {
-    if (isHovered) setFocusedNodes(experience.skills);
-    else setFocusedNodes([]);
+    if (isHovered) setFocusedNodes(new Set(experience.skills));
+    else setFocusedNodes(new Set());
   }, [setFocusedNodes, isHovered, experience]);
 
   useEffect(() => {

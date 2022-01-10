@@ -10,7 +10,7 @@ const Footer: FunctionComponent = () => {
   return (
     <Fade>
       <div className="border-t border-black/20 dark:border-white/20 bg-white/50 dark:bg-black/50 backdrop-blur-lg">
-        <div className="grid md:grid-cols-6 p-4 md:p-0">
+        <div className="grid md:grid-cols-6 2xl:grid-cols-7 p-4 md:p-0">
           <div className="md:col-start-2 md:col-span-2 mt-4 md:mb-12">
             <Logo className="fill-current mt-8 mb-4" height="48" width="48" />I
             hope you enjoyed this online experience. If you&apos;re curious, the
@@ -25,7 +25,7 @@ const Footer: FunctionComponent = () => {
             </a>
             .
           </div>
-          <div className="md:col-start-5 mt-12 mb-12 text-stone-600 dark:text-stone-400 md:text-right">
+          <div className="md:col-start-5 2xl:col-start-6 mt-12 mb-12 text-stone-600 dark:text-stone-400 md:text-right">
             <div className="grid grid-cols-3 w-28 md:float-right">
               <a
                 href="https://github.com/ceiphr"

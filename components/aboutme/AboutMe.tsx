@@ -5,7 +5,7 @@ import Fade from "react-reveal/Fade";
 const Hero: FunctionComponent = () => {
   return (
     <>
-      <div className="hidden md:grid md:grid-cols-6 absolute top-1/2 -translate-y-1/2 w-screen h-screen">
+      <div className="hidden md:grid md:grid-cols-6 2xl:grid-cols-7 absolute top-1/2 -translate-y-1/2 w-screen h-screen">
         <Fade left distance="50px">
           <div className="will-change-transform relative col-start-2 col-span-2">
             <div className="absolute bottom-0 max-h-screen w-full pointer-events-none select-none">
@@ -21,9 +21,9 @@ const Hero: FunctionComponent = () => {
           </div>
         </Fade>
       </div>
-      <div className="grid md:grid-cols-6 w-full absolute top-1/2 -translate-y-1/2 z-10">
+      <div className="grid md:grid-cols-6 2xl:grid-cols-7 w-full absolute top-1/2 -translate-y-1/2 z-10">
         <Fade right distance="50px">
-          <div className="will-change-transform md:col-start-3 md:col-span-3 2xl:col-start-4 2xl:col-span-2 p-6 md:p-0 md:-mr-px text-right">
+          <div className="will-change-transform md:col-start-3 md:col-span-3 2xl:col-start-4 p-6 md:p-0 md:-mr-px text-right">
             <h1 className="tk-neue-haas-grotesk-display text-clamp-6xl md:-mr-px uppercase">
               A twenty-something studying CS.
             </h1>

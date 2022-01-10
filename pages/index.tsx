@@ -20,15 +20,17 @@ const SkillGraph = dynamic(() => import("@components/skills/SkillGraph"), {
   ssr: false,
 });
 
-const Home: NextPage<{
+type Props = {
   graphData: Graph;
-  projects: any;
-  experiences: any;
-}> = ({ graphData, projects, experiences }) => {
+  projects: Project[];
+  experiences: Experience[];
+};
+
+const Home: NextPage<Props> = ({ graphData, projects, experiences }) => {
   const mainRef = useRef<HTMLDivElement>(null),
     skillPromptRef = useRef<HTMLDivElement>(null),
     [favicon, setFavicon] = useState<string>("/favicon.ico"),
-    [focusedNodes, setFocusedNodes] = useState<string[]>([]),
+    [focusedNodes, setFocusedNodes] = useState<Set<string>>(new Set()),
     [skillNodeReveal, setskillNodeReveal] = useState<Graph>({
       nodes: [],
       links: [],

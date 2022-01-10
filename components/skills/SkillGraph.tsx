@@ -13,7 +13,7 @@ import { useMediaQuery } from "react-responsive";
 
 type Props = {
   data: GraphData;
-  focusedNodes: string[];
+  focusedNodes: Set<string>;
 };
 
 const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
@@ -100,7 +100,7 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
 
           const material = new THREE.SpriteMaterial({
             map: imgTexture,
-            color: focusedNodes.includes(d.id) ? nodeHighlightColor : nodeColor,
+            color: focusedNodes.has(d.id) ? nodeHighlightColor : nodeColor,
           });
           const sprite = new THREE.Sprite(material);
 

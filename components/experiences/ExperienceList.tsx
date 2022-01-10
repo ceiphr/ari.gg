@@ -4,7 +4,7 @@ import Fade from "react-reveal/Fade";
 import Experience from "@components/experiences/Experience";
 
 type Props = {
-  setFocusedNodes: (value: string[]) => void;
+  setFocusedNodes: (value: Set<string>) => void;
   experiences: Experience[];
 };
 
@@ -13,7 +13,7 @@ const ExperienceList: FunctionComponent<Props> = ({
   experiences,
 }) => {
   return (
-    <div className="grid md:grid-cols-6">
+    <div className="grid md:grid-cols-6 2xl:grid-cols-7">
       <div className="md:col-start-2 md:col-span-2 p-4 md:p-0 mb-12 z-30">
         <div className="mb-8">
           <Fade bottom>
