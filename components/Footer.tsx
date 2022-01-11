@@ -25,7 +25,7 @@ const Footer: FunctionComponent = () => (
           .
         </div>
         <div className="md:col-start-5 2xl:col-start-6 mt-12 mb-12 text-stone-600 dark:text-stone-400 md:text-right">
-          <div className="grid grid-cols-3 w-28 md:float-right">
+          <div className="grid grid-cols-3 w-28 md:float-right -translate-x-1 md:translate-x-2.5">
             <a
               href="https://github.com/ceiphr"
               target="_blank"
@@ -53,6 +53,15 @@ const Footer: FunctionComponent = () => (
           </div>
           <p className="whitespace-nowrap md:float-right mt-4 md:mt-8">
             © 2021 Ari Birnbaum (Ceiphr).
+            <br />
+            <a
+              href="https://github.com/ceiphr/ari.gg"
+              target="_blank"
+              rel="noreferrer"
+              className="text-blue-700 dark:text-blue-300 hover:underline"
+            >
+              Acknowledgments.
+            </a>
           </p>
         </div>
       </div>
