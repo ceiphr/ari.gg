@@ -7,8 +7,21 @@ function useHover(): [(node: HTMLDivElement) => void, boolean] {
   const [value, setValue] = useState<boolean>(false);
 
   // Wrap in useCallback so we can use in dependencies below
-  const handleMouseOver = useCallback(() => setValue(true), []);
-  const handleMouseOut = useCallback(() => setValue(false), []);
+  // setTimeout delay is used to prevent the callback from firing too often
+  const handleMouseOver = useCallback(
+    () =>
+      setTimeout(() => {
+        setValue(true);
+      }, 200),
+    []
+  );
+  const handleMouseOut = useCallback(
+    () =>
+      setTimeout(() => {
+        setValue(false);
+      }, 200),
+    []
+  );
 
   // Keep track of the last node passed to callbackRef
   // so we can remove its event listeners.

@@ -24,7 +24,7 @@ const ExperienceList: FunctionComponent<Props> = ({
           </p>
         </Fade>
       </div>
-      {experiences.map((experience: any) => (
+      {experiences.map((experience: Experience) => (
         <Fade key={experience.company} bottom distance="50px">
           <Experience
             className="will-change-transform"

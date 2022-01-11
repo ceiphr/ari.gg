@@ -24,7 +24,7 @@ const ProjectList: FunctionComponent<Props> = ({
           </p>
         </Fade>
       </div>
-      {projects.map((project: any) => (
+      {projects.map((project: Project) => (
         <Fade key={project.title} bottom distance="50px">
           <Project
             className="will-change-transform"
