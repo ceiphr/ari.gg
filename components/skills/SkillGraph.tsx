@@ -48,12 +48,7 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
     cameraAngle = useRef<number>(-Math.PI / (isTabletOrMobile ? 1 : 1.3)),
     // Sprite textures are caches in this Map to avoid flickering on state change.
     [spriteMap, setSpriteMap] = useState<Map<string, any>>(new Map()),
-    [theme, setTheme] = useState<Theme>({
-      backgroundColor: "#fff",
-      nodeColor: 0x000000,
-      nodeHighlightColor: 0x1d4ed8,
-      linkColor: "rgba(0,0,0,0.8)",
-    });
+    [theme, setTheme] = useState<Theme>(lightTheme);
 
   useEffect(() => {
     // camera orbit
