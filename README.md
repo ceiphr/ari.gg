@@ -29,8 +29,6 @@ acts as an interactive portfolio for my projects.
 You can fork this project! Please give appropriate credit by linking back
 to [ari.gg][ari-url] and keeping your fork open source!
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Built With
 
 - [Next.js](https://nextjs.org/)
@@ -50,8 +48,6 @@ to [ari.gg][ari-url] and keeping your fork open source!
 - [react-force-graph](https://www.npmjs.com/package/react-force-graph)
 - [react-lottie-player](https://www.npmjs.com/package/react-lottie-player)
 - [react-responsive](https://www.npmjs.com/package/react-responsive)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -75,9 +71,8 @@ as you edit the file.
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+Distributed under the MIT License. See [LICENSE](https://github.com/ceiphr/ari.gg/blob/master/LICENSE)
+for more information.
 
 <!-- CONTACT -->
 
@@ -86,8 +81,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Ari Birnbaum - [@ceiphr](https://twitter.com/ceiphr) - a@ari.gg / ari@ceiphr.com
 
 Project Link: [github.com/ceiphr/ari.gg](https://github.com/ceiphr/ari.gg)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 

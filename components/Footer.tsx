@@ -55,7 +55,7 @@ const Footer: FunctionComponent = () => (
             © 2021 Ari Birnbaum (Ceiphr).
             <br />
             <a
-              href="https://github.com/ceiphr/ari.gg"
+              href="https://github.com/ceiphr/ari.gg#acknowledgments"
               target="_blank"
               rel="noreferrer"
               className="text-blue-700 dark:text-blue-300 hover:underline"
