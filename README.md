@@ -71,7 +71,7 @@ as you edit the file.
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/ceiphr/ari.gg/blob/master/LICENSE)
+Distributed under the GPL-3.0 License. See [LICENSE](https://github.com/ceiphr/ari.gg/blob/master/LICENSE)
 for more information.
 
 <!-- CONTACT -->
