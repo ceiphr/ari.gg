@@ -27,9 +27,8 @@ const Hero: FunctionComponent = () => (
             A twenty-something studying CS.
           </h1>
           <p className="max-w-lg text-lg mt-6 text-stone-600 dark:text-stone-400 float-right">
-            In the game of life, my cell is doing pretty swell! I&rsquo;m a
-            computer science student with a strong background in systems,
-            algorithms, and web development.
+            I&rsquo;m a computer science student with a strong background in
+            systems, algorithms, and web development.
             <br />
             <br />I write technical articles for DigitalOcean and Koyeb, a
             French start-up. Currently, I am a teaching assistant for two

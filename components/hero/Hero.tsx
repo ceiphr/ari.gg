@@ -7,7 +7,7 @@ const Hero: FunctionComponent = () => {
   const [reveal, setReveal] = useState<boolean>(false),
   possibleStatuses: String[] = [
     "Just chillin.",
-    "Crusing.",
+    "Cruising.",
     "Sleeping.",
     "Not on Zoom.",
     "In office hours.",
