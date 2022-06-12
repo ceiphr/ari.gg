@@ -1,14 +1,27 @@
 import React, { useEffect, FunctionComponent } from "react";
 import Image from "next/image";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import {
+  documentToHtmlString,
+  Options,
+} from "@contentful/rich-text-html-renderer";
+import { INLINES } from "@contentful/rich-text-types";
 
-import useHover from "@utils/useHover";
+import { useHover } from '@mantine/hooks';
 import ExternalLink from "@assets/external-link.svg";
 
 type Props = {
   className?: string;
   setFocusedNodes: (value: Set<string>) => void;
   project: Project;
+};
+
+const options: Partial<Options> = {
+  renderNode: {
+    [INLINES.HYPERLINK]: (node, next) =>
+      `<a href="${node.data.uri}" rel="noreferrer" target="_blank">${next(
+        node.content
+      )}</a>`,
+  },
 };
 
 const Project: FunctionComponent<Props> = ({
@@ -18,20 +31,20 @@ const Project: FunctionComponent<Props> = ({
 }) => {
   // When a project card is hovered, it triggers a state update, sending a list
   // of nodes to color to @components/skills/SkillGraph.tsx.
-  const [hoverRef, isHovered] = useHover();
+  const { hovered, ref } = useHover();
 
   useEffect(() => {
     // The list of nodes to color is a Set for efficient lookup when re-rendering.
-    if (isHovered) setFocusedNodes(new Set(project.skills));
+    if (hovered) setFocusedNodes(new Set(project.skills));
     else setFocusedNodes(new Set());
-  }, [setFocusedNodes, isHovered, project]);
+  }, [setFocusedNodes, hovered, project]);
 
   return (
     <div
-      ref={hoverRef}
+      ref={ref}
       className={`project card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
-      <div className="card__img project__img border-b border-black/20 dark:border-white/20">
+      <div className="card__img project__img flex justify-center items-center opacity-75 duration-400 border-b border-black/20 dark:border-white/20">
         <Image
           src={`https:${project.img.src}`}
           height={project.img.height}
@@ -44,7 +57,7 @@ const Project: FunctionComponent<Props> = ({
         <div
           className="mt-2 has-links"
           dangerouslySetInnerHTML={{
-            __html: documentToHtmlString(project.body),
+            __html: documentToHtmlString(project.body, options),
           }}
         />
         <div className="grid grid-cols-3 py-6 text-center grid-lines">

@@ -1,14 +1,27 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
 import Image from "next/image";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import {
+  documentToHtmlString,
+  Options,
+} from "@contentful/rich-text-html-renderer";
+import { INLINES } from "@contentful/rich-text-types";
 
-import useHover from "@utils/useHover";
+import { useHover } from '@mantine/hooks';
 import dateParse from "@utils/dateParse";
 
 type Props = {
   className?: string;
   setFocusedNodes: (value: Set<string>) => void;
   experience: Experience;
+};
+
+const options: Partial<Options> = {
+  renderNode: {
+    [INLINES.HYPERLINK]: (node, next) =>
+      `<a href="${node.data.uri}" rel="noreferrer" target="_blank">${next(
+        node.content
+      )}</a>`,
+  },
 };
 
 const Experience: FunctionComponent<Props> = ({
@@ -19,13 +32,13 @@ const Experience: FunctionComponent<Props> = ({
   const [logo, setLogo] = useState<string>(`https:${experience.logo.logo}`),
     // When an experience card is hovered, it triggers a state update, sending a list
     // of nodes to color to @components/skills/SkillGraph.tsx.
-    [hoverRef, isHovered] = useHover();
+    { hovered, ref } = useHover();
 
   useEffect(() => {
     // The list of nodes to color is a Set for efficient lookup when re-rendering.
-    if (isHovered) setFocusedNodes(new Set(experience.skills));
+    if (hovered) setFocusedNodes(new Set(experience.skills));
     else setFocusedNodes(new Set());
-  }, [setFocusedNodes, isHovered, experience]);
+  }, [setFocusedNodes, hovered, experience]);
 
   useEffect(() => {
     // The logo has a dark and light variant. The variant type is picked by
@@ -79,12 +92,12 @@ const Experience: FunctionComponent<Props> = ({
       : new Date();
   return (
     <div
-      ref={hoverRef}
-      className={`experience card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      ref={ref}
+      className={`duration-400 align-middle card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
-          <div className="experience__img card__img relative h-24 md:w-2/3 mr-24 md:mr-0">
+          <div className="card__img relative h-24 md:w-2/3 mr-24 md:mr-0">
             <Image
               className="object-left"
               src={logo}
@@ -115,7 +128,11 @@ const Experience: FunctionComponent<Props> = ({
           {experience.items.map((item: ExperienceItem, index: number) => (
             <div key={item.title} className={`ml-14 ${index > 0 && "mt-6"}`}>
               <div className="absolute p-2 rounded-full fill-current bg-white dark:bg-black left-0 border border-black/20 dark:border-white/20 z-20">
-                <svg width="24" height="24" className="card__icon opacity-30 dark:invert">
+                <svg
+                  width="24"
+                  height="24"
+                  className="card__icon opacity-30 dark:invert"
+                >
                   <image
                     xlinkHref={`https:${item.icon}`}
                     width="24"
@@ -127,7 +144,7 @@ const Experience: FunctionComponent<Props> = ({
               <div
                 className="has-links"
                 dangerouslySetInnerHTML={{
-                  __html: documentToHtmlString(item.body),
+                  __html: documentToHtmlString(item.body, options),
                 }}
               />
             </div>

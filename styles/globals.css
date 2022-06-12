@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Change scrollbar theme for Chromium browsers. */
 :root {
   --theme: #fff;
 }

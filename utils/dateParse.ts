@@ -1,8 +1,7 @@
 // https://stackoverflow.com/questions/2587345/why-does-date-parse-give-incorrect-results
 
 const parseDate = (input: string): Date => {
-  // TODO: How would I type this?
-  let parts: any = input.split("-");
+  let parts: number[] = input.split("-").map(Number);
 
   // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
   return new Date(parts[0], parts[1] - 1, parts[2]); // Note: months are 0-based

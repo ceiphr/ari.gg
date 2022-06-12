@@ -1,6 +1,0 @@
-.project {
-  &__img {
-    @apply flex justify-center items-center rounded-t-xl overflow-hidden duration-400 opacity-75;
-    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-  }
-}

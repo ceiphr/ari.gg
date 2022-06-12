@@ -1,3 +1,15 @@
 {
-    "svg.preview.background": "white"
+    "svg.preview.background": "white",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "cs562_project",
+            "username": "ari",
+            "password": "ari",
+            "name": "CS562 Project"
+        }
+    ]
 }
