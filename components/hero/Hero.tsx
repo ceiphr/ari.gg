@@ -2,28 +2,10 @@ import React, { useEffect, useState, useRef, FunctionComponent } from "react";
 import Link from "next/link";
 import anime from "animejs";
 
-import random from "@utils/random";
-
-const Hero: FunctionComponent<{ error: boolean }> = ({ error = false }) => {
-  const [reveal, setReveal] = useState<boolean>(false),
-    possibleStatuses: String[] = [
-      "Just chillin.",
-      "Cruising.",
-      "Sleeping.",
-      "Not on Zoom.",
-      "In office hours.",
-      "Writing an article.",
-      "In class.",
-      "Scrolling through Hacker News.",
-    ],
-    statusText = useRef<String>(
-      possibleStatuses[random(0, possibleStatuses.length - 1)]
-    );
+const Hero: FunctionComponent<{ error?: boolean }> = ({ error = false }) => {
+  const [reveal, setReveal] = useState<boolean>(false);
 
   useEffect(() => {
-    statusText.current =
-      possibleStatuses[random(0, possibleStatuses.length - 1)];
-
     // Hide the Hero contents for 1.2 seconds. This gives the naviagtion bar
     // time to fade in before the Hero's staggered animation starts.
     setTimeout(() => {
@@ -87,7 +69,7 @@ const Hero: FunctionComponent<{ error: boolean }> = ({ error = false }) => {
             Status
           </div>
           <p className="inline translate-y-px whitespace-nowrap text-stone-700 dark:text-stone-300 pl-3 pr-4">
-            {statusText.current}
+            Interning at Jump Trading in Chicago, IL.
           </p>
         </div>
       </div>

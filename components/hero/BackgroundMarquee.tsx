@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 import random from "@utils/random";
 
-const BackgroundMarquee: FunctionComponent<{ error: boolean }> = memo(
+const BackgroundMarquee: FunctionComponent<{ error?: boolean }> = memo(
   function BackgroundMarquee({ error = false }) {
     const [reveal, setReveal] = useState<boolean>(false);
     let numRows: number = 7,
