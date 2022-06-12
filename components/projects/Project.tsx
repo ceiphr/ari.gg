@@ -6,7 +6,7 @@ import {
 } from "@contentful/rich-text-html-renderer";
 import { INLINES } from "@contentful/rich-text-types";
 
-import { useHover } from '@mantine/hooks';
+import { useHover } from "@mantine/hooks";
 import ExternalLink from "@assets/external-link.svg";
 
 type Props = {

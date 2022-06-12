@@ -1,24 +1,28 @@
 import React, { useEffect, useState, useRef, FunctionComponent } from "react";
+import Link from "next/link";
 import anime from "animejs";
 
 import random from "@utils/random";
 
-const Hero: FunctionComponent = () => {
+const Hero: FunctionComponent<{ error: boolean }> = ({ error = false }) => {
   const [reveal, setReveal] = useState<boolean>(false),
-  possibleStatuses: String[] = [
-    "Just chillin.",
-    "Cruising.",
-    "Sleeping.",
-    "Not on Zoom.",
-    "In office hours.",
-    "Writing an article.",
-    "In class.",
-    "Scrolling through Hacker News.",
-  ],
-  statusText = useRef<String>(possibleStatuses[random(0, possibleStatuses.length - 1)]);
+    possibleStatuses: String[] = [
+      "Just chillin.",
+      "Cruising.",
+      "Sleeping.",
+      "Not on Zoom.",
+      "In office hours.",
+      "Writing an article.",
+      "In class.",
+      "Scrolling through Hacker News.",
+    ],
+    statusText = useRef<String>(
+      possibleStatuses[random(0, possibleStatuses.length - 1)]
+    );
 
   useEffect(() => {
-    statusText.current = possibleStatuses[random(0, possibleStatuses.length - 1)];
+    statusText.current =
+      possibleStatuses[random(0, possibleStatuses.length - 1)];
 
     // Hide the Hero contents for 1.2 seconds. This gives the naviagtion bar
     // time to fade in before the Hero's staggered animation starts.
@@ -35,6 +39,31 @@ const Hero: FunctionComponent = () => {
       easing: "easeOutQuart",
     });
   }, []);
+
+  if (error)
+    return (
+      <div
+        className={`${
+          !reveal && "opacity-0"
+        } grid md:grid-cols-6 2xl:grid-cols-7 relative -top-1/2 -translate-y-1/2`}
+      >
+        <div className="col-start-2 col-span-4 p-6 md:p-0 text-center">
+          <h1 className="hero-fade will-change-transform tk-neue-haas-grotesk-display text-clamp-8xl uppercase">
+            404
+          </h1>
+          <p className="hero-fade will-change-transform text-lg text-stone-600 dark:text-stone-400 my-4">
+            How did you get here? The site is only one page.
+          </p>
+          <div className="hero-fade">
+          <Link href="/" passHref>
+            <div className="w-24 absolute left-1/2 -translate-x-1/2 duration-400 cursor-pointer rounded-lg px-3 py-2 font-medium border border-black/20 dark:border-white/20 hover:bg-black bg-white hover:text-white hover:dark:bg-white dark:bg-black hover:dark:text-black">
+              Go Back
+            </div>
+          </Link>
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <div
