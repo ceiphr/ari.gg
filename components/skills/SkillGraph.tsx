@@ -7,7 +7,7 @@ import React, {
 } from "react";
 // @ts-ignore Types are not exported from react-force-graph
 // prettier-ignore
-import { ForceGraph3D, GraphNode, ForceGraphInstance } from "react-force-graph";
+import ForceGraph3D, { GraphNode, ForceGraphInstance } from "react-force-graph-3d";
 import * as THREE from "three";
 import { useMediaQuery } from "react-responsive";
 import { useReducedMotion } from "@mantine/hooks";
