@@ -39,7 +39,7 @@ const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
         !reveal && "opacity-0"
       } relative top-1/2 -translate-y-1/2 pointer-events-none backdrop--contrast`}
     >
-      <div className="grid md:grid-cols-6">
+      <div className="grid md:grid-cols-6 2xl:grid-cols-7">
         <div className="col-start-2 col-span-4 p-6 md:p-0 text-center md:text-left pointer-events-auto my-8">
           <h1 className="skill-fade will-change-transform tk-neue-haas-grotesk-display text-clamp-6xl uppercase">
             The skills to pay the bills.
