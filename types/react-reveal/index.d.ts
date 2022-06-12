@@ -3,7 +3,7 @@
 
 /**
  * @typedef RevealProps
- * 
+ *
  * https://github.com/rnosov/react-reveal/issues/58#issuecomment-886242949
  * https://www.react-reveal.com/docs/props/
  */
@@ -22,7 +22,7 @@ interface RevealProps {
    * See <a href="https://www.react-reveal.com/docs/cascade/">cascade docs</a>. Defaults to `false`. Optional.
    * @property {boolean}
    */
-  cascase?: boolean;
+  cascade?: boolean;
   /**
    * See <a href="https://www.react-reveal.com/docs/when/">collapse docs</a>. Defaults to `false`. Optional.
    *
