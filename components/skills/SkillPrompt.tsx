@@ -40,27 +40,27 @@ const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
       } relative top-1/2 -translate-y-1/2 pointer-events-none backdrop--contrast`}
     >
       <div className="grid md:grid-cols-6">
-        <div className="col-start-2 col-span-4 p-6 md:p-0 text-center pointer-events-auto my-8">
+        <div className="col-start-2 col-span-4 p-6 md:p-0 text-center md:text-left pointer-events-auto my-8">
           <h1 className="skill-fade will-change-transform tk-neue-haas-grotesk-display text-clamp-6xl uppercase">
             The skills to pay the bills.
           </h1>
-          <p className="skill-fade will-change-transform max-w-lg mx-auto mt-2 text-clamp-4xl">
+          <p className="skill-fade will-change-transform mt-2 text-clamp-4xl">
             With projects to match.
           </p>
+          <div className="w-31px ml-px mt-6 relative left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0">
+            {animationData && (
+              // https://lottiefiles.com/5944-scroll-down
+              <Lottie
+                className="skill-fade will-change-transform fill-theme"
+                loop
+                animationData={animationData}
+                play
+                speed={0.5}
+                style={{ width: 31, height: 50 }}
+              />
+            )}
+          </div>
         </div>
-      </div>
-      <div className="relative left-1/2 -translate-x-1/2 w-50px">
-        {animationData && (
-          // https://lottiefiles.com/5944-scroll-down
-          <Lottie
-            className="skill-fade will-change-transform fill-theme"
-            loop
-            animationData={animationData}
-            play
-            speed={0.5}
-            style={{ width: 50, height: 50 }}
-          />
-        )}
       </div>
     </div>
   );

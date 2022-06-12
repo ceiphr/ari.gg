@@ -11,6 +11,7 @@ module.exports = {
         "3px": "3px",
         "5px": "5px",
         "15px": "15px",
+        "31px": "31px",
         "50px": "50px",
       },
       margin: { "24px": "24px" },
