@@ -6,6 +6,7 @@ import React, {
   FunctionComponent,
 } from "react";
 import Fade from "react-reveal/Fade";
+import { useReducedMotion } from "@mantine/hooks";
 
 type Cell = {
   x: number;
@@ -59,7 +60,8 @@ const GOL: FunctionComponent = () => {
     [cells, setCells] = useState<{ x: number; y: number }[]>([]),
     rows: number = HEIGHT / CELL_SIZE,
     cols: number = WIDTH / CELL_SIZE,
-    board = useRef<boolean[][]>(makeEmptyBoard(rows, cols));
+    board = useRef<boolean[][]>(makeEmptyBoard(rows, cols)),
+    reduceMotion = useReducedMotion();
 
   const makeCells: Function = useCallback((): Cell[] => {
     let cells = [];
@@ -134,14 +136,14 @@ const GOL: FunctionComponent = () => {
     setCells(makeCells());
 
     setTimeout(() => {
-      runIteration();
+      if (!reduceMotion) runIteration();
     }, 1000);
-  }, [board, rows, cols, calculateNeighbors, makeCells]);
+  }, [board, rows, cols, calculateNeighbors, makeCells, reduceMotion]);
 
   useEffect(() => {
     handleRandom();
-    runIteration();
-  }, [handleRandom, runIteration]);
+    if (!reduceMotion) runIteration();
+  }, [handleRandom, runIteration, reduceMotion]);
 
   return (
     <Fade>

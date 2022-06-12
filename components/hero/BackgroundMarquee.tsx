@@ -1,11 +1,14 @@
 import React, { memo, useEffect, useState, FunctionComponent } from "react";
 import Marquee from "react-fast-marquee";
+import { useReducedMotion } from "@mantine/hooks";
 
 import random from "@utils/random";
 
 const BackgroundMarquee: FunctionComponent<{ error?: boolean }> = memo(
   function BackgroundMarquee({ error = false }) {
-    const [reveal, setReveal] = useState<boolean>(false);
+    const [reveal, setReveal] = useState<boolean>(false),
+      reduceMotion = useReducedMotion();
+
     let numRows: number = 7,
       numCols: number = 8,
       rows: JSX.Element[] = [];
@@ -64,7 +67,7 @@ const BackgroundMarquee: FunctionComponent<{ error?: boolean }> = memo(
         <Marquee
           key={`row-${i}`}
           className="text-10xl uppercase tk-fort overflow-y-hidden"
-          speed={random(10, 30)}
+          speed={reduceMotion ? 0 : random(10, 30)}
           aria-hidden
           direction={direction}
           gradient={false}

@@ -10,6 +10,7 @@ import React, {
 import { ForceGraph3D, GraphNode, ForceGraphInstance } from "react-force-graph";
 import * as THREE from "three";
 import { useMediaQuery } from "react-responsive";
+import { useReducedMotion } from "@mantine/hooks";
 
 type Props = {
   data: Graph;
@@ -48,41 +49,45 @@ const SkillGraph: FunctionComponent<Props> = memo(function SkillGraph({
     cameraAngle = useRef<number>(-Math.PI / (isTabletOrMobile ? 1 : 1.3)),
     // Sprite textures are caches in this Map to avoid flickering on state change.
     [spriteMap, setSpriteMap] = useState<Map<string, any>>(new Map()),
-    [theme, setTheme] = useState<Theme>(lightTheme);
+    [theme, setTheme] = useState<Theme>(lightTheme),
+    reduceMotion = useReducedMotion();
 
   useEffect(() => {
     // camera orbit
     // https://github.com/vasturiano/react-force-graph/blob/master/example/camera-auto-orbit/index.html
-    const rotate = setInterval(() => {
-      if (!fgRef.current) {
-        clearInterval(rotate);
-        return;
-      }
+    let rotate: NodeJS.Timer;
 
-      fgRef.current.cameraPosition(
-        // Position of the camera.
-        {
-          x: distance * Math.sin(angle.current),
-          z: distance * Math.cos(angle.current),
-        },
-        // Look at position for the camera.
-        {
-          x: distance * Math.sin(cameraAngle.current),
-          z: distance * Math.cos(cameraAngle.current),
+    if (!reduceMotion)
+      rotate = setInterval(() => {
+        if (!fgRef.current) {
+          clearInterval(rotate);
+          return;
         }
-      );
 
-      // Currently, both do the same thing.
-      // These are implemented as separate refs for possible
-      // future transition effects.
-      angle.current += Math.PI / 1200;
-      cameraAngle.current += Math.PI / 1200;
-    }, 10);
+        fgRef.current.cameraPosition(
+          // Position of the camera.
+          {
+            x: distance * Math.sin(angle.current),
+            z: distance * Math.cos(angle.current),
+          },
+          // Look at position for the camera.
+          {
+            x: distance * Math.sin(cameraAngle.current),
+            z: distance * Math.cos(cameraAngle.current),
+          }
+        );
+
+        // Currently, both do the same thing.
+        // These are implemented as separate refs for possible
+        // future transition effects.
+        angle.current += Math.PI / 1200;
+        cameraAngle.current += Math.PI / 1200;
+      }, 10);
 
     return () => {
       clearInterval(rotate);
     };
-  }, []);
+  }, [reduceMotion]);
 
   useEffect(() => {
     // Change the graph's theme based on the prefers-color-scheme media query.

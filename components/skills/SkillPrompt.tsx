@@ -1,6 +1,7 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import anime from "animejs";
 import Lottie from "react-lottie-player";
+import { useReducedMotion } from '@mantine/hooks';
 
 type Props = {
   trigger: boolean;
@@ -9,13 +10,14 @@ type Props = {
 const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
   const [reveal, setReveal] = useState<boolean>(false);
   const [animationData, setAnimationData] = useState<Object>();
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     import("@assets/scroll.json").then(setAnimationData);
   }, []);
 
   useEffect(() => {
-    if (trigger) {
+    if (trigger && !reduceMotion) {
       // Hide the prompt for 1.5 seconds. The graph will be revealed
       // in this time frame.
       setTimeout(() => {
@@ -31,7 +33,7 @@ const SkillPrompt: FunctionComponent<Props> = ({ trigger }) => {
         easing: "easeOutQuart",
       });
     }
-  }, [trigger]);
+  }, [trigger, reduceMotion]);
 
   return (
     <div
