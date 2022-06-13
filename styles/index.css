@@ -90,8 +90,8 @@
 .gradient-blur {
   position: fixed;
   inset: 0 0 auto 0;
-  margin-top: -16px;
-  height: 138px;
+  transform: translateY(-20px);
+  height: 164px;
   pointer-events: none;
 }
 
