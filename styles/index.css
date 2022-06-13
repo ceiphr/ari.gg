@@ -90,7 +90,7 @@
 .gradient-blur {
   position: fixed;
   inset: 0 0 auto 0;
-  transform: translateY(-20px);
+  transform: translateY(-32px);
   height: 164px;
   pointer-events: none;
 }
@@ -181,16 +181,6 @@
   );
 }
 
-@media (min-width: 768px) {
-  .w-marquee {
-    width: 100vw;
-  }
-
-  .backdrop--contrast {
-    background: transparent;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .navigation-backdrop--contrast {
     background: linear-gradient(
@@ -202,6 +192,16 @@
 
   .backdrop--contrast {
     background: radial-gradient(rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
+  }
+}
+
+@media (min-width: 768px) {
+  .w-marquee {
+    width: 100vw;
+  }
+
+  .backdrop--contrast {
+    background: transparent;
   }
 }
 
