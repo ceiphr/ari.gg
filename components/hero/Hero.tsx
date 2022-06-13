@@ -37,11 +37,11 @@ const Hero: FunctionComponent<{ error?: boolean }> = ({ error = false }) => {
             How did you get here? The site is only one page.
           </p>
           <div className="hero-fade">
-          <Link href="/" passHref>
-            <div className="w-24 absolute left-1/2 -translate-x-1/2 duration-400 cursor-pointer rounded-lg px-3 py-2 font-medium border border-black/20 dark:border-white/20 hover:bg-black bg-white hover:text-white hover:dark:bg-white dark:bg-black hover:dark:text-black">
-              Go Back
-            </div>
-          </Link>
+            <Link href="/" passHref>
+              <div className="w-24 absolute left-1/2 -translate-x-1/2 duration-400 cursor-pointer rounded-lg px-3 py-2 font-medium border border-black/20 dark:border-white/20 hover:bg-black bg-white hover:text-white hover:dark:bg-white dark:bg-black hover:dark:text-black">
+                Go Back
+              </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -59,8 +59,7 @@ const Hero: FunctionComponent<{ error?: boolean }> = ({ error = false }) => {
         </h1>
         <p className="hero-fade will-change-transform max-w-lg text-lg text-stone-600 dark:text-stone-400 my-4">
           I&rsquo;m a computer science student at Stevens Institute of
-          Technology. I write technical articles and make polished online
-          experiences.
+          Technology. I do Linux-oriented systems programming and make polished online experiences.
         </p>
         <div className="hero-fade will-change-transform my-2 max-w-xs md:max-w-none rounded-full inline-block overflow-x-auto overflow-y-hidden whitespace-nowrap bg-white dark:bg-black border border-black/20 dark:border-white/20">
           <div className="py-2 pl-1 pr-3 inline-block translate-y-px font-medium text-emerald-600 dark:text-emerald-400 border-r border-black/20 dark:border-white/20">

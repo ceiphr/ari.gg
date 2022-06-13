@@ -20,28 +20,6 @@
   }
 }
 
-.link-card {
-  &:hover .has-links a {
-    @apply text-blue-700 dark:text-blue-300 !important;
-  }
-
-  .has-links a {
-    @apply duration-400 text-blue-700/70 dark:text-blue-300/70 !important;
-
-    &:hover {
-      @apply underline;
-    }
-  }
-}
-
-.navigation-backdrop--contrast {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
 .card {
   @apply text-stone-600 dark:text-stone-400 duration-400;
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
@@ -51,23 +29,34 @@
     width: calc(100% + 1px);
   }
 
-  &__btn {
-    @apply duration-400 text-white bg-black/80 dark:text-black dark:bg-white/80;
-  }
-
-  &__icon {
+  a,
+  &__btn,
+  &__icon,
+  &__img {
     @apply duration-400;
   }
 
+  a:not(.icon-button) {
+    @apply text-blue-700/70 dark:text-blue-300/70;
+  }
+
+  &__btn {
+    @apply text-white bg-black/80 dark:text-black dark:bg-white/80;
+  }
+
   &__img {
-    @apply duration-400 opacity-60;
+    @apply opacity-60;
   }
 
   &:hover {
     @apply text-black dark:text-white;
 
+    a:not(.icon-button) {
+      @apply text-blue-700 dark:text-blue-300;
+    }
+
     .card__btn {
-      @apply duration-400 bg-black dark:bg-white;
+      @apply bg-black dark:bg-white;
     }
 
     .card__icon {
@@ -99,6 +88,14 @@
 
 .w-marquee {
   width: 200vw;
+}
+
+.navigation-backdrop--contrast {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .backdrop--contrast {

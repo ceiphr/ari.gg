@@ -42,7 +42,7 @@ const Project: FunctionComponent<Props> = ({
   return (
     <div
       ref={ref}
-      className={`project card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`project card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="card__img project__img flex justify-center items-center opacity-75 duration-400 border-b border-black/20 dark:border-white/20">
         <Image
@@ -55,7 +55,7 @@ const Project: FunctionComponent<Props> = ({
       <div className="mx-4 mt-4">
         <h2 className="text-2xl">{project.title}</h2>
         <div
-          className="mt-2 has-links"
+          className="mt-2"
           dangerouslySetInnerHTML={{
             __html: documentToHtmlString(project.body, options),
           }}

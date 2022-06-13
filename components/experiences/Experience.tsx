@@ -6,7 +6,7 @@ import {
 } from "@contentful/rich-text-html-renderer";
 import { INLINES } from "@contentful/rich-text-types";
 
-import { useHover } from '@mantine/hooks';
+import { useHover } from "@mantine/hooks";
 import dateParse from "@utils/dateParse";
 
 type Props = {
@@ -18,7 +18,9 @@ type Props = {
 const options: Partial<Options> = {
   renderNode: {
     [INLINES.HYPERLINK]: (node, next) =>
-      `<a href="${node.data.uri}" rel="noreferrer" target="_blank">${next(
+      `<a href="${
+        node.data.uri
+      }" class="hover:underline" rel="noreferrer" target="_blank">${next(
         node.content
       )}</a>`,
   },
@@ -93,7 +95,7 @@ const Experience: FunctionComponent<Props> = ({
   return (
     <div
       ref={ref}
-      className={`duration-400 align-middle card link-card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
+      className={`duration-400 align-middle card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
@@ -142,7 +144,6 @@ const Experience: FunctionComponent<Props> = ({
               </div>
               <h3 className="text-xl mb-2 pt-1">{item.title}</h3>
               <div
-                className="has-links"
                 dangerouslySetInnerHTML={{
                   __html: documentToHtmlString(item.body, options),
                 }}
