@@ -89,7 +89,7 @@
 /* https://codepen.io/silas/pen/rNYqZoz */
 .gradient-blur {
   position: fixed;
-  top: 0;
+  top: -24px;
   left: 0;
   right: 0;
   height: 164px;
