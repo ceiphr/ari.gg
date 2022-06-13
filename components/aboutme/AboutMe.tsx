@@ -30,7 +30,9 @@ const Hero: FunctionComponent = () => (
             I&rsquo;m a computer science student with a strong background in
             systems, algorithms, and web development.
             <br />
-            <br />Currently, I&rsquo;m interning at Jump Trading in Chicago, IL. I&rsquo;m on the TechOps Production Engineering team. In the fall, I&rsquo;ll be TAing Theory of Computation.
+            <br />
+            Currently, I&rsquo;m interning at Jump Trading in Chicago, IL.
+            I&rsquo;m on the TechOps Production Engineering team.
           </p>
         </div>
       </Fade>

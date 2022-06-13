@@ -25,6 +25,11 @@ const Navigation: FunctionComponent = () => {
 
   return (
     <div className="fixed w-full pt-4 pb-8 px-4 z-50 pointer-events-none navigation-backdrop--contrast">
+      <div className="gradient-blur">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <nav
         className={`${
           !reveal && "opacity-0"
