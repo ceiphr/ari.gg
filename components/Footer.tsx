@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+// @ts-ignore types not provided :(
 import Fade from "react-reveal/Fade";
 
 import Logo from "@assets/logo.svg";
