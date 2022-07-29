@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
-import Image from "next/image";
+import Image from 'next/future/image'
+// @ts-ignore types not provided :(
 import Fade from "react-reveal/Fade";
 
 const Hero: FunctionComponent = () => (
@@ -12,7 +13,6 @@ const Hero: FunctionComponent = () => (
               className="grayscale opacity-60"
               src="/me.png"
               alt="Ari Birnbaum"
-              layout="responsive"
               width={1689}
               height={3151}
             />

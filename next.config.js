@@ -4,6 +4,11 @@ module.exports = {
   images: {
     domains: ["images.ctfassets.net"],
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
