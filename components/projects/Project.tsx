@@ -1,5 +1,4 @@
 import React, { useEffect, FunctionComponent } from "react";
-import Image from 'next/future/image'
 import {
   documentToHtmlString,
   Options,
@@ -45,7 +44,7 @@ const Project: FunctionComponent<Props> = ({
       className={`project card overflow-hidden w-full mb-8 my-2 rounded-xl border bg-white dark:bg-black border-black/20 dark:border-white/20 ${className}`}
     >
       <div className="card__img project__img flex justify-center items-center opacity-75 duration-400 border-b border-black/20 dark:border-white/20">
-        <Image
+        <img
           src={`https:${project.img.src}`}
           height={project.img.height}
           width={project.img.width}
