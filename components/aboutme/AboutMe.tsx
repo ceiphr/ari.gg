@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import Image from "next/image";
 // @ts-ignore types not provided :(
 import Fade from "react-reveal/Fade";
 
@@ -8,10 +9,11 @@ const Hero: FunctionComponent = () => (
       <Fade left distance="50px">
         <div className="will-change-transform relative col-start-2 col-span-2">
           <div className="absolute bottom-0 max-h-screen w-full pointer-events-none select-none">
-            <img
+          <Image
               className="grayscale opacity-60"
               src="/me.png"
               alt="Ari Birnbaum"
+              layout="responsive"
               width={1689}
               height={3151}
             />

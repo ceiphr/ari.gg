@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Ari Birnbaum <ari@ceiphr.com>",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001 | local-ssl-proxy --key ~/.ts-certs/frame.corgi-richter.ts.net.key --cert ~/.ts-certs/frame.corgi-richter.ts.net.crt --source 3000 --target 3001",
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
@@ -37,6 +37,7 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.3",
+    "local-ssl-proxy": "^1.3.0",
     "postcss": "^8.4.5",
     "postcss-import": "^14.0.2",
     "tailwindcss": "^3.1.6",

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
+import Image from "next/image";
 import {
   documentToHtmlString,
   Options,
@@ -99,11 +100,11 @@ const Experience: FunctionComponent<Props> = ({
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
           <div className="card__img relative md:w-2/3 mr-24 md:mr-0">
-            <img
-              className="object-left w-auto h-auto max-h-32 max-w-full pt-2 pb-4"
+            <Image
+              className="object-left"
               src={logo}
-              width={512}
-              height={512}
+              layout="fill"
+              objectFit="contain"
               alt={experience.company}
             />
           </div>
