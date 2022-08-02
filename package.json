@@ -6,7 +6,7 @@
   "author": "Ari Birnbaum <ari@ceiphr.com>",
   "scripts": {
     "dev": "next dev -p 3001 | local-ssl-proxy --key ~/.ts-certs/frame.corgi-richter.ts.net.key --cert ~/.ts-certs/frame.corgi-richter.ts.net.crt --source 3000 --target 3001",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -14,7 +14,6 @@
     "@babel/core": "^7.18.9",
     "@contentful/rich-text-html-renderer": "^15.11.1",
     "@mantine/hooks": "^5.0.0",
-    "@next/bundle-analyzer": "^12.2.3",
     "animejs": "^3.2.1",
     "contentful": "^9.1.33",
     "next": "12.2.3",
@@ -28,6 +27,7 @@
     "three": "0.143.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^12.2.3",
     "@svgr/webpack": "^6.3.1",
     "@types/animejs": "^3.1.5",
     "@types/node": "18.6.2",
