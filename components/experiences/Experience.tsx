@@ -99,7 +99,7 @@ const Experience: FunctionComponent<Props> = ({
     >
       <div className="mt-4 mx-4">
         {experience.logo.logo ? (
-          <div className="card__img relative md:w-2/3 mr-24 md:mr-0">
+          <div className="card__img relative h-24 md:w-2/3 mr-24 md:mr-0">
             <Image
               className="object-left"
               src={logo}
