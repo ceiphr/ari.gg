@@ -53,7 +53,7 @@ const Footer: FunctionComponent = () => (
             </a>
           </div>
           <p className="whitespace-nowrap md:float-right mt-4 md:mt-8">
-            © 2021 Ari Birnbaum (Ceiphr).
+            © 2022 Ari Birnbaum (Ceiphr).
             <br />
             <a
               href="https://github.com/ceiphr/ari.gg#acknowledgments"

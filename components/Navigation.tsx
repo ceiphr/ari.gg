@@ -46,16 +46,16 @@ const Navigation: FunctionComponent = () => {
           <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
         </a>
         <a
-          href="/ari-birnbaum-resume.pdf"
+          href="https://www.linkedin.com/in/ari/"
           rel="noreferrer"
           target="_blank"
           className="icon-button nav-fade will-change-transform overflow-hidden whitespace-nowrap rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"
         >
-          Résumé
+          LinkedIn
           <ExternalLink className="inline-block -translate-y-px h-4 w-4 ml-1 fill-current" />
         </a>
         <a
-          href="mailto:a@ari.gg"
+          href="mailto:ari+gg@ceiphr.com"
           rel="noreferrer"
           target="_blank"
           className="icon-button nav-fade will-change-transform overflow-hidden whitespace-nowrap rounded-lg px-3 py-2 font-medium text-black dark:text-white dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white"

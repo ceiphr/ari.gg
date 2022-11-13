@@ -9,7 +9,7 @@ const Hero: FunctionComponent = () => (
       <Fade left distance="50px">
         <div className="will-change-transform relative col-start-2 col-span-2">
           <div className="absolute bottom-0 max-h-screen w-full pointer-events-none select-none">
-          <Image
+            <Image
               className="grayscale opacity-60"
               src="/me.png"
               alt="Ari Birnbaum"
@@ -32,8 +32,9 @@ const Hero: FunctionComponent = () => (
             systems, algorithms, and web development.
             <br />
             <br />
-            Currently, I&rsquo;m interning at Jump Trading in Chicago, IL.
-            I&rsquo;m on the TechOps Production Engineering team.
+            Currently, I&rsquo;m a computer science theory course assistant at
+            Stevens Institute of Technology. In September, I will be a full-time
+            TechOps Engineer at Jump Trading in New York City.
           </p>
         </div>
       </Fade>
